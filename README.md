@@ -1,6 +1,8 @@
 # .files
 
-## this is collection of personal .file from HOME "~" directory
+## this is collection of personal .file from HOME "~" directory for Arch Linux
+
+### Dependencies vim, docker, tmux, keychain and pygmentize
 
 Includes
 
@@ -8,7 +10,7 @@ Includes
 * git completion
 * aliases for docker as packet management for terraform, packer, gcloud kubectl, helm etc.
 * vim config
-* colore schima for vim monokai
-* color schima for less and cat using pigmeentize
+* color schema for vim monokai
+* color schema for less and cat using pigmeentize
 * tmux config
 * etc.

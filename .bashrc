@@ -33,12 +33,25 @@ source ~/.git-prompt.sh
 export EDITOR=vim
 #set -o noclobber
 #shopt -sq checkwinsize
-shopt -s histappend
+
+# shell history managment
 export HISTSIZE=100000
 export HISTFILESIZE=1000000
-export HISTTIMEFORMAT='%F %T '
-HISTCONTROL=ignoreboth
-export PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+#PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
+
+#HISTFILE=${HISTFILE:-~/.bash_history}
+#HISTCONTROL=ignoreboth:erasedups
+#PROMPT_COMMAND='history -w'
+#nl "$HISTFILE"|sort -k2 -k 1,1nr|uniq -f1|sort -n|cut -f2- >"${HISTFILE}.temp" && mv "$HISTFILE"{.temp,}
+#history -c; history -r
+
+# cplean mannualy history
+#history | sort -urk2 | sort -n | sed 's/^ \+[0-9]\+ \+//'
+#tac $HISTFILE | awk '!x[$0]++' | tac > $HISTFILE
+#nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2
 
 # set dircollors for ls
 eval "`dircolors -b ~/.dircolors`"

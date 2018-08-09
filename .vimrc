@@ -2,11 +2,72 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
-" source ~/.vimrc.before if it exists.
-"if filereadable(expand("~/.vimrc.before"))
-"  source ~/.vimrc.before
-"endif
+" ================= Basic Setup =====================
+
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
+set ttyfast
+
+"" Fix backspace indent
+set backspace=indent,eol,start
+
+"" Tabs. May be overriten by autocmd rules
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set expandtab
+
+set fileformats=unix
+
+"" Status bar
+"set laststatus=2
+
+"" Visual Settings
+syntax on
+set ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+set showcmd                 " Show partial commands in status line and
+
+"" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bn<CR>
+noremap <leader>a :ls<CR>
+
+"" Tab navigation
+noremap <leader>f :tabn<CR>
+noremap <leader>b :tabp<CR>
+
+"" Close buffer
+noremap <leader>c :bd<CR>
+
+set mouse=a                 " Automatically enable mouse usage
+set mousehide               " Hide the mouse cursor while typing
+set showmode                " Display the current mode
+
+set linespace=0                 " No extra spaces between rows
+set number                      " Line numbers on
+set showmatch                   " Show matching brackets/parenthesis
+set incsearch                   " Find as you type search
+set hlsearch                    " Highlight search terms
+set winminheight=0              " Windows can be 0 line high
+set ignorecase                  " Case insensitive search
+set smartcase                   " Case sensitive when uc present
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set foldenable                  " Auto fold code
+"set list
+
 
 " ================ General Config ====================
 
@@ -48,13 +109,6 @@ colorscheme material-monokai
 " the plugins.
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-"if filereadable(expand("~/.vim/vundles.vim"))
-"  source ~/.vim/vundles.vim
-"endif
-
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -88,10 +142,17 @@ nnoremap P P=`]<C-o>
 filetype plugin on
 filetype indent on
 
+"Switching to another buffer 
+set switchbuf=usetab 
+nnoremap <F8> :sbnext<CR>
+nnoremap <S-F8> :sbprevious<CR>
+
 " Display tabs and trailing spaces visually
 "set list listchars=tab:\ \ ,trail:
 
-"set nowrap       "Don't wrap lines
+" Always wrap long lines:
+"set wrap
+set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
@@ -124,10 +185,10 @@ set sidescroll=1
 
 " ================ Search ===========================
 
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
+"set incsearch       " Find the next match as we type the search
+"set hlsearch        " Highlight searches by default
+"set ignorecase      " Ignore case when searching...
+"set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 " so ~/vim/settings.vim

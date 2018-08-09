@@ -33,8 +33,6 @@ source ~/.git-prompt.sh
 export EDITOR=vim
 #set -o noclobber
 #shopt -sq checkwinsize
-
-# shell history managment
 export HISTSIZE=100000
 export HISTFILESIZE=1000000
 HISTCONTROL=ignoreboth:erasedups
@@ -51,7 +49,7 @@ PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 # cplean mannualy history
 #history | sort -urk2 | sort -n | sed 's/^ \+[0-9]\+ \+//'
 #tac $HISTFILE | awk '!x[$0]++' | tac > $HISTFILE
-#nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2
+#nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2 
 
 # set dircollors for ls
 eval "`dircolors -b ~/.dircolors`"
@@ -81,13 +79,15 @@ alias gcloud-beta='docker run -ti --rm  -v ~/:/root/ mudrii/gcloud-beta-cli gclo
 alias gcloud='docker run -ti --rm  -v ~/:/root/ mudrii/gcloud-cli gcloud'
 alias gsutil='docker run -ti --rm  -v ~/:/root/ mudrii/gcloud-cli gsutil'
 alias helm='docker run -ti --rm  -v ~/:/root/ mudrii/helm-cli helm'
-alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli kubectl'
+#alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli kubectl'
+alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli sh -c export PATH=$PATH:/app/bin; kubectl'
 alias gkubectl='docker run -ti --rm  -v ~/:/root/ mudrii/gkubectl-cli kubectl'
 alias packer='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/packer-cli packer'
-alias terraform='docker run -it --rm -e GOOGLE_CREDENTIALS=/root/.config/gcloud/terraform.json -v ${HOME}:/root -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
+alias terraform='docker run -it --rm -e GOOGLE_CREDENTIALS=/root/.config/gcloud/terraform-admin.json -v ${HOME}:/root -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
 alias tflint='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/tflint-cli tflint'
 alias powershell='docker run -it --rm microsoft/powershell'
 alias az='docker run -v ${HOME}:/root -it --rm azuresdk/azure-cli-python az'
+alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 #alias terraform='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/hashicorp terraform'
 #alias kubectl='docker run -ti --rm -v ~/:/app -w /app/ mudrii/kube kubectl'
 #alias helm='docker run -ti --rm -v ~/:/root mudrii/kube helm'
@@ -138,6 +138,9 @@ if which tmux >/dev/null 2>&1; then
 #    #if not inside a tmux session, and if no session is started, start a new session
     test -z "$TMUX" && (tmux attach || tmux new-session)
 fi
+
+#export PATH=$PATH:~/local/bin
+PATH=$PATH:~/.local/bin
 
 # startup shell notification
 echo -ne "Hello, $USER! Today is $(date).\n\n"

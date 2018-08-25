@@ -71,6 +71,7 @@ set foldenable                  " Auto fold code
 
 " ================ General Config ====================
 
+set title 											"Set the terminal's title
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
@@ -107,13 +108,18 @@ colorscheme material-monokai
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+"let mapleader=","
+
+" Configure spell checking
+nmap <silent> <leader>p :set spell!<CR>
+set spelllang=en_us
 
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
 set nobackup
 set nowb
+set noshowmode
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -134,6 +140,9 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set paste
+
+" Fix indentation in file
+map <leader>i mmgg=G`m<CR>
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -189,6 +198,9 @@ set sidescroll=1
 "set hlsearch        " Highlight searches by default
 "set ignorecase      " Ignore case when searching...
 "set smartcase       " ...unless we type a capital
+
+" Toggle highlighting of search results
+nnoremap <leader><space> :nohlsearch<cr>
 
 " ================ Custom Settings ========================
 " so ~/vim/settings.vim

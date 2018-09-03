@@ -1,0 +1,53 @@
+!--------------------------
+! ROFI Color theme
+! -------------------------
+rofi.color-enabled: true
+!rofi.color-window: argb:ee273238, #273238, argb:3a1e2529
+rofi.color-window:	#000, #000, #000
+rofi.color-normal: argb:00273238, #c1c1c1, argb:3a273238, #394249, #ffffff
+rofi.color-active: argb:00273238, #80cbc4, argb:3a273238, #394249, #80cbc4
+rofi.color-urgent: argb:00273238, #ff1844, argb:3a273238, #394249, #ff1844
+rofi.hide-scrollbar:	true
+
+!---------------------------------
+! URXVT Terminal config
+! --------------------------------
+
+! General settings
+URxvt.depth:					32
+!URxvt.geometry:			90x30
+URxvt.saveLines: 			10000
+URxvt.termName: 		rxvt-256color
+URxvt.urgentOnBell: 	true
+URxvt.cursorBlink: 		false
+URxvt.foreground: 		#eeeeee
+URxvt.background: 		#000000
+URxvt.utf8: 					true
+URxvt.locale: 					true	
+URxvt.loginShell:			true
+
+! Appearance
+URxvt.font:						xft:monospace:size=9:antialias=true
+!URxvt.font: 						xft:monaco:size=9:antialias=true
+URxvt.transparent: 		true
+!URxvt.fading:					0
+!URxvt.internalBorder:		3
+
+! Fix font space
+URxvt.letterSpace: 		-3
+!URxvt.lineSpace:			0
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Perl extensions
+URxvt.perl-ext-common:     default,matcher
+URxvt.matcher.button:       	1
+URxvt.urlLauncher:          		chromium
+
+URxvt.perl-ext-common: 	 	...,font-size
+URxvt.keysym.C-Up:     		perl:font-size:increase
+URxvt.keysym.C-Down:   		perl:font-size:decrease
+URxvt.keysym.C-S-Up:   		perl:font-size:incglobal
+URxvt.keysym.C-S-Down: 	perl:font-size:decglobal

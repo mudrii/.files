@@ -27,8 +27,8 @@ URxvt.locale: 					true
 URxvt.loginShell:			true
 
 ! Appearance
-URxvt.font:						xft:monospace:size=9:antialias=true
-!URxvt.font: 						xft:monaco:size=9:antialias=true
+!URxvt.font:						xft:monospace:size=9:antialias=true
+URxvt.font: 						xft:monaco:size=9:antialias=true
 URxvt.transparent: 		true
 !URxvt.fading:					0
 !URxvt.internalBorder:		3

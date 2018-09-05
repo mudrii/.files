@@ -2,7 +2,15 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" ================= Basic Setup =====================
+"" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+"" Turn Off Swap Files
+set noswapfile
+set nobackup
+set nowb
+set noshowmode
 
 "" Encoding
 set encoding=utf-8
@@ -11,115 +19,116 @@ set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
+set fileformats=unix
+
+" ================ General Config ====================
+
+set title						" Set the terminal's title
+set number              	    " Line numbers on
+set backspace=indent,eol,start  " Allow backspace in insert mode
+set history=1000                " Store lots of :cmdline history
+set showcmd                     " Show incomplete cmds down the bottom
+set showmode                    " Show current mode down the bottom
+set gcr=a:blinkon0              " Disable cursor blink
+set visualbell                  " No sounds
+set autoread                    " Reload files changed outside vim
+set hidden						" Buffers can exist in the background without being in a window
+set linespace=0             	" No extra spaces between rows
+set showmatch                   " Show matching brackets/parenthesis
+set winminheight=0              " Windows can be 0 line high
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set paste
+"set list
+
+" For regular expressions turn magic on
+set magic
+
+"" With a map leader it's possible to do extra key combinations
+"" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+"" Fast saving
+nmap <leader>w :w!<cr>
+
+"" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+"" Scrolling
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set sidescrolloff=15
+set sidescroll=1
+
+"" Folds
+set foldenable          " Auto fold code
+set foldmethod=indent   " Fold based on indent
+set foldnestmax=3       " Deepest fold is 3 levels
+set nofoldenable        " Dont fold by default
+set foldcolumn=1		" Add a bit extra margin to the left
+
+"" Always wrap long lines:
+"set wrap
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
 
 "" Fix backspace indent
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
+set smarttab
+set shiftwidth=4
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
-
-set fileformats=unix
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
 "" Status bar
 "set laststatus=2
 
 "" Visual Settings
-syntax on
-set ruler
+set background=dark
+syntax on 		" Turn on syntax highlighting
+syntax enable
+autocmd BufEnter * :syntax sync fromstart
+autocmd BufEnter * :set number
+set ruler 		"Always show current position
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-set showcmd                 " Show partial commands in status line and
+set showcmd     " Show partial commands in status line and
 
-"" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+"set cursorline		" set nr line highlite
+"colorscheme material-monokai	" set color schema from ~/.vim/colors
 
-"" Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>q :bn<CR>
-noremap <leader>a :ls<CR>
+set spelllang=en_us
 
-"" Tab navigation
-noremap <leader>f :tabn<CR>
-noremap <leader>b :tabp<CR>
+"set shiftwidth=2
 
-"" Close buffer
-noremap <leader>c :bd<CR>
+set cursorline " set nr line highlite
+" Highlite color number lign color
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+" DarkGray number line
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGray ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
-set mouse=a                 " Automatically enable mouse usage
-set mousehide               " Hide the mouse cursor while typing
-set showmode                " Display the current mode
-
-set linespace=0                 " No extra spaces between rows
-set number                      " Line numbers on
-set showmatch                   " Show matching brackets/parenthesis
-set incsearch                   " Find as you type search
-set hlsearch                    " Highlight search terms
-set winminheight=0              " Windows can be 0 line high
-set ignorecase                  " Case insensitive search
-set smartcase                   " Case sensitive when uc present
-set wildmenu                    " Show list instead of just completing
-set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-set scrolljump=5                " Lines to scroll when cursor leaves screen
-set scrolloff=3                 " Minimum lines to keep above and below cursor
-set foldenable                  " Auto fold code
-"set list
-
-
-" ================ General Config ====================
-
-set title 											"Set the terminal's title
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
-
-" splilt windows botoom and right
+"" Splilt windows botoom and right
 set splitbelow
 set splitright
 
-" set background dark
-set background=dark
+"" Mouse work
+"set mouse=a
+set mouse+=a 	             	" Automatically enable mouse usage
+set mousehide    	           	" Hide the mouse cursor while typing
+set showmode         	       	" Display the current mode
 
-"turn on syntax highlighting
-"syntax on
-"set termguicolors
-syntax enable
-
-" set nr line highlite
-set cursorline
-
-" set color schema
-colorscheme material-monokai
-
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-"let mapleader=","
-
-" Configure spell checking
-nmap <silent> <leader>p :set spell!<CR>
-set spelllang=en_us
-
-" ================ Turn Off Swap Files ==============
-
-set noswapfile
-set nobackup
-set nowb
-set noshowmode
+"" Indentation
+"set ai "Auto indent
+"set si "Smart indent
+set autoindent
+set smartindent
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -130,16 +139,41 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undofile
 endif
 
-" ================ Indentation ======================
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
-set paste
+
+
+" ================ Search ===========================
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
+
+" ================ Key Bindings ====================
+
+"" Split
+noremap <Leader>h :<C-u>split<CR>
+noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bn<CR>
+noremap <leader>a :ls<CR>
+
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
+
+" Close buffer
+noremap <leader>c :bd<CR>
+
+" Configure spell checking
+nmap <silent> <leader>p :set spell!<CR>
 
 " Fix indentation in file
 map <leader>i mmgg=G`m<CR>
@@ -148,27 +182,11 @@ map <leader>i mmgg=G`m<CR>
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
-filetype plugin on
-filetype indent on
+" Toggle highlighting of search results
+nnoremap <leader><space> :nohlsearch<cr>
 
-"Switching to another buffer 
-set switchbuf=usetab 
-nnoremap <F8> :sbnext<CR>
-nnoremap <S-F8> :sbprevious<CR>
-
-" Display tabs and trailing spaces visually
-"set list listchars=tab:\ \ ,trail:
-
-" Always wrap long lines:
-"set wrap
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
-
-" ================ Folds ============================
-
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
 
 " ================ Completion =======================
 
@@ -184,23 +202,6 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
-
-"
-" ================ Scrolling ========================
-
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
-
-" ================ Search ===========================
-
-"set incsearch       " Find the next match as we type the search
-"set hlsearch        " Highlight searches by default
-"set ignorecase      " Ignore case when searching...
-"set smartcase       " ...unless we type a capital
-
-" Toggle highlighting of search results
-nnoremap <leader><space> :nohlsearch<cr>
 
 " ================ Custom Settings ========================
 " so ~/vim/settings.vim

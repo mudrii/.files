@@ -30,7 +30,6 @@ set history=1000                " Store lots of :cmdline history
 set showcmd                     " Show incomplete cmds down the bottom
 set showmode                    " Show current mode down the bottom
 set gcr=a:blinkon0              " Disable cursor blink
-set visualbell                  " No sounds
 set autoread                    " Reload files changed outside vim
 set hidden						" Buffers can exist in the background without being in a window
 set linespace=0             	" No extra spaces between rows
@@ -47,8 +46,8 @@ set magic
 
 "" With a map leader it's possible to do extra key combinations
 "" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+"let mapleader = ","
+"let g:mapleader = ","
 
 "" Fast saving
 nmap <leader>w :w!<cr>
@@ -104,6 +103,10 @@ set showcmd     " Show partial commands in status line and
 "set cursorline		" set nr line highlite
 "colorscheme material-monokai	" set color schema from ~/.vim/colors
 
+set visualbell
+set noerrorbells
+set printoptions=paper:letter
+
 set spelllang=en_us
 
 "set shiftwidth=2
@@ -130,6 +133,7 @@ set showmode         	       	" Display the current mode
 set autoindent
 set smartindent
 
+
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
@@ -138,8 +142,6 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
   set undodir=~/.vim/backups
   set undofile
 endif
-
-
 
 
 " ================ Search ===========================
@@ -187,6 +189,9 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+" Quick timeouts on key combinations.
+set timeoutlen=300
 
 " ================ Completion =======================
 

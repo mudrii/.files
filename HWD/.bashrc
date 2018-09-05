@@ -5,10 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# original
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-
 # bash completion
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
@@ -22,7 +18,7 @@ fi
 if [[ ${EUID} == 0 ]] ; then
 PS1='\[\e[01;31m\]\h\[\e[01;34m\] \W \$\[\e[00m\] '
 else
-PROMPT_COMMAND='__git_ps1 "\[\e[01;32m\]\u@\h\[\e[01;34m\] \W\[\e[00m\]" " \\\$ "'
+PROMPT_COMMAND='__git_ps1 "\[\e[01;32m\]\u@\h\[\e[01;36m\] \W\[\e[00m\]" " \\\$ "'
 fi
 
 # git completion
@@ -35,7 +31,7 @@ source ~/.git-prompt.sh
 
 export EDITOR=vim
 #set -o noclobber
-#shopt -sq checkwinsize
+shopt -sq checkwinsize
 export HISTSIZE=100000
 export HISTFILESIZE=1000000
 HISTCONTROL=ignoreboth:erasedups
@@ -43,9 +39,9 @@ shopt -s histappend
 PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 
 # cplean mannualy history
-#history | sort -urk2 | sort -n | sed 's/^ \+[0-9]\+ \+//'
-#tac $HISTFILE | awk '!x[$0]++' | tac > $HISTFILE
-#nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2 
+#history | sort -urk2 | sort -n | sed 's/^ \+[0-9]\+ \+//' > /tmp/history.tmp && mv -f /tmp/history.tmp $HISTFILE
+#tac $HISTFILE | awk '!x[$0]++' | tac > /tmp/history.tmp && mv -f /tmp/history.tmp $HISTFILE
+#nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2 > /tmp/history.tmp && mv -f /tmp/history.tmp $HISTFILE
 
 # set dircollors for ls
 eval "`dircolors -b ~/.dircolors`"

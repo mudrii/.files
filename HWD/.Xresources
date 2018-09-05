@@ -87,6 +87,11 @@ URxvt.keysym.C-Down:   		perl:font-size:decrease
 URxvt.keysym.C-S-Up:   		perl:font-size:incglobal
 URxvt.keysym.C-S-Down: 		perl:font-size:decglobal
 
+URxvt.keysym.Home: \033[1~
+URxvt.keysym.End: \033[4~
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
+
 ! Colors
 URxvt*background: #000000
 URxvt*foreground: #B2B2B2

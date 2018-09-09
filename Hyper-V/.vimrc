@@ -111,8 +111,9 @@ colorscheme material-monokai
 "let mapleader=","
 
 " Configure spell checking
-nmap <silent> <leader>p :set spell!<CR>
-set spelllang=en_us
+map <F6> :setlocal spell! spelllang=en_us<CR> 
+"nmap <silent> <leader>p :set spell!<CR>
+"set spelllang=en_us
 
 " ================ Turn Off Swap Files ==============
 

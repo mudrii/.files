@@ -1,0 +1,48 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1541,
+       "width": 3828,
+       "x": 6,
+       "y": 53
+    },
+    "name": "arch_i3.md - docs - Visual Studio Code",
+    "percent": 0.6,
+    "swallows": [
+       {
+        "class": "^Code$",
+        "instance": "^code$",
+       // "title": "^arch_i3\\.md\\ \\-\\ docs\\ \\-\\ Visual\\ Studio\\ Code$",
+        "transient_for": "^$",
+        "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1600,
+       "width": 2164,
+       "x": 0,
+       "y": 0
+    },
+    "name": "urxvt",
+    "percent": 0.4,
+    "swallows": [
+       {
+        "class": "^URxvt$",
+        "instance": "^urxvt$",
+       // "title": "^urxvt$",
+        "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+

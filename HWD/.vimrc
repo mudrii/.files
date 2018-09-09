@@ -70,8 +70,8 @@ set nofoldenable        " Dont fold by default
 set foldcolumn=1		" Add a bit extra margin to the left
 
 "" Always wrap long lines:
-"set wrap
-set nowrap       "Don't wrap lines
+set wrap
+"set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 "" Fix backspace indent

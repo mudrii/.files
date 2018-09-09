@@ -1,0 +1,49 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1541,
+       "width": 2679,
+       "x": 6,
+       "y": 53
+    },
+    "name": "i3 - ArchWiki - Chromium",
+    "percent": 0.7,
+    "swallows": [
+       {
+        "class": "^Chromium$",
+        "instance": "^chromium$",
+       //"title": "^i3\\ \\-\\ ArchWiki\\ \\-\\ Chromium$",
+        "transient_for": "^$",
+        "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1541,
+       "width": 3828,
+       "x": 6,
+       "y": 87
+    },
+    "name": "WhatsApp - Chromium",
+    "percent": 0.3,
+    "swallows": [
+       {
+        "class": "^Chromium$",
+        "instance": "^chromium$",
+        //"title": "^WhatsApp\\ \\-\\ Chromium$",
+        "transient_for": "^$",
+        "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+

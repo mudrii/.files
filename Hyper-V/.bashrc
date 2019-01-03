@@ -35,7 +35,7 @@ export EDITOR=vim
 #shopt -sq checkwinsize
 export HISTSIZE=100000
 export HISTFILESIZE=1000000
-HISTCONTROL=ignoreboth:erasedups
+HISTCONTROL=ignoreboth:erasedups:ignorespace
 shopt -s histappend
 #PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
@@ -74,23 +74,25 @@ alias cp='cp -i'
 alias exit="clear ; exit"
 
 # docker aliases
-alias aws='docker run --rm -tiv $HOME/.aws:/root/.aws -v $(pwd):/aws mudrii/aws-cli aws'
-alias gcloud-beta='docker run -ti --rm  -v ~/:/root/ mudrii/gcloud-beta-cli gcloud beta'
-alias gcloud='docker run -ti --rm  -v ~/:/root/ mudrii/gcloud-cli gcloud'
-alias gsutil='docker run -ti --rm  -v ~/:/root/ mudrii/gcloud-cli gsutil'
-alias helm='docker run -ti --rm  -v ~/:/root/ mudrii/helm-cli helm'
-alias gkubectl='docker run -ti --rm  -v ~/:/root/ mudrii/gkubectl-cli kubectl'
+alias aws='docker run --rm -ti -v $HOME/.aws:$HOME/.aws -v $(pwd):/aws mudrii/aws-cli aws'
+#alias aws='docker run --rm -ti -e AWS_DEFAULT_PROFILE=sandeep -v $HOME/.aws:$HOME/.aws -v $(pwd):/aws mudrii/aws-cli aws'
+alias gcloud-beta='docker run -ti --rm  -v ~/:$HOME/ mudrii/gcloud-beta-cli gcloud beta'
+alias gcloud='docker run -ti --rm  -v ~/:$HOME/ mudrii/gcloud-cli gcloud'
+alias gcloud-alpha='docker run -ti --rm  -v ~/:$HOME/ mudrii/gcloud-alpha-cli gcloud alpha'
+alias gsutil='docker run -ti --rm  -v ~/:$HOME/ mudrii/gcloud-cli gsutil'
+alias helm='docker run -ti --rm  -v ~/:$HOME/ mudrii/helm-cli helm'
+alias gkubectl='docker run -ti --rm  -v ~/:$HOME/ mudrii/gkubectl-cli kubectl'
 alias packer='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/packer-cli packer'
-alias terraform='docker run -it --rm -v ${HOME}:/root -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
+#alias terraform='docker run -it --rm -v ${HOME}:$HOME/ -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
 alias tflint='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/tflint-cli tflint'
 alias powershell='docker run -it --rm microsoft/powershell'
-alias az='docker run -v ${HOME}:/root -it --rm azuresdk/azure-cli-python az'
+alias az='docker run -v ${HOME}:$HOME/ -it --rm azuresdk/azure-cli-python az'
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 alias julia="docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp julia julia"
 alias py="docker run -it --rm -v "$PWD":/usr/src -w /usr/src python:latest python"
-alias asciinema='docker run --rm -ti -v "$HOME/.config/asciinema":/root/.config/asciinema asciinema/asciinema asciinema'
-alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli sh -c export PATH=$PATH:/app/bin; kubectl'
-#alias terraform='docker run -it --rm -e GOOGLE_CREDENTIALS=/root/.config/gcloud/terraform-admin.json -v ${HOME}:/root -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
+#alias asciinema='docker run --rm -ti -v "$HOME/.config/asciinema":$HOME/.config/asciinema asciinema/asciinema asciinema'
+alias kubectl='docker run -ti --rm  -v ~/:$HOME/ mudrii/kubectl-cli sh -c export PATH=$PATH:/app/bin; kubectl'
+alias terraform='docker run -it --rm -e GOOGLE_CREDENTIALS=/home/mudrii/.config/gcloud/terra-org-admin.json -v ${HOME}:${HOME} -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
 #alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli kubectl'
 #alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli sh -c export PATH=$PATH:/app/bin; kubectl'
 #alias kubectl='docker run -ti --rm -v ~/:/app -w /app/ mudrii/kube kubectl'
@@ -147,6 +149,8 @@ fi
 PATH=$PATH:~/.local/bin
 
 # startup shell notification
-echo -ne "Hello, $USER! Today is $(date).\n\n"
-cal
-echo -ne "System Info: $(uptime)\n\n"
+#echo -ne "Hello, $USER! Today is $(date).\n\n"
+#cal
+#echo -ne "System Info: $(uptime)\n\n"
+
+screenfetch

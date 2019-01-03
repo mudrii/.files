@@ -183,13 +183,17 @@ bar {
 
 # i3 gaps
 gaps inner 3
-gaps outer 2
+gaps outer 3
 
 # Mouse, please stop focus whenever you hover to whatever windows plz :(
 focus_follows_mouse no
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# floating dialogs
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
 
 # key bind for Alsa sound
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute
@@ -199,16 +203,60 @@ bindsym XF86AudioMute exec amixer -q sset Master toggle
 bindsym $mod+= exec amixer -q sset Master 5%+ unmute
 bindsym $mod+- exec amixer -q sset Master 5%- unmute
 
+bindsym $mod+x [urgent=latest] focus
+
 # num lock activated
 exec_always --no-startup-id numlockx on
-
 exec_always --no-startup-id conky
 
 # Assign application to start on a specific workspace
-assign [class="Firefox|Vivaldi-stable|Opera"]                                        1
-assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]        2
-assign [class="Gimp"]                                                                4
-assign [class="Vlc|vlc"]                                                             6
-assign [class="Spotify|spotify"]                                                     10
+#assign [class="firefox"]  → 1
+assign [class="^Firefox$"] 1
+assign [class="^Chromium$"] 1
+assign [class="^Slack$"] 3
+assign [class="^zoom$"] 3
+assign [class="^Subl3$"] 2
+assign [class="^Code$"] 2
+assign [class="^Vlc$"] 9
+assign [class="^Spotify$"] 10
 #fix for spotify not moving to workspace 10
 for_window [class="Spotify"] move to workspace 10
+
+#for_window [title="Preferences$"] floating enable
+#for_window [class="(?i)mplayer"] floating enable
+
+for_window [class="^Slack$"] floating enable
+for_window [class="^zoom$"] floating enable
+
+#exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
+
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
+
+#custom keybinds
+bindsym $mod+Ctrl+1 exec ~/.config/i3/start_w1.sh
+bindsym $mod+Ctrl+2 exec ~/.config/i3/start_w2.sh
+bindsym $mod+Ctrl+3 exec ~/.config/i3/start_w3.sh
+bindsym $mod+Ctrl+4 exec ~/.config/i3/start_w4.sh
+
+bindsym $mod+Ctrl+f exec --no-startup-id firefox
+bindsym $mod+Ctrl+v exec --no-startup-id vlc
+bindsym $mod+Ctrl+c exec --no-startup-id chromium
+bindsym $mod+Ctrl+r exec --no-startup-id urxvt -e ranger
+
+bindsym $mod+Ctrl+Delete exec $Locker, mode "default"

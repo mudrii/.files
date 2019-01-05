@@ -1,0 +1,17 @@
+[record]
+; Limit recorded terminal inactivity to max n seconds, default: off
+idle_time_limit = 1
+
+; Answer "yes" to all interactive prompts, default: no
+yes = true
+
+; Be quiet, suppress all notices/warnings, default: no
+quiet = true
+
+[play]
+
+; Playback speed (can be fractional), default: 1
+speed = 1
+
+; Limit replayed terminal inactivity to max n seconds, default: off
+idle_time_limit = 1

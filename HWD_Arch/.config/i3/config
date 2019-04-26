@@ -182,8 +182,8 @@ bar {
 }
 
 # i3 gaps
-gaps inner 3
-gaps outer 3
+gaps inner 5
+gaps outer 5
 
 # Mouse, please stop focus whenever you hover to whatever windows plz :(
 focus_follows_mouse no
@@ -209,26 +209,26 @@ bindsym $mod+x [urgent=latest] focus
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id conky
 
-# Assign application to start on a specific workspace
-#assign [class="firefox"]  → 1
+# Assign application to start on a specific workspace xprop
 assign [class="^Firefox$"] 1
-assign [class="^Chromium$"] 1
+#assign [class="^Chromium$"] 1
 assign [class="^Slack$"] 3
-assign [class="^zoom$"] 3
-assign [class="^Subl3$"] 2
+#assign [class="^zoom$"] 3
+# assign [class="^Subl3$"] 3
 assign [class="^Code$"] 2
 assign [class="^Vlc$"] 9
 assign [class="^Spotify$"] 10
-#fix for spotify not moving to workspace 10
+# fix for spotify not moving to workspace 10
 for_window [class="Spotify"] move to workspace 10
 
-#for_window [title="Preferences$"] floating enable
-#for_window [class="(?i)mplayer"] floating enable
+# for_window [title="Preferences$"] floating enable
+# for_window [class="(?i)mplayer"] floating enable
+# for_window [class="^Subl3$"] floating enable
+# for_window [class="^zoom$"] floating enable
 
 for_window [class="^Slack$"] floating enable
-for_window [class="^zoom$"] floating enable
 
-#exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
+# exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
 
 set $Locker i3lock && sleep 1
 
@@ -248,7 +248,10 @@ mode "$mode_system" {
 
 bindsym $mod+Pause mode "$mode_system"
 
-#custom keybinds
+# custom keybinds
+#i3-save-tree --workspace 3 > ~/.config/i3/workspace_3.json
+#tail -n +2 ~/.config/i3/workspace_3.json | fgrep -v '// splitv' | sed 's|//||g' > ~/.config/i3/workspace_3.1.json
+
 bindsym $mod+Ctrl+1 exec ~/.config/i3/start_w1.sh
 bindsym $mod+Ctrl+2 exec ~/.config/i3/start_w2.sh
 bindsym $mod+Ctrl+3 exec ~/.config/i3/start_w3.sh
@@ -260,3 +263,9 @@ bindsym $mod+Ctrl+c exec --no-startup-id chromium
 bindsym $mod+Ctrl+r exec --no-startup-id urxvt -e ranger
 
 bindsym $mod+Ctrl+Delete exec $Locker, mode "default"
+
+# take a screenshot of a screen region and copy it to a clipboard
+bindsym --release Shift+Print exec "/home/mudrii/.local/bin/screensh -s /home/mudrii/Images/"
+
+# take a screenshot of a whole window and copy it to a clipboard
+bindsym --release Print exec "/home/mudrii/.local/bin/screensh /home/mudrii/Images/"

@@ -54,11 +54,18 @@ URxvt.locale: 				true
 !URxvt*background:			Black
 !URxvt*foreground:			White
 
+! Disable printing the terminal contents when pressing PrintScreen.
+URxvt.print-pipe: "cat > /dev/null"
 
-URxvt.letterSpace: 		-1
+!Font spacing
+!URxvt.letterSpace: 		-1
 
-URxvt.font:             xft:monospace:pixelsize=16:style=regular
-URxvt.boldFont:         xft:monospace:pixelsize=14:style=bold
+! Font declaration
+!URxvt.font:             xft:monospace:pixelsize=16:style=regular
+!URxvt.boldFont:         xft:monospace:pixelsize=14:style=bold
+
+URxvt.font:  xft:FuraCode Nerd Font Mono:pixelsize=15
+!URxvt.font: xft:Inconsolata Nerd Font Mono:size=15, xft:DejaVu Sans:size=12
 
 !URxvt.letterSpace: 		-4
 
@@ -75,13 +82,15 @@ URxvt.boldFont:         xft:monospace:pixelsize=14:style=bold
 !URxvt.font: -misc-dejavu sans mono-medium-r-normal-*-16-*-110-110-*-*-iso8859-*
 
 ! Perl extensions
-URxvt.perl-ext-common:     default,matcher
-URxvt.matcher.button:      1
-URxvt.urlLauncher:         chromium
+
+!URxvt.perl-ext-common:     default,matcher
+!URxvt.matcher.button:      1
+!URxvt.urlLauncher:         chromium
 
 !URxvt.perl-ext-common: ...,tabbed,...
 
-URxvt.perl-ext-common: 	 	...,font-size
+! Changing font size on the fly
+URxvt.perl-ext-common: 	 	default,font-size
 URxvt.keysym.C-Up:     		perl:font-size:increase
 URxvt.keysym.C-Down:   		perl:font-size:decrease
 URxvt.keysym.C-S-Up:   		perl:font-size:incglobal

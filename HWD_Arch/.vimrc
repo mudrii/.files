@@ -1,4 +1,7 @@
 " Use Vim settings, rather then Vi settings (much better!).
+
+let g:powerline_pycmd="py3"
+
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
@@ -210,3 +213,14 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Custom Settings ========================
 " so ~/vim/settings.vim
+
+" to view diff in git stile :w !git diff  % -
+" see historical and current changes :changes
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! Diffs call s:DiffWithSaved()

@@ -47,23 +47,53 @@ PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 eval "`dircolors -b ~/.dircolors`"
 
 # aliases
-alias lo="ls -lha --color=auto --group-directories-first"
+alias ccat="pygmentize -f terminal256 -g -P style=monokai"
+alias la="ls -lha --color=auto --group-directories-first"
 alias dmesg="dmesg --color=always | less"
-alias cat='pygmentize -f terminal256 -g -P style=monokai'
-alias grep='grep --color=auto'
-alias ls='ls --color=auto'
-alias diff='diff --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias ll="ls -lh"
-alias la="ls -a"
-alias mv='mv -i'
-alias rm='rm -i'
-alias cp='cp -i'
+alias sudo="sudo -i"
+alias ls="ls --color=auto"
+alias diff="diff --color=auto"
+alias vdir="vdir --color=auto"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias ll="ls -lah"
+alias mv="mv -i"
+alias rm="rm -i"
+alias cp="cp -i"
 alias exit="clear ; exit"
+alias ping="ping -c3"
+alias k="kubectl"
+alias ktx="kubectx"
+alias kns="kubens"
+alias t="terraform"
+alias g="gcloud"
+alias a="aws"
+alias p="python"
+
+#ose docker aliases
+alias aws='docker run --rm -tiv $HOME/.aws:/home/mudrii/.aws mudrii/aws-cli aws'
+alias gcloud-beta='docker run -ti --rm  -v ~/:/home/mudrii mudrii/gcloud-beta-cli gcloud beta'
+alias gcloud='docker run -ti --rm  -v ~/:/home/mudrii/ mudrii/gcloud-cli gcloud'
+alias gsutil='docker run -ti --rm  -v ~/:/home/mudrii/ mudrii/gcloud-cli gsutil'
+alias helm='docker run -ti --rm  -v ~/:/home/mudrii/ mudrii/helm-cli helm'
+alias gkubectl='docker run -ti --rm  -v ~/:/home/mudrii/ mudrii/gkubectl-cli kubectl'
+alias packer='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/packer-cli packer'
+alias terraform='docker run -it --rm -v ${HOME}:/home/mudrii -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
+alias tflint='docker run -it --rm -v $(pwd):/app/ -w /app/ mudrii/tflint-cli tflint'
+alias powershell='docker run -it --rm microsoft/powershell'
+alias az='docker run -v ${HOME}:/root -it --rm azuresdk/azure-cli-python az'
+alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
+alias julia="docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp julia julia"
+alias py="docker run -it --rm -v "$PWD":/usr/src -w /usr/src python:latest python"
+alias kubectl='docker run -ti --rm  -v ~/:/home/mudrii/ mudrii/kubectl-cli kubectl'
+#alias kubectl='docker run -ti --rm  -v ~/:/home/mudrii/ mudrii/kubectl-cli sh -c export PATH=$PATH:/app/bin; kubectl'
+#alias aws='docker run --rm -tiv $HOME/.aws:/home/mudrii/.aws -v $(pwd):/aws mudrii/aws-cli aws'
+#alias terraform='docker run -it --rm -e GOOGLE_CREDENTIALS=/root/.config/gcloud/terraform-admin.json -v ${HOME}:/root -v $(pwd):/app/ -w /app/ mudrii/terraform-cli terraform'
+#alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli kubectl'
+#alias kubectl='docker run -ti --rm  -v ~/:/root/ mudrii/kubectl-cli sh -c export PATH=$PATH:/app/bin; kubectl'
+#alias kubectl='docker run -ti --rm -v ~/:/app -w /app/ mudrii/kube kubectl'
+#alias helm='docker run -ti --rm -v ~/:/root mudrii/kube helm'
 
 # import input rc for bash history
 export INPUTRC=~/.inputrc
@@ -106,6 +136,13 @@ ext () {
  fi
 }
 
+# Powerline for bash 
+
+#powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /usr/share/powerline/bindings/bash/powerline.sh
+
 # TMUX
 #if which tmux >/dev/null 2>&1; then
     #if not inside a tmux session, and if no session is started, start a new session
@@ -113,7 +150,7 @@ ext () {
 #fi
 
 #export PATH=$PATH:~/local/bin
-PATH=$PATH:~/.local/bin
+PATH=$PATH:~/.local/bin:~/go/bin
 
 # startup shell notification
 screenfetch

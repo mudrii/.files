@@ -1,1 +1,1 @@
-/home/mudrii/.local/share/omf/themes/shellder/fish_prompt.fish
+/home/mudrii/.local/share/omf/themes/bobthefish/fish_prompt.fish

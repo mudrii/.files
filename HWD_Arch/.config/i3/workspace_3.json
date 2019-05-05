@@ -8,7 +8,7 @@
     "rect": {
        "height": 1480,
        "width": 1663,
-       "x": 5,
+       "x": 7,
        "y": 33
     },
     "type": "floating_con",
@@ -20,7 +20,7 @@
             "geometry": {
                "height": 1454,
                "width": 1659,
-               "x": 5,
+               "x": 7,
                "y": 57
             },
             "name": "Slack - Dragon",
@@ -32,45 +32,6 @@
                // "title": "^Slack\\ \\-\\ Dragon$",
                 "transient_for": "^$",
                 "window_role": "^browser\\-window$"
-               }
-            ],
-            "type": "con"
-        }
-    ]
-}
-
-{
-    // floating_con with 1 children
-    "border": "normal",
-    "floating": "auto_off",
-    "layout": "splith",
-    "percent": null,
-    "rect": {
-       "height": 706,
-       "width": 380,
-       "x": 3452,
-       "y": 65
-    },
-    "type": "floating_con",
-    "nodes": [
-        {
-            "border": "normal",
-            "current_border_width": 2,
-            "floating": "user_on",
-            "geometry": {
-               "height": 680,
-               "width": 376,
-               "x": 0,
-               "y": 0
-            },
-            "name": "Zoom - Pro Account",
-            "percent": 1,
-            "swallows": [
-               {
-                "class": "^zoom$",
-                "instance": "^zoom$",
-               // "title": "^Zoom\\ \\-\\ Pro\\ Account$",
-                "transient_for": "^$"
                }
             ],
             "type": "con"

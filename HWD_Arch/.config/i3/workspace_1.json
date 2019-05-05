@@ -4,18 +4,18 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1541,
-       "width": 2679,
-       "x": 6,
-       "y": 53
+       "height": 1435,
+       "width": 3818,
+       "x": 0,
+       "y": 0
     },
-    "name": "i3 - ArchWiki - Chromium",
-    "percent": 0.7,
+    "name": "Inbox (13) - ion@projectdrgn.com - projectdrgn.com Mail - Mozilla Firefox",
+    "percent": 0.6,
     "swallows": [
        {
-        "class": "^Chromium$",
-        "instance": "^chromium$",
-       //"title": "^i3\\ \\-\\ ArchWiki\\ \\-\\ Chromium$",
+        "class": "^Firefox$",
+        "instance": "^Navigator$",
+       // "title": "^Inbox\\ \\(13\\)\\ \\-\\ ion\\@projectdrgn\\.com\\ \\-\\ projectdrgn\\.com\\ Mail\\ \\-\\ Mozilla\\ Firefox$",
         "transient_for": "^$",
         "window_role": "^browser$"
        }
@@ -24,26 +24,57 @@
 }
 
 {
+    // splitv split container with 2 children
     "border": "normal",
-    "current_border_width": 2,
     "floating": "auto_off",
-    "geometry": {
-       "height": 1541,
-       "width": 3828,
-       "x": 6,
-       "y": 87
-    },
-    "name": "WhatsApp - Chromium",
-    "percent": 0.3,
-    "swallows": [
-       {
-        "class": "^Chromium$",
-        "instance": "^chromium$",
-        //"title": "^WhatsApp\\ \\-\\ Chromium$",
-        "transient_for": "^$",
-        "window_role": "^browser$"
-       }
-    ],
-    "type": "con"
+    "layout": "splitv",
+    "percent": 0.4,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1531,
+               "width": 1905,
+               "x": 1922,
+               "y": 58
+            },
+            "name": "~/Sources/docs/pers/links.md - Sublime Text",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^Subl3$",
+                "instance": "^subl3$",
+               // "title": "^\\~\\/Sources\\/docs\\/pers\\/links\\.md\\ \\-\\ Sublime\\ Text$",
+                "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1600,
+               "width": 2164,
+               "x": 0,
+               "y": 0
+            },
+            "name": "urxvt",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^URxvt$",
+                "instance": "^urxvt$",
+               // "title": "^urxvt$",
+                "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
 

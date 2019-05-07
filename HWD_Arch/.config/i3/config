@@ -230,7 +230,10 @@ for_window [class="^Slack$"] floating enable
 
 # exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
 
-set $Locker i3lock && sleep 1
+exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
+
+#set $Locker i3lock && sleep 1
+set $Locker i3lock -d -c 000000 && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {

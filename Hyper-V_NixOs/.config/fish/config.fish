@@ -44,3 +44,5 @@ set -gx PATH $PATH $GOPATH/bin
 
 export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
 export LESS='-R'
+
+screenfetch

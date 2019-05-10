@@ -8,34 +8,57 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./packages.nix
+      ./fonts.nix
+      ./users.nix
+      ./aliases.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
+  # Use the GRUB 2 boot loader.
+  #boot.loader.grub.enable = true;
+  #boot.loader.grub.version = 2;
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.efiInstallAsRemovable = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # Use the systemd-boot EFI boot loader. 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Define on which hard drive you want to install Grub.
+  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  #boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "nixos"; 
+  
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
   networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
   networking.enableIPv6 = false;
+  networking.nat.enable = true;
+  networking.nat.internalInterfaces = ["ve-+"];
+  networking.nat.externalInterface = "eth0";  
+
+  # Select internationalisation properties.
+  # i18n = {
+  #   consoleFont = "Lat2-Terminus16";
+  #   consoleKeyMap = "us";
+  #   defaultLocale = "en_US.UTF-8";
+  # };
 
   # Set your time zone.
+  # time.timeZone = "Europe/Amsterdam";
   time.timeZone = "Asia/Singapore";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    vim
-    commonsCompress
-    p7zip
-    unzip
-    jq
-    lsof
-    htop
-		python37Packages.pygments
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   wget vim
+  # ];
+
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -44,11 +67,11 @@
 
   # List services that you want to enable:
 
+  programs.fish.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
-
-  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -56,31 +79,35 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Define a user account. Don't forget to set a password with passwd.
-  users.users.mudrii = {
-    isNormalUser = true;
-    home = "/home/mudrii";
-    description = "mudrii";
-    extraGroups = [ "wheel" "docker" ];
-    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfaFqvY4lhx4KGvd2WEnd6m7zoDNvLRVYSBXEUWTjiGZ8DddD+tDC4I8MvPsEHUw3pYjBicOPsVK356dviu6JpEuhzxzW2/6YJvFN8EqPZIFcX9rNz3YNEkEam+SEWjwtjMe+hpB6FNwofZKvlqS73y3DYERpobYax548nOxGseCPBuXRlB7nmABe1wKs/YWVg4GbM+HYofgYWFkqYEgVM6HG4P7/kcywmaDqYoaO32fGtEm9VIBAmlDU35eA+U/E4kaxOWr2HmjOL2tMbhxYoMNuRFAvOHnWveSOA/MlQorcI5a8BLK5oZFP2BgtG1vuNPueb2c2UxGe+y6KT3Biz mudre@Nelu" ];
-  };
+  # Enable CUPS to print documents.
+  # services.printing.enable = true;
 
-  programs.bash.shellAliases = {
-    cat="pygmentize -f terminal256 -g -P style=monokai";
-    lo="ls -lha --color=auto --group-directories-first";
-    dmesg="dmesg --color=always | less";
-    sudo="sudo -i";
-    ls="ls --color=auto";
-    diff="diff --color=auto";
-    vdir="vdir --color=auto";
-    grep="grep --color=auto";
-    fgrep="fgrep --color=auto";
-    egrep="egrep --color=auto";
-    mv="mv -i";
-    rm="rm -i";
-    cp="cp -i";
-    exit="clear ; exit";
-  };
+  # Enable sound.
+  # sound.enable = true;
+  # hardware.pulseaudio.enable = true;
+
+  # Enable the X11 windowing system.
+  # services.xserver.enable = true;
+  # services.xserver.layout = "us";
+  # services.xserver.xkbOptions = "eurosign:e";
+
+  # Enable touchpad support.
+  # services.xserver.libinput.enable = true;
+
+  # Enable the KDE Desktop Environment.
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
+
+  # Define a user account. Don't forget to set a password with passwd.
+  # users.users.guest = {
+  #   isNormalUser = true;
+  #   uid = 1000;
+  # };
+
+  users.mutableUsers = false;
+
+#    hashedPassword = "$6$ewXNcoQRNG$czTic9vE8CGH.eo4mabZsHVRdmTjtJF4SdDnIK0O/4STgzB5T2nD3Co.dRpVS3/uDD24YUxWrTDy2KRv7m/3N1";
+#    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfaFqvY4lhx4KGvd2WEnd6m7zoDNvLRVYSBXEUWTjiGZ8DddD+tDC4I8MvPsEHUw3pYjBicOPsVK356dviu6JpEuhzxzW2/6YJvFN8EqPZIFcX9rNz3YNEkEam+SEWjwtjMe+hpB6FNwofZKvlqS73y3DYERpobYax548nOxGseCPBuXRlB7nmABe1wKs/YWVg4GbM+HYofgYWFkqYEgVM6HG4P7/kcywmaDqYoaO32fGtEm9VIBAmlDU35eA+U/E4kaxOWr2HmjOL2tMbhxYoMNuRFAvOHnWveSOA/MlQorcI5a8BLK5oZFP2BgtG1vuNPueb2c2UxGe+y6KT3Biz mudre@Nelu" ];
 
   #programs.bash.shellInit = "screenfetch";
   programs.bash.enableCompletion = true;
@@ -90,11 +117,17 @@
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "18.09"; # Did you read the comment?
+  system.stateVersion = "19.03"; # Did you read the comment?
 
+  nixpkgs.config.allowUnfree = true;
   system.autoUpgrade.enable = true;
 
   swapDevices = [ { device = "/swapfile"; } ];
 
-}
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
 
+}

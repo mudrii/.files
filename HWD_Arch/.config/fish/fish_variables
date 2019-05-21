@@ -3,7 +3,7 @@
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
-SETUVAR _fish_abbr__21_21_:sudo\x20su\x20\x2d
+SETUVAR _fish_abbr__21_21_:sudo\x20vim\x20\x7e/\x2evimrc
 SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:c397d8

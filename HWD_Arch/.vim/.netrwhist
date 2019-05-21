@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/mudrii'
+let g:netrw_dirhist_2='/home/mudrii/.cargo'
+let g:netrw_dirhist_3='/home/mudrii/.cargo/registry'
+let g:netrw_dirhist_4='/home/mudrii/.cargo'
+let g:netrw_dirhist_5='/home/mudrii/.cargo/registry'
+let g:netrw_dirhist_6='/home/mudrii/.cargo'
+let g:netrw_dirhist_7='/home/mudrii'
+let g:netrw_dirhist_8='/home/mudrii/.config'
+let g:netrw_dirhist_9='/home/mudrii/.config/i3'

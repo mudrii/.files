@@ -1,41 +1,48 @@
 // vim:ts=4:sw=4:et
 {
-    // floating_con with 1 children
     "border": "normal",
+    "current_border_width": 2,
     "floating": "auto_off",
-    "layout": "splith",
-    "percent": null,
-    "rect": {
-       "height": 1480,
-       "width": 1663,
-       "x": 7,
-       "y": 33
+    "geometry": {
+       "height": 1531,
+       "width": 2805,
+       "x": 11,
+       "y": 58
     },
-    "type": "floating_con",
-    "nodes": [
-        {
-            "border": "normal",
-            "current_border_width": 2,
-            "floating": "user_on",
-            "geometry": {
-               "height": 1454,
-               "width": 1659,
-               "x": 7,
-               "y": 57
-            },
-            "name": "Slack - Dragon",
-            "percent": 1,
-            "swallows": [
-               {
-                "class": "^Slack$",
-                "instance": "^slack$",
-               // "title": "^Slack\\ \\-\\ Dragon$",
-                "transient_for": "^$",
-                "window_role": "^browser\\-window$"
-               }
-            ],
-            "type": "con"
-        }
-    ]
+    "name": "Linux Academy - Chromium",
+    "percent": 0.716927083333333,
+    "swallows": [
+       {
+       "class": "^Chromium$",
+       "instance": "^chromium$",
+       // "title": "^Linux\\ Academy\\ \\-\\ Chromium$",
+       "transient_for": "^$",
+       "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1600,
+       "width": 2404,
+       "x": 0,
+       "y": 0
+    },
+    "name": "mudrii@arch vim /home/mudrii/Sources/my_docs/cert_exam/AWS",
+    "percent": 0.283072916666667,
+    "swallows": [
+       {
+       "class": "^URxvt$",
+       "instance": "^urxvt$",
+       // "title": "^mudrii\\@arch\\ vim\\ \\/home\\/mudrii\\/Sources\\/my_docs\\/cert_exam\\/AWS$",
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
 }
 

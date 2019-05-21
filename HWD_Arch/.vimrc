@@ -1,6 +1,10 @@
 " Use Vim settings, rather then Vi settings (much better!).
 
 let g:powerline_pycmd="py3"
+let g:Powerline_symbols = "fancy"
+"set rtp+=/usr/lib/python3.7/site-packages/powerline/segments/vim/
+set laststatus=2
+set t_Co=256
 
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -42,7 +46,7 @@ set wildmenu                    " Show list instead of just completing
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set paste
-"set list
+set list
 
 " For regular expressions turn magic on
 set magic
@@ -224,3 +228,4 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! Diffs call s:DiffWithSaved()
+

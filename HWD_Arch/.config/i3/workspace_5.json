@@ -4,18 +4,18 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1600,
-       "width": 2164,
+       "height": 1531,
+       "width": 1905,
        "x": 0,
        "y": 0
     },
-    "name": "ranger",
-    "percent": 0.7,
+    "name": "Virtual Machine Manager",
+    "percent": 0.5,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^ranger$",
+       "class": "^Virt\\-manager$",
+       "instance": "^virt\\-manager$",
+       // "title": "^Virtual\\ Machine\\ Manager$",
        "transient_for": "^$"
        }
     ],
@@ -27,18 +27,18 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1600,
-       "width": 2404,
+       "height": 1531,
+       "width": 3818,
        "x": 0,
        "y": 0
     },
-    "name": "mudrii@arch i3-save-tree /home/mudrii/.config/i3",
-    "percent": 0.3,
+    "name": "nixos on QEMU/KVM",
+    "percent": 0.5,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^mudrii\\@arch\\ i3\\-save\\-tree\\ \\/home\\/mudrii\\/\\.config\\/i3$",
+       "class": "^Virt\\-manager$",
+       "instance": "^virt\\-manager$",
+       // "title": "^nixos\\ on\\ QEMU\\/KVM$"i,
        "transient_for": "^$"
        }
     ],

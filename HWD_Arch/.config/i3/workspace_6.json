@@ -13,11 +13,11 @@
     "percent": 0.6,
     "swallows": [
        {
-       "class": "^Code$",
-       "instance": "^code$",
+        "class": "^Code$",
+        "instance": "^code$",
        // "title": "^arch_i3\\.md\\ \\-\\ docs\\ \\-\\ Visual\\ Studio\\ Code$",
-       "transient_for": "^$",
-       "window_role": "^browser\\-window$"
+        "transient_for": "^$",
+        "window_role": "^browser\\-window$"
        }
     ],
     "type": "con"
@@ -37,10 +37,10 @@
     "percent": 0.4,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
+        "class": "^URxvt$",
+        "instance": "^urxvt$",
        // "title": "^urxvt$",
-       "transient_for": "^$"
+        "transient_for": "^$"
        }
     ],
     "type": "con"

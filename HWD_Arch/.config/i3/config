@@ -259,6 +259,8 @@ bindsym $mod+Ctrl+1 exec ~/.config/i3/start_w1.sh
 bindsym $mod+Ctrl+2 exec ~/.config/i3/start_w2.sh
 bindsym $mod+Ctrl+3 exec ~/.config/i3/start_w3.sh
 bindsym $mod+Ctrl+4 exec ~/.config/i3/start_w4.sh
+bindsym $mod+Ctrl+5 exec ~/.config/i3/start_w5.sh
+bindsym $mod+Ctrl+6 exec ~/.config/i3/start_w6.sh
 
 bindsym $mod+Ctrl+f exec --no-startup-id firefox
 bindsym $mod+Ctrl+v exec --no-startup-id vlc

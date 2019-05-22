@@ -1,4 +1,5 @@
 { config, pkgs, ... }:
+
 {
   users.users.mudrii = {
     isNormalUser = true;
@@ -39,6 +40,7 @@
       jq
       busybox
       vimPlugins.vim-airline 
+      vimPlugins.vim-airline-themes
     ];
   };
 }

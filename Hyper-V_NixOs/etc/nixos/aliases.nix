@@ -1,4 +1,5 @@
 { config, pkgs, ... }:
+
 {
   programs.bash.shellAliases = {
     ccat="pygmentize -f terminal256 -g -P style=monokai";

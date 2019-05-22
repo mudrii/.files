@@ -12,6 +12,8 @@
       ./fonts.nix
       ./users.nix
       ./aliases.nix
+      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+      ./home.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -66,8 +68,10 @@
   # programs.gnupg.agent = { enable = true; enableSSHSupport = true; };
 
   # List services that you want to enable:
-
+  
   programs.fish.enable = true;
+
+  programs.vim.defaultEditor = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

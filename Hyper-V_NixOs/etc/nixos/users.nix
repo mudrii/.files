@@ -38,6 +38,7 @@
       highlight
       jq
       busybox
+      vimPlugins.vim-airline 
     ];
   };
 }

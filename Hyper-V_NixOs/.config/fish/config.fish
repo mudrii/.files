@@ -45,4 +45,125 @@ set -gx PATH $PATH $GOPATH/bin
 export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
 export LESS='-R'
 
-screenfetch
+set -x EDITOR vim
+
+function ps --description 'alias ps ps -ef'
+  ps -ef  $argv;
+end
+
+function a --description 'alias a aws'
+	aws  $argv;
+end
+
+function ccat --description 'alias ccat pygmentize -f terminal256 -g -P style=monokai'
+	pygmentize -f terminal256 -g -P style=monokai $argv;
+end
+
+function cp --description 'alias cp cp -i'
+	command cp -i $argv;
+end
+
+function diff --description 'alias diff diff --color=auto'
+	command diff --color=auto $argv;
+end
+
+function dmesg --description 'alias dmesg dmesg --color=always | less'
+	command dmesg --color=always | less $argv;
+end
+
+function egrep --description 'alias egrep egrep --color=auto'
+	command egrep --color=auto $argv;
+end
+
+function fgrep --description 'alias fgrep fgrep --color=auto'
+	command fgrep --color=auto $argv;
+end
+
+function grep --description 'alias grep grep --color=auto'
+	command grep --color=auto $argv;
+end
+
+function k --description 'alias k kubectl'
+	kubectl  $argv;
+end
+
+function la --description 'alias la ls -lha --color=auto --group-directories-first'
+	ls -lha --color=auto --group-directories-first $argv;
+end
+
+function ll --description 'alias ll ls -lah'
+	ls -lah $argv;
+end
+
+function ls --description 'alias ls ls --color=auto'
+	command ls --color=auto $argv;
+end
+
+function mv --description 'alias mv mv -i'
+	command mv -i $argv;
+end
+
+function p --description 'alias p python'
+	python  $argv;
+end
+
+function ping --description 'alias ping ping -c3'
+	command ping -c3 $argv;
+end
+
+function rm --description 'alias rm rm -i'
+	command rm -i $argv;
+end
+
+function sudo --description 'alias sudo sudo -i'
+	command sudo -i $argv;
+end
+
+function su
+   command su --shell=/usr/bin/fish $argv
+end
+
+function t --description 'alias t terraform'
+	terraform  $argv;
+end
+
+function vdir --description 'alias vdir vdir --color=auto'
+	command vdir --color=auto $argv;
+end
+
+function gst --description 'alias git status'
+  git status $argv;
+end
+
+function gcm --description 'alias git commit'
+  git commit $argv;
+end
+
+function gad --description 'alias git add'
+  git add . $argv;
+end
+
+function gadcm --description 'alias git add'
+  git add -A; and git commit $argv;
+end
+
+function gdf --description 'alias git diff'
+  git diff $argv;
+end
+
+function glg --description 'alias git log'
+  git log $argv;
+end
+
+function gpl --description 'alias git push'
+  git pull $argv;
+end
+
+function gps --description 'alias git push'
+  git push $argv;
+end
+
+function ccd
+  mkdir -p "$argv"
+  and cd "$argv"
+end

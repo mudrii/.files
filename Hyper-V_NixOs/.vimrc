@@ -1,6 +1,12 @@
 " Use Vim settings, rather then Vi settings (much better!).
 
 let g:powerline_pycmd="py3"
+set laststatus=2
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
+
+"set rtp+=/nix/store/fcksypphvpr7xc0li42n9qisw9z1hidp-python3.7-powerline-2.7/lib/python3.7/site-packages/powerline/bindings/vim/
+"set rtp+=/nix/store/z1liwldnrf0zxsg0lpfkl00hvdrsb1zj-python3.7-powerline-2.7/lib/python3.7/site-packages/powerline/bindings/vim/
 
 " This must be first, because it changes other options as a side effect.
 set nocompatible

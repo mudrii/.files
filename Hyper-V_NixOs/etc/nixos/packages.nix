@@ -1,14 +1,13 @@
 { config, pkgs, ... }:
+
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
   environment.systemPackages = with pkgs; [
     fish
     wget
     vim
+#    vimHugeX
     commonsCompress
     p7zip
     unzip

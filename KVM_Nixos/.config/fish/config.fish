@@ -42,9 +42,10 @@ set -g theme_project_dir_length 1
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH $GOPATH/bin
 
-set -x EDITOR vim
+#set -x EDITOR vim
 
 export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
 export LESS='-R'
 
-screenfetch
+#screenfetch
+

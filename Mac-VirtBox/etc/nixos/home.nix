@@ -594,6 +594,7 @@
           end
         '';
       };
+      
       ".config/fish/functions/mv.fish" = {
         text = ''
           function mv --description 'alias mv mv -i'
@@ -656,7 +657,7 @@
           end
         '';
       };
-      
+
       ".config/fish/functions/fish_greeting.fish" = {
         text = ''
           function fish_greeting.fish; end

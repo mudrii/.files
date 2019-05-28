@@ -218,57 +218,6 @@
 
     home.file = {
 
-      ".config/fish/config.fish" = {
-        text = ''
-          set -g theme_display_git yes
-          set -g theme_display_git_dirty yes
-          set -g theme_display_git_untracked yes
-          set -g theme_display_git_ahead_verbose yes
-          set -g theme_display_git_dirty_verbose yes
-          set -g theme_display_git_stashed_verbose yes
-          set -g theme_display_git_master_branch yes
-          set -g theme_git_worktree_support no
-          set -g theme_display_vagrant no
-          set -g theme_display_docker_machine yes
-          set -g theme_display_k8s_context yes
-          set -g theme_display_hg no
-          set -g theme_display_virtualenv yes
-          set -g theme_display_ruby no
-          set -g theme_display_user ssh
-          set -g theme_display_hostname ssh
-          set -g theme_display_vi no
-          set -g theme_display_date no
-          set -g theme_display_cmd_duration yes
-          set -g theme_title_display_process yes
-          set -g theme_title_display_path yes
-          set -g theme_title_display_user yes
-          set -g theme_title_use_abbreviated_path no
-          #set -g theme_date_format "+%a %H:%M"
-          set -g theme_avoid_ambiguous_glyphs yes
-          set -g theme_powerline_fonts yes
-          set -g theme_nerd_fonts no
-          set -g theme_show_exit_status yes
-          #set -g default_user your_normal_user
-          set -g theme_color_scheme dark
-          set -g fish_prompt_pwd_dir_length 0
-          set -g theme_project_dir_length 1
-          #set -g theme_newline_cursor yes
-          #set -g theme_newline_prompt '$ '
-
-          set -gx GOPATH $HOME/go
-          set -gx PATH $PATH $GOPATH/bin
-
-          #set -x EDITOR vim
-
-          export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-          export LESS='-R'
-
-          function __fish_command_not_found_handler --on-event fish_command_not_found
-            command-not-found $argv[1]
-          end
-        '';
-      };
-
       ".tmux.conf" = {
         text = ''
           source /nix/store/y2cvqipzyl32h1hlk6f4i2w24p2fk0c6-python3.7-powerline-2.7/lib/python3.7/site-packages/powerline/bindings/tmux/powerline.conf
@@ -375,6 +324,342 @@
           set nonewlines
           set tabsize 4
           set nowrap
+        '';
+      };
+
+      ".config/fish/config.fish" = {
+        text = ''
+          set -g theme_display_git yes
+          set -g theme_display_git_dirty yes
+          set -g theme_display_git_untracked yes
+          set -g theme_display_git_ahead_verbose yes
+          set -g theme_display_git_dirty_verbose yes
+          set -g theme_display_git_stashed_verbose yes
+          set -g theme_display_git_master_branch yes
+          set -g theme_git_worktree_support no
+          set -g theme_display_vagrant no
+          set -g theme_display_docker_machine yes
+          set -g theme_display_k8s_context yes
+          set -g theme_display_hg no
+          set -g theme_display_virtualenv yes
+          set -g theme_display_ruby no
+          set -g theme_display_user ssh
+          set -g theme_display_hostname ssh
+          set -g theme_display_vi no
+          set -g theme_display_date no
+          set -g theme_display_cmd_duration yes
+          set -g theme_title_display_process yes
+          set -g theme_title_display_path yes
+          set -g theme_title_display_user yes
+          set -g theme_title_use_abbreviated_path no
+          #set -g theme_date_format "+%a %H:%M"
+          set -g theme_avoid_ambiguous_glyphs yes
+          set -g theme_powerline_fonts yes
+          set -g theme_nerd_fonts no
+          set -g theme_show_exit_status yes
+          #set -g default_user your_normal_user
+          set -g theme_color_scheme dark
+          set -g fish_prompt_pwd_dir_length 0
+          set -g theme_project_dir_length 1
+          #set -g theme_newline_cursor yes
+          #set -g theme_newline_prompt '$ '
+
+          set -gx GOPATH $HOME/go
+          set -gx PATH $PATH $GOPATH/bin
+
+          #set -x EDITOR vim
+
+          export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
+          export LESS='-R'
+
+          function __fish_command_not_found_handler --on-event fish_command_not_found
+            command-not-found $argv[1]
+          end
+        '';
+      };
+
+      ".config/fish/functions/a.fish" = {
+        text = ''
+          function a --description 'alias a aws'
+            aws  $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/ccat.fish" = {
+        text = ''
+          function ccat --description 'alias ccat pygmentize -f terminal256 -g -P style=monokai'
+            pygmentize -f terminal256 -g -P style=monokai $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/ccd.fish" = {
+        text = ''
+          function ccd
+            mkdir -p "$argv"
+            and cd "$argv"
+          end
+        '';
+      };
+
+      ".config/fish/functions/cp.fish" = {
+        text = ''
+          function cp --description 'alias cp cp -i'
+            command cp -i $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/diff.fish" = {
+        text = ''
+          function diff --description 'alias diff diff --color=auto'
+            command diff --color=auto $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/dmesg.fish" = {
+        text = ''
+          function dmesg --description 'alias dmesg dmesg --color=always | less'
+            command dmesg --color=always | less $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/egrep.fish" = {
+        text = ''
+          function egrep --description 'alias egrep egrep --color=auto'
+            command egrep --color=auto $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/fgrep.fish" = {
+        text = ''
+          function fgrep --description 'alias fgrep fgrep --color=auto'
+            command fgrep --color=auto $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/fish_user_key_bindings.fish" = {
+        text = ''
+          # enables $?
+          function bind_status
+            commandline -i (echo '$status')
+          end
+
+          # enables $$
+          function bind_self
+            commandline -i (echo '%self')
+          end
+
+          # enable keybindings
+          function fish_user_key_bindings
+            bind '$?' bind_status
+            bind '$$' bind_self
+          end
+
+          function sudobangbang --on-event fish_postexec
+              abbr !! sudo $argv[1]
+          end
+
+          function bind_bang
+            switch (commandline -t)
+            case "!"
+              commandline -t $history[1]; commandline -f repaint
+            case "*"
+              commandline -i !
+            end
+          end
+
+          function bind_dollar
+            switch (commandline -t)
+            case "!"
+              commandline -t ""
+              commandline -f history-token-search-backward
+            case "*"
+              commandline -i '$'
+            end
+          end
+
+          function fish_user_key_bindings
+            bind ! bind_bang
+            bind '$' bind_dollar
+          end
+        '';
+      };
+
+      ".config/fish/functions/gad.fish" = {
+        text = ''
+          function gad --description 'alias git add'
+            git add . $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/gadcm.fish" = {
+        text = ''
+          function gadcm --description 'alias git add'
+            git add -A; and git commit $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/gcm.fish" = {
+        text = ''
+          function gcm --description 'alias git commit'
+            git commit $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/gdf.fish" = {
+        text = ''
+          function gdf --description 'alias git diff'
+            git diff $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/glg.fish" = {
+        text = ''
+          function glg --description 'alias git log'
+            git log $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/gpl.fish" = {
+        text = ''
+          function gpl --description 'alias git push'
+            git pull $argv;
+        end
+        '';
+      };
+
+      ".config/fish/functions/gps.fish" = {
+        text = ''
+          function gps --description 'alias git push'
+            git push $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/grep.fish" = {
+        text = ''
+          function grep --description 'alias grep grep --color=auto'
+           command grep --color=auto $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/gst.fish" = {
+        text = ''
+          function gst --description 'alias git status'
+            git status $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/k.fish" = {
+        text = ''
+          function k --description 'alias k kubectl'
+            kubectl  $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/la.fish" = {
+        text = ''
+          function la --description 'alias la ls -lha --color=auto --group-directories-first'
+            ls -lha --color=auto --group-directories-first $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/ll.fish" = {
+        text = ''
+          function ll --description 'alias ll ls -lah'
+            ls -lah $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/ls.fish" = {
+        text = ''
+          function ls --description 'alias ls ls --color=auto'
+            command ls --color=auto $argv;
+          end
+        '';
+      };
+      ".config/fish/functions/mv.fish" = {
+        text = ''
+          function mv --description 'alias mv mv -i'
+            command mv -i $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/rm.fish" = {
+        text = ''
+          function rm --description 'alias rm rm -i'
+            command rm -i $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/p.fish" = {
+        text = ''
+          function p --description 'alias p python'
+            python  $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/ps.fish" = {
+        text = ''
+          function ps --description 'alias ps -ef'
+            command ps -ef $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/su.fish" = {
+        text = ''
+          function su
+           command su --shell=/usr/bin/fish $argv
+          end        '';
+      };
+
+      ".config/fish/functions/sudo.fish" = {
+        text = ''
+          function sudo --description 'alias sudo sudo -i'
+            command sudo -i $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/t.fish" = {
+        text = ''
+          function t --description 'alias t terraform'
+            terraform  $argv;
+          end
+        '';
+      };
+
+      ".config/fish/functions/vdir.fish" = {
+        text = ''
+          function vdir --description 'alias vdir vdir --color=auto'
+            command vdir --color=auto $argv;
+          end
+        '';
+      };
+      
+      ".config/fish/functions/fish_greeting.fish" = {
+        text = ''
+          function fish_greeting.fish; end
         '';
       };
 

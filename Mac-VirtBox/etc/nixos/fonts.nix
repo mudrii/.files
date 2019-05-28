@@ -16,6 +16,9 @@
     dina-font
     proggyfonts
     powerline-fonts
+    emojione
+    twemoji-color-font
+    symbola
 #    nerdfonts
   ];
 }

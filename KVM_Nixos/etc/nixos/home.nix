@@ -6,270 +6,87 @@
       enable = true;
       plugins = [ "vim-airline" "vim-airline-themes" ];
       settings = { ignorecase = true; };
-      extraConfig = ''
-        let g:airline_powerline_fonts = 1
-        if !exists('g:airline_symbols')
-          let g:airline_symbols = {}
-        endif
-        let g:airline_symbols.space = "\ua0"
-        let g:airline#extensions#tabline#enabled = 1
-        let g:airline#extensions#tabline#show_buffers = 0
-        let g:airline_theme = 'dark'
-        
-        set nocompatible
-
-        " Enable filetype plugins
-        filetype plugin on
-        filetype indent on
-
-        " Turn Off Swap Files
-        set noswapfile
-        set nobackup
-        set nowb
-        set noshowmode
-
-        " Encoding
-        set encoding=utf-8
-        set fileencoding=utf-8
-        set fileencodings=utf-8
-        set bomb
-        set binary
-        set ttyfast
-        set fileformats=unix
-        set t_Co=256
-
-        " General Config
-        set title
-        set number
-        set backspace=indent,eol,start
-        set history=1000
-        set showcmd
-        set showmode
-        set gcr=a:blinkon0
-        set autoread
-        set hidden
-        set linespace=0
-        set showmatch
-        set winminheight=0
-        set wildmenu
-        set wildmode=list:longest,full
-        set whichwrap=b,s,h,l,<,>,[,]
-
-        " For regular expressions turn magic on
-        set magic
-
-        " Fast saving
-        nmap <leader>w :w!<cr>
-
-        " :W sudo saves the file
-        command W w !sudo tee % > /dev/null
-
-        " Scrolling
-        set scrolljump=5
-        set scrolloff=3
-        set sidescrolloff=15
-        set sidescroll=1
-
-        " Folds
-        set foldenable
-        set foldmethod=indent
-        set foldnestmax=3
-        set nofoldenable
-        set foldcolumn=1
-
-        " Always wrap long lines
-        set wrap
-        set linebreak
-
-        " Fix backspace indent
-        set backspace=indent,eol,start
-
-        " Tabs. May be overriten by autocmd rules
-        set smarttab
-        set shiftwidth=4
-        set tabstop=4
-        set softtabstop=0
-        set shiftwidth=4
-        set expandtab
-
-        " Display tabs and trailing spaces visually
-        "set list listchars=tab:\ \ ,trail:
-
-        " Status bar
-        set laststatus=2
-
-        " Visual Settings
-        set background=dark
-        syntax on
-        syntax enable
-        autocmd BufEnter * :syntax sync fromstart
-        autocmd BufEnter * :set number
-        set ruler
-        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-        set showcmd
-        set visualbell
-        set noerrorbells
-        set printoptions=paper:letter
-        set spelllang=en_us
-        set cursorline
-
-        " Highlite color number lign color
-        highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-        " DarkGray number line
-        highlight LineNr term=bold cterm=NONE ctermfg=DarkGray ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-        " Splilt windows botoom and right
-        set splitbelow
-        set splitright
-
-        " Mouse work
-        set mouse+=a
-        set mousehide
-        set showmode
-
-        " Indentation
-        set autoindent
-        set smartindent
-
-        " Persistent Undo
-        if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-          silent !mkdir ~/.vim/backups > /dev/null 2>&1
-          set undodir=~/.vim/backups
-          set undofile
-        endif
-
-        " Search
-        set incsearch
-        set hlsearch 
-        set ignorecase
-        set smartcase
-
-        " Key Bindings
-
-        " Split
-        noremap <Leader>h :<C-u>split<CR>
-        noremap <Leader>v :<C-u>vsplit<CR>
-
-        " Buffer nav
-        noremap <leader>z :bp<CR>
-        noremap <leader>q :bn<CR>
-        noremap <leader>a :ls<CR>
-
-        " Useful mappings for managing tabs
-        map <leader>tn :tabnew<cr>
-        map <leader>to :tabonly<cr>
-        map <leader>tc :tabclose<cr>
-        map <leader>tm :tabmove
-        map <leader>t<leader> :tabnext
-
-        " Close buffer
-        noremap <leader>c :bd<CR>
-
-        " Configure spell checking
-        nmap <silent> <leader>p :set spell!<CR>
-
-        " Fix indentation in file
-        map <leader>i mmgg=G`m<CR>
-
-        " Auto indent pasted text
-        nnoremap p p=`]<C-o>
-        nnoremap P P=`]<C-o>
-
-        " Toggle highlighting of search results
-        nnoremap <leader><space> :nohlsearch<cr>
-
-        " Toggle paste mode on and off
-        map <leader>pp :setlocal paste!<cr>
-
-        " Quick timeouts on key combinations.
-        set timeoutlen=300
-
-        " Completion
-        set wildmode=list:longest
-        set wildmenu
-        set wildignore=*.o,*.obj,*~
-        set wildignore+=*vim/backups*
-        set wildignore+=*sass-cache*
-        set wildignore+=*DS_Store*
-        set wildignore+=vendor/rails/**"i"
-        set wildignore+=vendor/cache/**
-        set wildignore+=*.gem
-        set wildignore+=log/**
-        set wildignore+=tmp/**
-        set wildignore+=*.png,*.jpg,*.gif
-
-        " Custom Settings
-        function! s:DiffWithSaved()
-          let filetype=&ft
-          diffthis
-          vnew | r # | normal! 1Gdd
-          diffthis
-          exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-        endfunction
-        com! Diffs call s:DiffWithSaved()
-      '';
+      extraConfig = builtins.readFile .files/.vimrc;
     };
-   
+
     programs.git = {
       enable = true;
       userName  = "mudrii";
       userEmail = "mudreac@gmail.com";
-    };
- 
+      };
+
     home.file = {
 
-      ".config/fish/config.fish" = {
-        text = ''  
-        set -g theme_display_git yes
-        set -g theme_display_git_dirty yes
-        set -g theme_display_git_untracked yes
-        set -g theme_display_git_ahead_verbose yes
-        set -g theme_display_git_dirty_verbose yes
-        set -g theme_display_git_stashed_verbose yes
-        set -g theme_display_git_master_branch yes
-        set -g theme_git_worktree_support no
-        set -g theme_display_vagrant no
-        set -g theme_display_docker_machine yes
-        set -g theme_display_k8s_context yes
-        set -g theme_display_hg no
-        set -g theme_display_virtualenv yes
-        set -g theme_display_ruby no
-        set -g theme_display_user ssh
-        set -g theme_display_hostname ssh
-        set -g theme_display_vi no
-        set -g theme_display_date no
-        set -g theme_display_cmd_duration yes
-        set -g theme_title_display_process yes
-        set -g theme_title_display_path yes
-        set -g theme_title_display_user yes
-        set -g theme_title_use_abbreviated_path no
-        #set -g theme_date_format "+%a %H:%M"
-        set -g theme_avoid_ambiguous_glyphs yes
-        set -g theme_powerline_fonts yes
-        set -g theme_nerd_fonts no
-        set -g theme_show_exit_status yes
-        #set -g default_user your_normal_user
-        set -g theme_color_scheme dark
-        set -g fish_prompt_pwd_dir_length 0
-        set -g theme_project_dir_length 1
-        #set -g theme_newline_cursor yes
-        #set -g theme_newline_prompt '$ '
+      ".tmux.conf".source = .files/.tmux.conf;
 
-        set -gx GOPATH $HOME/go
-        set -gx PATH $PATH $GOPATH/bin
+      ".nanorc".source = .files/.nanorc;
 
-        #set -x EDITOR vim
+      ".config/fish/config.fish".source  = .files/fish/config.fish;
+      
+      ".config/fish/functions/a.fish".source  = .files/fish/a.fish;
+     
+      ".config/fish/functions/ccat.fish".source  = .files/fish/ccat.fish;
 
-        export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-        export LESS='-R'
+      ".config/fish/functions/ccd.fish".source  = .files/fish/ccd.fish;
 
-        function __fish_command_not_found_handler --on-event fish_command_not_found
-           command-not-found $argv[1]
-        end
-        '';
-      };
+      ".config/fish/functions/cp.fish".source  = .files/fish/cp.fish;
+
+      ".config/fish/functions/diff.fish".source = .files/fish/diff.fish;
+
+      ".config/fish/functions/dmesg.fish".source = .files/fish/dmesg.fish;
+
+      ".config/fish/functions/egrep.fish".source = .files/fish/egrep.fish;
+
+      ".config/fish/functions/fgrep.fish".source = .files/fish/fgrep.fish;
+
+      ".config/fish/functions/fish_user_key_bindings.fish".source = .files/fish/fish_user_key_bindings.fish;
+
+      ".config/fish/functions/gad.fish".source = .files/fish/gad.fish;
+
+      ".config/fish/functions/gadcm.fish".source = .files/fish/gadcm.fish;
+
+      ".config/fish/functions/gcm.fish".source = .files/fish/gcm.fish;
+
+      ".config/fish/functions/gdf.fish".source = .files/fish/gdf.fish;
+
+      ".config/fish/functions/glg.fish".source = .files/fish/glg.fish;
+
+      ".config/fish/functions/gpl.fish".source = .files/fish/gpl.fish;
+
+      ".config/fish/functions/gps.fish".source = .files/fish/gps.fish;
+
+      ".config/fish/functions/grep.fish".source = .files/fish/grep.fish;
+
+      ".config/fish/functions/gst.fish".source = .files/fish/gst.fish;
+
+      ".config/fish/functions/k.fish".source = .files/fish/k.fish;
+
+      ".config/fish/functions/la.fish".source = .files/fish/la.fish;
+
+      ".config/fish/functions/ll.fish".source = .files/fish/ll.fish;
+
+      ".config/fish/functions/ls.fish".source = .files/fish/ls.fish;
+
+      ".config/fish/functions/mv.fish".source = .files/fish/mv.fish;
+
+      ".config/fish/functions/rm.fish".source = .files/fish/rm.fish;
+
+      ".config/fish/functions/p.fish".source = .files/fish/p.fish;
+
+      ".config/fish/functions/ps.fish".source = .files/fish/ps.fish;
+
+      ".config/fish/functions/su.fish".source = .files/fish/su.fish;
+
+      ".config/fish/functions/sudo.fish".source = .files/fish/sudo.fish;
+
+      ".config/fish/functions/t.fish".source = .files/fish/t.fish;
+
+      ".config/fish/functions/vdir.fish".source = .files/fish/vdir.fish;
+      
+      ".config/fish/functions/fish_greeting.fish".source = .files/fish/fish_greeting.fish;
 
     };
 
   };
 }
+

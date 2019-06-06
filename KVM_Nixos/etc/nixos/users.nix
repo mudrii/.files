@@ -24,7 +24,8 @@
       google-cloud-sdk-gce
       awscli
       aws-iam-authenticator
-      terraform
+#      terraform
+      terraform_0_12
       kubernetes
       kubectx
       gnumake

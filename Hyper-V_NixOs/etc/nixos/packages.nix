@@ -7,7 +7,6 @@
     fish
     wget
     vim
-#    vimHugeX
     commonsCompress
     p7zip
     unzip
@@ -33,5 +32,7 @@
     openssl
     file
     python37Packages.pygments
+    python37Packages.pygments-markdown-lexer
+    python37Packages.xstatic-pygments
   ];
 }

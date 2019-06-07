@@ -24,8 +24,10 @@
       google-cloud-sdk-gce
       awscli
       aws-iam-authenticator
-      terraform
+#      terraform
+      terraform_0_12
       kubernetes
+      kubectx
       gnumake
       dep
       python37Full
@@ -37,8 +39,10 @@
       git
       asciinema
       highlight
+      direnv
       jq
       busybox
+      ncurses
       vimPlugins.vim-airline 
       vimPlugins.vim-airline-themes
     ];

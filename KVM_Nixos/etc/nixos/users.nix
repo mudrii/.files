@@ -1,6 +1,21 @@
 { config, pkgs, ... }:
 
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+in
+
 {
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
   users.users.mudrii = {
     isNormalUser = true;
     home = "/home/mudrii";
@@ -21,12 +36,11 @@
       poppler_utils
       tmux
       keychain
-      google-cloud-sdk-gce
-      awscli
+      unstable.google-cloud-sdk-gce
+      unstable.awscli
       aws-iam-authenticator
-#      terraform
-      terraform_0_12
-      kubernetes
+      unstable.terraform_0_12
+      unstable.kubernetes
       kubectx
       gnumake
       dep

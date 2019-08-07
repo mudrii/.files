@@ -43,7 +43,7 @@
 
       ".config/fish/functions/gad.fish".source = .files/fish/gad.fish;
 
-      ".config/fish/functions/gadcm.fish".source = .files/fish/gadcm.fish;
+      ".config/fish/functions/gadcm.fish".source = .files/fish/gadcmt.fish;
 
       ".config/fish/functions/gcm.fish".source = .files/fish/gcmt.fish;
 

@@ -4,7 +4,7 @@
   home-manager.users.mudrii = {
     programs.vim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes ];
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim ];
       settings = { ignorecase = true; };
       extraConfig = builtins.readFile .files/.vimrc;
     };

@@ -9,11 +9,11 @@
       extraConfig = builtins.readFile .files/.vimrc;
     };
 
-		programs.neovim = {
-			enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes ];
-			extraConfig = builtins.readFile .files/init.vim;
-		};
+    programs.neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim ];
+      extraConfig = builtins.readFile .files/init.vim;
+    };
 
     programs.git = {
       enable = true;

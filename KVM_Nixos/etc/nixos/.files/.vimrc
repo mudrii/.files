@@ -1,3 +1,5 @@
+"autocmd vimenter * NERDTree
+
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -136,6 +138,7 @@ set ignorecase
 set smartcase
 
 " Key Bindings
+nmap <C-n> :NERDTreeToggle<CR>
 
 " Split
 noremap <Leader>h :<C-u>split<CR>

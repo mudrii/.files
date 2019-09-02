@@ -20,6 +20,7 @@ in
     fish
     wget
     vim
+    neovim
     commonsCompress
     p7zip
     unzip

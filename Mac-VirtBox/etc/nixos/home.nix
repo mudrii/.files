@@ -1,12 +1,19 @@
 { config, pkgs, ... }:
 
 {
+
   home-manager.users.mudrii = {
     programs.vim = {
       enable = true;
-      plugins = [ "vim-airline" "vim-airline-themes" ];
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim ];
       settings = { ignorecase = true; };
       extraConfig = builtins.readFile .files/.vimrc;
+    };
+
+    programs.neovim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim ];
+      extraConfig = builtins.readFile .files/init.vim;
     };
 
     programs.git = {

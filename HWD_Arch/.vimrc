@@ -11,6 +11,7 @@ call plug#end()
 "	let g:python3_host_prog = '/usr/bin/python3.7'
 "else
 "    " Standard vim specific commands
+     " let g:powerline_pycmd="py3"
 "endif
 
 let g:airline_powerline_fonts = 1
@@ -25,8 +26,6 @@ let g:airline_theme = 'dark'
 
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
-
-let g:powerline_pycmd="py3"
 
 set nocompatible
 

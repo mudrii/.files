@@ -1,10 +1,31 @@
 " Use Vim settings, rather then Vi settings (much better!).
+call plug#begin()
+Plug 'scrooloose/nerdTree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_theme = 'dark'
+
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+
 
 let g:powerline_pycmd="py3"
-let g:Powerline_symbols = "fancy"
-"set rtp+=/usr/lib/python3.7/site-packages/powerline/segments/vim/
+"let g:Powerline_symbols = "fancy"
+"set rtp+=/nix/store/z1liwldnrf0zxsg0lpfkl00hvdrsb1zj-python3.7-powerline-2.7/lib/python3.7/site-packages/powerline//bindings/vim/
 set laststatus=2
 set t_Co=256
+
 
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -46,7 +67,7 @@ set wildmenu                    " Show list instead of just completing
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set paste
-set list
+"set list
 
 " For regular expressions turn magic on
 set magic
@@ -161,6 +182,10 @@ set smartcase       " ...unless we type a capital
 
 " ================ Key Bindings ====================
 
+"" NERDTree
+
+nmap <C-n> :NERDTreeToggle<CR>
+
 "" Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
@@ -228,4 +253,3 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! Diffs call s:DiffWithSaved()
-

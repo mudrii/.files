@@ -50,7 +50,7 @@ in
       python37Packages.virtualenv
       python37Packages.powerline
 #      python37Packages.pygments
-      go
+      unstable.go
       git
       asciinema
       highlight
@@ -58,8 +58,8 @@ in
       direnv
       busybox
       ncurses
-      vimPlugins.vim-airline
-      vimPlugins.vim-airline-themes
+#      vimPlugins.vim-airline
+#      vimPlugins.vim-airline-themes
       fzf
       elvish
     ];

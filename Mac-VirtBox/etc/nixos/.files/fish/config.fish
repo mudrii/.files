@@ -45,8 +45,8 @@ set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
 set -xU LESS_TERMCAP_us (printf "\e[01;32m")
 
-#export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-#export LESS='-R'
+export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
+export LESS='-R'
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
 command-not-found $argv[1]

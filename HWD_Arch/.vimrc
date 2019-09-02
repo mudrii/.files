@@ -1,9 +1,17 @@
-call plug#begin()
+"call plug#begin()
+call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdTree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 call plug#end()
+
+"if has('nvim')
+"    " Neovim specific commands
+"	let g:python3_host_prog = '/usr/bin/python3.7'
+"else
+"    " Standard vim specific commands
+"endif
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -67,6 +75,9 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
+
+" Paste formating
+"set paste
 
 " Scrolling
 set scrolljump=5

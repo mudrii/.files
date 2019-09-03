@@ -33,11 +33,11 @@ set nocompatible
 filetype plugin on
 filetype indent on
 
- " Turn Off Swap Files
- set noswapfile
- set nobackup
- set nowb
- set noshowmode
+" Turn Off Swap Files
+set noswapfile
+set nobackup
+set nowb
+set noshowmode
 
 " Encoding
 set encoding=utf-8

@@ -1,11 +1,24 @@
+call plug#begin()
+Plug 'scrooloose/nerdTree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_theme = 'dark'
+
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+
+let NERDTreeShowHidden=1
 
 set nocompatible
 
@@ -14,10 +27,10 @@ filetype plugin on
 filetype indent on
 
  " Turn Off Swap Files
- set noswapfile
- set nobackup
- set nowb
- set noshowmode
+set noswapfile
+set nobackup
+set nowb
+set noshowmode
 
 " Encoding
 set encoding=utf-8
@@ -137,6 +150,8 @@ set smartcase
 
 " Key Bindings
 
+nmap <C-n> :NERDTreeToggle<CR>
+
 " Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
@@ -146,15 +161,16 @@ noremap <leader>z :bp<CR>
 noremap <leader>q :bn<CR>
 noremap <leader>a :ls<CR>
 
+" Close buffer
+noremap <leader>c :bd<CR>
+
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-" Close buffer
-noremap <leader>c :bd<CR>
+map <leader>tm :tabmove<cr>
+map <leader>t. :tabn<cr>
+map <leader>t, :tabp<cr>
 
 " Configure spell checking
 nmap <silent> <leader>p :set spell!<CR>

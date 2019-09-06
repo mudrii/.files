@@ -4,19 +4,27 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ];
+  imports =
+    [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
+    ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "sd_mod" "sr_mod" ];
-  boot.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f5986a51-d5f2-43a3-9d6d-958c97e6c47c";
+    { device = "/dev/disk/by-uuid/45401706-46b9-4d5e-b44c-d8062b3de21b";
+      fsType = "ext4";
+    };
+
+  boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/f2bed747-993c-4363-b170-733e92fd4e3e";
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/33eb61bf-b40a-47f7-9c6a-7159029f479d";
       fsType = "ext4";
     };
 
   swapDevices = [ ];
 
-  nix.maxJobs = lib.mkDefault 2;
-  virtualisation.virtualbox.guest.enable = true;
+  nix.maxJobs = lib.mkDefault 4;
 }

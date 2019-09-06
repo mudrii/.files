@@ -47,17 +47,20 @@ in
       python37Packages.pip
       python37Packages.virtualenv
       python37Packages.powerline
-#      python37Packages.pygments
+      python37Packages.pygments
+      python37Packages.pygments-markdown-lexer
+      python37Packages.xstatic-pygments
       unstable.go
       git
+      neovim
       asciinema
       highlight
       jq
       direnv
-      busybox
+#      busybox
       ncurses
-#      vimPlugins.vim-airline
-#      vimPlugins.vim-airline-themes
+      bat
+      fd
     ];
   };
 	nixpkgs.config.allowBroken = true;

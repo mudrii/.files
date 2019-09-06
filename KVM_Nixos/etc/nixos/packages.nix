@@ -26,7 +26,6 @@
     fish
     wget
     vim
-    neovim
     commonsCompress
     p7zip
     unzip
@@ -51,9 +50,5 @@
     mkpasswd
     openssl
     file
-    python37Packages.pygments
-    python37Packages.pygments-markdown-lexer
-    python37Packages.xstatic-pygments
   ];
-
 }

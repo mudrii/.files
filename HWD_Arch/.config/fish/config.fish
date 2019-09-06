@@ -41,5 +41,3 @@ set -g theme_project_dir_length 1
 
 set -x EDITOR vim
 
-export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-export LESS='-R'

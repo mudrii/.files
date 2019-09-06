@@ -36,7 +36,16 @@ set -g theme_project_dir_length 1
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH $GOPATH/bin
 
-#set -x EDITOR vim
+set -Ux LC_ALL en_US.UTF-8
+set -Ux LANG en_US.UTF-8
+
+set -x EDITOR vim
+
+#export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
+#export LESS='-R'
+
+set -xU LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s'
+set -xU LESS '-R'
 
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")
 set -xU LESS_TERMCAP_me (printf "\e[0m")
@@ -44,9 +53,6 @@ set -xU LESS_TERMCAP_se (printf "\e[0m")
 set -xU LESS_TERMCAP_so (printf "\e[01;44;33m")
 set -xU LESS_TERMCAP_ue (printf "\e[0m")
 set -xU LESS_TERMCAP_us (printf "\e[01;32m")
-
-export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-export LESS='-R'
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
 command-not-found $argv[1]

@@ -4,14 +4,14 @@
   home-manager.users.mudrii = {
     programs.vim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim ];
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim vim-fugitive ];
       settings = { ignorecase = true; };
       extraConfig = builtins.readFile .files/.vimrc;
     };
 
     programs.neovim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim ];
+      plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes nerdtree ctrlp-vim vim-fugitive ];
       extraConfig = builtins.readFile .files/init.vim;
     };
 

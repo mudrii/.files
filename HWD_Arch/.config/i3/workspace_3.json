@@ -1,48 +1,68 @@
 // vim:ts=4:sw=4:et
 {
+    // splith split container with 1 children
     "border": "normal",
-    "current_border_width": 2,
     "floating": "auto_off",
-    "geometry": {
-       "height": 1531,
-       "width": 2805,
-       "x": 11,
-       "y": 58
-    },
-    "name": "Linux Academy - Chromium",
-    "percent": 0.716927083333333,
-    "swallows": [
-       {
-       "class": "^Chromium$",
-       "instance": "^chromium$",
-       // "title": "^Linux\\ Academy\\ \\-\\ Chromium$",
-       "transient_for": "^$",
-       "window_role": "^browser$"
-       }
-    ],
-    "type": "con"
+    "layout": "splith",
+    "percent": 0.738347789161138,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1531,
+               "width": 2805,
+               "x": 11,
+               "y": 58
+            },
+            "name": "Linux Academy - Chromium",
+            "percent": null,
+            "swallows": [
+               {
+                 "class": "^Chromium$",
+               / "instance": "^chromium$",
+               // "title": "^Linux\\ Academy\\ \\-\\ Chromium$",
+                 "window_role": "^browser$",
+                 "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
 
 {
+    // splitv split container with 1 children
     "border": "normal",
-    "current_border_width": 2,
     "floating": "auto_off",
-    "geometry": {
-       "height": 1600,
-       "width": 2404,
-       "x": 0,
-       "y": 0
-    },
-    "name": "mudrii@arch vim /home/mudrii/Sources/my_docs/cert_exam/AWS",
-    "percent": 0.283072916666667,
-    "swallows": [
-       {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^mudrii\\@arch\\ vim\\ \\/home\\/mudrii\\/Sources\\/my_docs\\/cert_exam\\/AWS$",
-       "transient_for": "^$"
-       }
-    ],
-    "type": "con"
+    "layout": "splitv",
+    "percent": 0.261652210838862,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 753,
+               "width": 739,
+               "x": 3088,
+               "y": 55
+            },
+            "name": "## • - Sublime Text",
+            "percent": 1,
+            "swallows": [
+               {
+                 "class": "^Subl3$",
+                 "instance": "^subl3$",
+               // "title": "^\\#\\#\\ \\•\\ \\-\\ Sublime\\ Text$"
+               "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
 

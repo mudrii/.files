@@ -211,10 +211,11 @@ exec_always --no-startup-id conky
 
 # Assign application to start on a specific workspace xprop
 assign [class="^Firefox$"] 1
-#assign [class="^Chromium$"] 1
-assign [class="^Slack$"] 3
-#assign [class="^zoom$"] 3
-# assign [class="^Subl3$"] 3
+assign [class="^Chromium$"] 3
+assign [class="^Slack$"] 6
+assign [class="^zoom$"] 6
+assign [class="^eddie-ui$"] 6
+assign [class="^Subl3$"] 3
 assign [class="^Code$"] 2
 assign [class="^Vlc$"] 9
 assign [class="^Spotify$"] 10
@@ -224,8 +225,9 @@ for_window [class="Spotify"] move to workspace 10
 # for_window [title="Preferences$"] floating enable
 # for_window [class="(?i)mplayer"] floating enable
 # for_window [class="^Subl3$"] floating enable
-# for_window [class="^zoom$"] floating enable
 
+for_window [class="^eddie-ui$"] floating enable
+for_window [class="^zoom$"] floating enable
 for_window [class="^Slack$"] floating enable
 
 # exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'

@@ -12,6 +12,7 @@ let g:airline_theme = 'dark'
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 
+let NERDTreeShowHidden=1
 
 set nocompatible
 

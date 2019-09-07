@@ -4,55 +4,33 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1435,
-       "width": 3818,
+       "height": 1531,
+       "width": 3057,
        "x": 0,
        "y": 0
     },
-    "name": "Inbox (13) - ion@projectdrgn.com - projectdrgn.com Mail - Mozilla Firefox",
-    "percent": 0.6,
+    "name": "Pi-hole®: A black hole for Internet advertisements – A black hole for Internet advertisements - Mozilla Firefox",
+    "percent": 0.755555555555556,
     "swallows": [
        {
-        "class": "^Firefox$",
-        "instance": "^Navigator$",
-       // "title": "^Inbox\\ \\(13\\)\\ \\-\\ ion\\@projectdrgn\\.com\\ \\-\\ projectdrgn\\.com\\ Mail\\ \\-\\ Mozilla\\ Firefox$",
-        "transient_for": "^$",
-        "window_role": "^browser$"
+         "class": "^firefox$",
+         "instance": "^Navigator$",
+       // "title": "^Pi\\-hole\\®\\:\\ A\\ black\\ hole\\ for\\ Internet\\ advertisements\\ \\–\\ A\\ black\\ hole\\ for\\ Internet\\ advertisements\\ \\-\\ Mozilla\\ Firefox$",
+         "window_role": "^browser$",
+         "transient_for": "^$"
        }
     ],
     "type": "con"
 }
 
 {
-    // splitv split container with 2 children
+    // splitv split container with 1 children
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.4,
+    "percent": 0.244444444444444,
     "type": "con",
     "nodes": [
-        {
-            "border": "normal",
-            "current_border_width": 2,
-            "floating": "auto_off",
-            "geometry": {
-               "height": 1531,
-               "width": 1905,
-               "x": 1922,
-               "y": 58
-            },
-            "name": "~/Sources/docs/pers/links.md - Sublime Text",
-            "percent": 0.5,
-            "swallows": [
-               {
-                "class": "^Subl3$",
-                "instance": "^subl3$",
-               // "title": "^\\~\\/Sources\\/docs\\/pers\\/links\\.md\\ \\-\\ Sublime\\ Text$",
-                "transient_for": "^$"
-               }
-            ],
-            "type": "con"
-        },
         {
             "border": "normal",
             "current_border_width": 2,
@@ -63,14 +41,14 @@
                "x": 0,
                "y": 0
             },
-            "name": "urxvt",
-            "percent": 0.5,
+            "name": "mudrii@arch tmux /home/mudrii",
+            "percent": 1,
             "swallows": [
                {
-                "class": "^URxvt$",
-                "instance": "^urxvt$",
-               // "title": "^urxvt$",
-                "transient_for": "^$"
+                 "class": "^URxvt$",
+                 "instance": "^urxvt$",
+               // "title": "^mudrii\\@arch\\ tmux\\ \\/home\\/mudrii$"
+               "transient_for": "^$"
                }
             ],
             "type": "con"

@@ -41,9 +41,6 @@ set -g theme_project_dir_length 1
 
 set -x EDITOR vim
 
-#export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-#export LESS='-R'
-
 set -xU LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s'
 set -xU LESS '-R'
 
@@ -53,18 +50,3 @@ set -Ux LANG en_US.UTF-8
 
 set -gx PATH /Users/mudrii/go/bin ~/.local/bin/ /usr/local/opt/inetutils/libexec/gnubin $PATH
 
-# Color Man pages
-#set -gx LESS_TERMCAP_mb \e'[01;31m'       # begin blinking
-#set -gx LESS_TERMCAP_md \e'[01;38;5;74m'  # begin bold
-#set -gx LESS_TERMCAP_me \e'[0m'           # end mode
-#set -gx LESS_TERMCAP_se \e'[0m'           # end standout-mode
-#set -gx LESS_TERMCAP_so \e'[38;5;016m\E[48;5;220m'    # begin standout-mode - info box
-#set -gx LESS_TERMCAP_ue \e'[0m'           # end underline
-#set -gx LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
-
-set -gx LESS_TERMCAP_md \e'[01;31m'
-set -gx LESS_TERMCAP_me \e'[0m'
-set -gx LESS_TERMCAP_se \e'[0m'
-set -gx LESS_TERMCAP_so \e'[01;44;33m'
-set -gx LESS_TERMCAP_ue \e'[0m'
-set -gx LESS_TERMCAP_us \e'[01;32m'

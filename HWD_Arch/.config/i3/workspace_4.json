@@ -5,7 +5,7 @@
     "floating": "auto_off",
     "geometry": {
        "height": 1600,
-       "width": 2164,
+       "width": 2404,
        "x": 0,
        "y": 0
     },
@@ -13,10 +13,10 @@
     "percent": 0.7,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^ranger$",
-       "transient_for": "^$"
+         "class": "^URxvt$",
+         "instance": "^urxvt$",
+       // "title": "^ranger$"
+         "transient_for": "^$"
        }
     ],
     "type": "con"
@@ -36,9 +36,9 @@
     "percent": 0.3,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^mudrii\\@arch\\ i3\\-save\\-tree\\ \\/home\\/mudrii\\/\\.config\\/i3$",
+         "class": "^URxvt$",
+         "instance": "^urxvt$",
+       // "title": "^mudrii\\@arch\\ i3\\-save\\-tree\\ \\/home\\/mudrii\\/\\.config\\/i3$"
        "transient_for": "^$"
        }
     ],

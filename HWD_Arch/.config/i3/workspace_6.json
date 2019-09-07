@@ -1,48 +1,156 @@
 // vim:ts=4:sw=4:et
 {
+    // floating_con with 1 children
     "border": "normal",
-    "current_border_width": 2,
     "floating": "auto_off",
-    "geometry": {
-       "height": 1541,
-       "width": 3828,
-       "x": 6,
-       "y": 53
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 786,
+       "width": 404,
+       "x": 1720,
+       "y": 396
     },
-    "name": "arch_i3.md - docs - Visual Studio Code",
-    "percent": 0.6,
-    "swallows": [
-       {
-        "class": "^Code$",
-        "instance": "^code$",
-       // "title": "^arch_i3\\.md\\ \\-\\ docs\\ \\-\\ Visual\\ Studio\\ Code$",
-        "transient_for": "^$",
-        "window_role": "^browser\\-window$"
-       }
-    ],
-    "type": "con"
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 760,
+               "width": 400,
+               "x": 1720,
+               "y": 420
+            },
+            "name": "Kite",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^Kite$",
+                "instance": "^kite$",
+                "transient_for": "^$"
+               // "title": "^Kite$",
+                "window_role": "^browser\\-window$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
 
 {
+    // floating_con with 1 children
     "border": "normal",
-    "current_border_width": 2,
     "floating": "auto_off",
-    "geometry": {
-       "height": 1600,
-       "width": 2164,
-       "x": 0,
-       "y": 0
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 1565,
+       "width": 1146,
+       "x": 1259,
+       "y": 40
     },
-    "name": "urxvt",
-    "percent": 0.4,
-    "swallows": [
-       {
-        "class": "^URxvt$",
-        "instance": "^urxvt$",
-       // "title": "^urxvt$",
-        "transient_for": "^$"
-       }
-    ],
-    "type": "con"
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 1539,
+               "width": 1142,
+               "x": 1353,
+               "y": 30
+            },
+            "name": "Slack - LinuxAcademyCommunity",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^Slack$",
+                "instance": "^slack$",
+                "transient_for": "^$"
+              // "title": "^Slack\\ \\-\\ LinuxAcademyCommunity$",
+                "window_role": "^browser\\-window$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 706,
+       "width": 380,
+       "x": 2750,
+       "y": 38
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 680,
+               "width": 376,
+               "x": 2750,
+               "y": 62
+            },
+            "name": "Zoom - Free Account",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^zoom$",
+                "instance": "^zoom$",
+                "transient_for": "^$"
+               // "title": "^Zoom\\ \\-\\ Free\\ Account$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 514,
+       "width": 1141,
+       "x": 2544,
+       "y": 800
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 488,
+               "width": 1137,
+               "x": 2659,
+               "y": 87
+            },
+            "name": "Eddie - ↓ 1 kbit/s ↑ 8 kbit/s - Circinus (Singapore) - IP:185.200.116.203, 2a0a:b640:1:2:438b:4ba6:2c02:c622",
+            "percent": 1,
+            "swallows": [
+               {
+               // "title": "^Eddie\\ \\-\\ \\↓\\ 1\\ kbit\\/s\\ \\↑\\ 8\\ kbit\\/s\\ \\-\\ Circinus\\ \\(Singapore\\)\\ \\-\\ IP\\:185\\.200\\.116\\.203\\,\\ 2a0a\\:b640\\:1\\:2\\:438b\\:4ba6\\:2c02\\:c622$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
 

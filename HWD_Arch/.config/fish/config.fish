@@ -39,5 +39,11 @@ set -g theme_project_dir_length 1
 #set -g theme_newline_cursor yes
 #set -g theme_newline_prompt '$ '
 
-set -x EDITOR vim
+set -x EDITOR nvim
 
+set -gx GOPATH $HOME/go
+set -gx PATH $PATH $GOPATH/bin
+
+function __fish_command_not_found_handler --on-event fish_command_not_found
+  command-not-found $argv[1]
+end

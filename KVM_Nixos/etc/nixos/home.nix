@@ -69,13 +69,13 @@
 
       ".config/fish/functions/la.fish".source = .files/fish/la.fish;
 
-			".config/fish/functions/less.fish".source = .files/fish/less.fish;
+      ".config/fish/functions/less.fish".source = .files/fish/less.fish;
 
       ".config/fish/functions/ll.fish".source = .files/fish/ll.fish;
 
       ".config/fish/functions/ls.fish".source = .files/fish/ls.fish;
 
-			".config/fish/functions/man.fish".source = .files/fish/man.fish;
+      ".config/fish/functions/man.fish".source = .files/fish/man.fish;
 
       ".config/fish/functions/mv.fish".source = .files/fish/mv.fish;
 
@@ -99,4 +99,3 @@
 
   };
 }
-

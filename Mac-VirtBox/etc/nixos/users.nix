@@ -24,10 +24,11 @@ in
     extraGroups = [ "wheel" "docker" ];
     # mkpasswd -m sha-512 password
     hashedPassword = "$6$ewXNcoQRNG$czTic9vE8CGH.eo4mabZsHVRdmTjtJF4SdDnIK0O/4STgzB5T2nD3Co.dRpVS3/uDD24YUxWrTDy2KRv7m/3N1";
-    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCzc7Xx3FVqz2cV1qzkPFV9DmfXCvS98HWs6nzcZ+1zMQDpZUuSGY2hV8UyXgiitogLl3BTaKztvBmrzh3FeeRHYDX39eR+tvcL7mY+qIqUwyCrDcrXC+KHuMVcYWJPJBx+enlId/ZbBgzz4SpBTOVANGDv1AhkNhl1CDfSrIOSdoRdhQpcYqtjwmiy/giGhfwNwtTGFVJNXG5CZEtyKRyjN43dX12/g6eEThLpjAS7QxF8pCzLh754rjD4V4Qmg/t+BawOglSyNaqEBtdyd0xiI353hzdNG4U+6V3yPYKSdkZzHaGACwCNMKSfrF7IrIQtUc5d9b0H+XEjpKzPWaZWXg9Io/vKhSTK4brXeAnsck4kbWYj1RiU6noAZNZRleM8fMO6UdwzLZzrxGMOBFSSZHHUlgLEjadkc2kmGwvXx5bmEUXMCAb7jUIzv+TEoOcJfCj8xUGxCQtlk9kIguV0l8BWY0B6iwyNn8XM7taLdfIEMACkuD9v0y7SCBWRm6DL3PoVijnGX+g3ox1bGvx/9+4h1HbPH3POj5/C2Vh6kWtXFKTVHSrU4m8HsV94slD4ILTyfJxGWgL2TzjSJz3eKUlVNe9r1Pv14CDb2XaN4lGGxWV2aYDYwCwNaZyJTOXi/9tiflfmcHIiYRoABrss6nssfL2f6fNa0hm0ZAUClw== mudrii@arch" ];
+    openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDONecfTdWyH2/32IncZfG+UyF1OGkDtnQufwxm/iKMnz53qnou5Tx4A5pWpwXKrbjn7o3TPIvqMYWmNe16vJFU6puQeMdN9K6hXY8R3Bs/7HeghNaga1Lta/caKMgVVhLdJY8nM4LtzTaWWXxEZlzYOVjqWDcGJVtqyXitSRQqw0rSYBnyzNsikBHxH5GuJryD8D5rLquAOpTgOgU0J9GptxrTP2M9RUO+QrQdai5K8iUV1G9m3XCcxvAuwFrvEtefop5KutEhW19sCT1sIWlUTljLWxZ09UDuQVEhWJmYYfN+2MSw1rNYS1Iy2C8tEX6jpxMloEzCa9c/yuxZ2hVHk1jPqb1UP/MaHr86FDhzuei1+66auVS+1O+ONh1sj6rK4wB1KxEnZy/uO33fy5KeSM3oqpy35OUBkkpHgELBf1MeBMazl5VPMhCWsIebRa+tOSuGMlujfjHlJWk6d3Al74Ii/61sEo//UM7be/kUX/+2soa8JseNNZ6UgMJOWimpmjFVBiV4lwBTsM8/Y/lw5iMRvp69vw2fjbmb2QZfBmYDCkA9hp075IvnpBTahenp59F+JpdWiXudcF9A25Jw7kGnCM9cwoe8/AB33aEno1u+9t9Yix4CMso6Dzm50J/7iZRV0ApbeheS63oHL/wCCEAkIWC0d55dloWLRMR8cw== mudrii@Ions-MacBook-Pro.local" ];
     packages = with pkgs; [
       screenfetch
       ranger
+      neovim
       elinks
       mediainfo
       w3m
@@ -38,6 +39,8 @@ in
       keychain
       unstable.google-cloud-sdk-gce
       unstable.awscli
+      aws-iam-authenticator
+      #terraform
       unstable.terraform_0_12
       unstable.kubernetes
       kubectx
@@ -47,7 +50,9 @@ in
       python37Packages.pip
       python37Packages.virtualenv
       python37Packages.powerline
-#      python37Packages.pygments
+      python37Packages.pygments
+      python37Packages.pygments-markdown-lexer
+      python37Packages.xstatic-pygments
       unstable.go
       git
       asciinema
@@ -56,8 +61,11 @@ in
       direnv
 #      busybox
       ncurses
+      fzf
+      elvish
       bat
+      fd
     ];
   };
-	nixpkgs.config.allowBroken = true;
+    nixpkgs.config.allowBroken = true;
 }

@@ -1,32 +1,25 @@
 { config, pkgs, ... }:
 
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+in
 
-  let
-    unstableTarball =
-      fetchTarball
-        https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
-  in
 {
-  
-    nixpkgs.config = {
-      packageOverrides = pkgs: {
-        unstable = import unstableTarball {
-          config = config.nixpkgs.config;
-        };
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
       };
     };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   wget vim
-  # ];
+  };
 
   environment.systemPackages = with pkgs; [
     fish
     wget
     vim
-    neovim
     commonsCompress
     p7zip
     unzip
@@ -51,9 +44,5 @@
     mkpasswd
     openssl
     file
-    python37Packages.pygments
-    python37Packages.pygments-markdown-lexer
-    python37Packages.xstatic-pygments
   ];
-
 }

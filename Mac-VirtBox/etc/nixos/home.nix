@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   home-manager.users.mudrii = {
     programs.vim = {
       enable = true;
@@ -49,9 +50,9 @@
 
       ".config/fish/functions/gad.fish".source = .files/fish/gad.fish;
 
-      ".config/fish/functions/gadcm.fish".source = .files/fish/gadcm.fish;
+      ".config/fish/functions/gadcm.fish".source = .files/fish/gadcmt.fish;
 
-      ".config/fish/functions/gcm.fish".source = .files/fish/gcm.fish;
+      ".config/fish/functions/gcm.fish".source = .files/fish/gcmt.fish;
 
       ".config/fish/functions/gdf.fish".source = .files/fish/gdf.fish;
 
@@ -59,7 +60,7 @@
 
       ".config/fish/functions/gpl.fish".source = .files/fish/gpl.fish;
 
-      ".config/fish/functions/gps.fish".source = .files/fish/gps.fish;
+      ".config/fish/functions/gps.fish".source = .files/fish/gpsh.fish;
 
       ".config/fish/functions/grep.fish".source = .files/fish/grep.fish;
 
@@ -70,7 +71,7 @@
       ".config/fish/functions/la.fish".source = .files/fish/la.fish;
 
       ".config/fish/functions/less.fish".source = .files/fish/less.fish;
-
+      
       ".config/fish/functions/ll.fish".source = .files/fish/ll.fish;
 
       ".config/fish/functions/ls.fish".source = .files/fish/ls.fish;

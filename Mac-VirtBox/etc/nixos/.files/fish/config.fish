@@ -36,8 +36,11 @@ set -g theme_project_dir_length 1
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH $GOPATH/bin
 
-set -x EDITOR nvim
+set -Ux LC_ALL en_US.UTF-8
+set -Ux LANG en_US.UTF-8
+
+set -x EDITOR vim
 
 function __fish_command_not_found_handler --on-event fish_command_not_found
-  command-not-found $argv[1]
+command-not-found $argv[1]
 end

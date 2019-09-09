@@ -41,9 +41,6 @@ set -g theme_project_dir_length 1
 
 set -x EDITOR vim
 
-set -xU LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s'
-set -xU LESS '-R'
-
 set -Ux GOPATH /Users/mudrii/go
 set -Ux LC_ALL en_US.UTF-8
 set -Ux LANG en_US.UTF-8

@@ -32,6 +32,7 @@
   #/dev/disk/by-partuuid/
   #Should grub be used as bootloader, and /boot is located on an encrypted partition, it is necessary to add the following grub option:
   boot.loader.grub.enableCryptodisk = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -118,7 +119,7 @@
   # servers. You should change this only after NixOS release notes say you
   # should.
   #system.stateVersion = "18.09"; # Did you read the comment?
-  system.stateVersion = "19.03"; # Did you read the comment?
+	system.stateVersion = "19.03"; # Did you read the comment?
 
   nixpkgs.config.allowUnfree = true;
   system.autoUpgrade.enable = true;

@@ -128,3 +128,12 @@ nixos kernel: handlers:
 nixos kernel: [<0000000070ec9b05>] tis_int_handler [tpm_tis_core]
 nixos kernel: Disabling IRQ #48
 nixos dhcpcd[1020]: ipv6_addaddr1: Permission denied
+
+# Wirless i3
+
+exec --no-startup-id wicd-client --tray
+#or
+exec --no-startup-id nm-applet
+
+
+

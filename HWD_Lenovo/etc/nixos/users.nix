@@ -61,7 +61,12 @@ in
       ncurses
       bat
       fd
+      sshfs
+      psensor
+
     ];
   };
-	nixpkgs.config.allowBroken = true;
+
+  nixpkgs.config.allowBroken = true;
+
 }

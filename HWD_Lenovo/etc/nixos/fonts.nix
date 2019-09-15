@@ -19,6 +19,6 @@
     emojione
     twemoji-color-font
     symbola
-#    nerdfonts
+    nerdfonts
   ];
 }

@@ -11,6 +11,7 @@
       ./packages.nix
       ./fonts.nix
       ./aliases.nix
+      ./xserver.nix
       ./users.nix
       "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       ./home.nix
@@ -27,14 +28,16 @@
 
   boot.loader.grub.enableCryptodisk = true;
   
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+#  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_5_1;
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  hardware.sensor.iio.enable = true;    
+#  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
 
-  hardware.enableRedistributableFirmware = true;
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  
+  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -90,17 +93,22 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # services.xserver.videoDrivers = [ "nvidia" ]; 
+  
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
+  # services.xserver.enable = true;
+  # services.xserver.layout = "us";
+  # services.xserver.xkbOptions = "eurosign:e";
+
+  # services.xserver.autorun = false;
 
   # Enable touchpad support.
-  services.xserver.libinput.enable = true;
+  # services.xserver.libinput.enable = true;
 
   # Enable the KDE Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.windowManager.i3.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
@@ -110,6 +118,7 @@
   users.mutableUsers = false;
 
 #  programs.bash.shellInit = "screenfetch";
+  programs.fish.shellInit = "screenfetch";
   programs.bash.enableCompletion = true;
   security.sudo.wheelNeedsPassword = false;
 
@@ -121,6 +130,7 @@
 
   nixpkgs.config.allowUnfree = true;
   system.autoUpgrade.enable = true;
+  nix.gc.automatic = true;
 
   swapDevices = [ { device = "/swapfile"; } ];
 

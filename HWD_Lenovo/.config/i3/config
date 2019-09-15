@@ -251,7 +251,8 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Pause mode "$mode_system"
+#bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Print mode "$mode_system"
 
 # custom keybinds
 #i3-save-tree --workspace 3 > ~/.config/i3/workspace_3.json
@@ -276,4 +277,3 @@ bindsym --release Shift+Print exec "/home/mudrii/.local/bin/screensh -s /home/mu
 
 # take a screenshot of a whole window and copy it to a clipboard
 bindsym --release Print exec "/home/mudrii/.local/bin/screensh /home/mudrii/Images/"
-

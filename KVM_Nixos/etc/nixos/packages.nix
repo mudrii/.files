@@ -50,5 +50,10 @@
     mkpasswd
     openssl
     file
+    inxi
+    hwinfo
+    lshw
+    dmidecode
+
   ];
 }

@@ -33,6 +33,9 @@ set -g theme_project_dir_length 1
 #set -g theme_newline_cursor yes
 #set -g theme_newline_prompt '$ '
 
+set --universal fish_greeting
+#set fish_greeting
+
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH $GOPATH/bin
 

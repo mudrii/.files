@@ -18,36 +18,44 @@
 #      ./containers.nix      
     ];
 
-#  boot.kernelModules = [ "bcm2835-v4l2" ];
-#  boot.extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
-#  boot.kernelParams = [ /* list of command line arguments */ ];
+  hardware = {
+#    enableRedistributableFirmware = true;
+    enableAllFirmware = true;
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+    };
+  };
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      grub.enableCryptodisk = true;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+#    kernelModules = [ "bcm2835-v4l2" ];
+#    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
+#    kernelParams = [ /* list of command line arguments */ ];
+#    kernelPackages = pkgs.linuxPackages_5_1;
+  };
 
-  boot.loader.grub.enableCryptodisk = true;
-  
-#  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_5_1;
-
-  networking.hostName = "nixos"; # Define your hostname.
-
-#  hardware.enableRedistributableFirmware = true;
-  hardware.enableAllFirmware = true;
-
-  networking.wireless.enable = true;  
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
   # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
-  networking.enableIPv6 = false;
-  networking.nat.enable = true;
-  networking.nat.internalInterfaces = ["ve-+"];
-  networking.nat.externalInterface = "enp0s31f6";
+#    wireless.enable = true;  
+  #  Configure network proxy if necessary
+#    proxy.default = "http://user:password@proxy:port/";
+#    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    nameservers = [ "8.8.8.8" "8.8.4.4" ];
+    enableIPv6 = false;
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = "enp0s31f6";
+    };
+  };
 
   # Select internationalisation properties.
   # i18n = {
@@ -72,13 +80,18 @@
 
   # List services that you want to enable:
   virtualisation.docker.enable = true;
-  programs.fish.enable = true;
 
-  programs.vim.defaultEditor = true;
+  programs = {
+    fish.enable = true;
+    vim.defaultEditor = true;
+    bash.enableCompletion = true;
+  };
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.permitRootLogin = "no";  
+  services = {
+    openssh.enable = true;
+    openssh.permitRootLogin = "no";
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -91,7 +104,8 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+##  hardware.pulseaudio.enable = true;
+##  hardware.pulseaudio.support32Bit = true;
 
   # services.xserver.videoDrivers = [ "nvidia" ]; 
   
@@ -118,15 +132,14 @@
   users.mutableUsers = false;
 
 #  programs.bash.shellInit = "screenfetch";
-  programs.fish.shellInit = "screenfetch";
-  programs.bash.enableCompletion = true;
+#  programs.fish.shellInit = "screenfetch";
   security.sudo.wheelNeedsPassword = false;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.03"; # Did you read the comment?
+  system.stateVersion = "19.09"; # Did you read the comment?
 
   nixpkgs.config.allowUnfree = true;
   system.autoUpgrade.enable = true;

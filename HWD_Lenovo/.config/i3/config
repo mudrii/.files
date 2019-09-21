@@ -48,8 +48,10 @@ bindsym $mod+Shift+d exec dmenu_run
 bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Droid Sans 14'
 
 # start rofi (window mode)
-#bindsym $mod+Tab exec rofi -show window -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
 bindsym $mod+Tab exec rofi -show window -show-icons -i -lines 10 -eh 1 -width 50 -padding 50 -opacity "85" -font "Droid Sans 16"
+
+# rofi networkmanager_dmenu
+bindsym $mod+n exec networkmanager_dmenu
 
 # change focus
 bindsym $mod+j focus left
@@ -163,7 +165,7 @@ mode "resize" {
         #bindsym Down resize grow height 10 px or 10 ppt
         #bindsym Up resize shrink height 10 px or 10 ppt
         #bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Left resize grow width 10 px
+        bindsym Left resize grow width 10 px 
         bindsym Right resize shrink width 10 px
         bindsym Down resize shrink height 10 px
         bindsym Up resize grow height 10 px
@@ -181,22 +183,24 @@ bindsym $mod+r mode "resize"
 #bar {
 #        position top
 #        status_command i3status
+#        status_command i3status-rs ~/.config/i3status-rs/config.toml
+#        status_command i3blocks
 #}
 
- bar {
-      font pango:DejaVu Sans Mono, FontAwesome 12
-      position top
-      status_command i3status-rs ~/.config/i3status-rs/config.toml
-      colors {
-          separator #666666
-          background #222222
-          statusline #dddddd
-          focused_workspace #0088CC #0088CC #ffffff
-          active_workspace #333333 #333333 #ffffff
-          inactive_workspace #333333 #333333 #888888
-          urgent_workspace #2f343a #900000 #ffffff
-      }
-  }
+bar {
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    position top
+    status_command i3status-rs ~/.config/i3status-rs/config.toml
+    colors {
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+    }
+}
 
 # i3 gaps
 gaps inner 5
@@ -216,15 +220,21 @@ for_window [window_role="task_dialog"] floating enable
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute
 bindsym XF86AudioLowerVolume  exec amixer -q sset Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q sset Master toggle
+#bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioMicMute exec amixer -q sset Capture toggle
 
 bindsym $mod+= exec amixer -q sset Master 5%+ unmute
 bindsym $mod+- exec amixer -q sset Master 5%- unmute
+
+# key bind monitor brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 bindsym $mod+x [urgent=latest] focus
 
 # num lock activated
 exec_always --no-startup-id numlockx on
-exec_always --no-startup-id conky
+#exec_always --no-startup-id conky
 
 # Assign application to start on a specific workspace xprop
 assign [class="^Firefox$"] 1
@@ -268,7 +278,6 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-#bindsym $mod+Pause mode "$mode_system"
 bindsym $mod+Print mode "$mode_system"
 
 # custom keybinds
@@ -290,11 +299,12 @@ bindsym $mod+Ctrl+r exec --no-startup-id urxvt -e ranger
 bindsym $mod+Ctrl+Delete exec $Locker, mode "default"
 
 # take a screenshot of a screen region and copy it to a clipboard
-bindsym --release Shift+Print exec "/home/mudrii/.local/bin/screensh -s /home/mudrii/Images/"
+#bindsym --release Shift+Print exec "maim -s /home/mudrii/Images/$(date +%s).png"
+bindsym --release Shift+Print exec "escrotum -s '/home/mudrii/Images/%Y-%m-%d-%H-%M-%S.png'"
 
 # take a screenshot of a whole window
-bindsym --release Print exec "/home/mudrii/.local/bin/screensh /home/mudrii/Images/"
+#bindsym --release Print exec "maim /home/mudrii/Images/$(date +%s).png"
+bindsym --release Print exec "escrotum '/home/mudrii/Images/%Y-%m-%d-%H-%M-%S.png'"
 
 # take a screenshot of a whole window and copy it to a clipboard
 bindsym --release Ctrl+Print exec "escrotum -C "
-

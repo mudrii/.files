@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   fonts.fonts = with pkgs; [
     corefonts
     dejavu_fonts
@@ -20,5 +21,7 @@
     twemoji-color-font
     symbola
     nerdfonts
+    font-awesome_4
+
   ];
 }

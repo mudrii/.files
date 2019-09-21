@@ -52,9 +52,8 @@
     tpacpi-bat
     cpufrequtils
     msr-tools
-#    firmwareLinuxNonfree
-#    xorg.xdpyinfo
-#    xorg.xinit
+    nvtop
+#    networkmanager
 
   ];
 }

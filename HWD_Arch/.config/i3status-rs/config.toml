@@ -1,0 +1,66 @@
+  theme = "solarized-dark"
+  icons = "awesome"
+  
+  [[block]]
+  block = "disk_space"
+  path = "/"
+  alias = "/"
+  info_type = "available"
+  unit = "GB"
+  interval = 20
+  warning = 20.0
+  alert = 10.0
+  
+  #[[block]]
+  #block = "memory"
+  #display_type = "memory"
+  #format_mem = "{Mup}%"
+  
+  [[block]]
+  block = "memory"
+  format_mem = "{Mug}GB/{MTg}GB"
+  display_type = "memory"
+  clickable = true
+  interval = 5
+  
+  [[block]]
+  block = "cpu"
+  interval = 1
+  format = "{utilization}% {frequency}GHz"
+  info = 30
+  warning = 60
+  critical = 95
+  
+  [[block]]
+  block = "load"
+  interval = 1
+  format = "{1m}"
+  
+  [[block]]
+  block = "temperature"
+  collapsed = false
+  interval = 10
+  good = 30
+  idle = 50
+  info = 70
+  warning = 90
+  format = "{max}° cpu"
+  chip = "coretemp-isa-0000"
+  
+  [[block]]
+  block = "net"
+  device = "enp3s0f0"
+  ssid = true
+  interval = 5
+  speed_up = false
+  speed_down = false
+  ip = true
+  
+  [[block]]
+  block = "sound"
+
+  [[block]]
+  block = "time"
+  interval = 60
+  format = "%a %d/%m %R"
+

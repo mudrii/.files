@@ -6,6 +6,16 @@
 #      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
 #in
 
+# Install with unstable repo
+# sudo nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+# sudo nix-channel --update unstable
+# sudo nix-channel --update nixos
+# sudo nix-channel --list
+
+let
+  unstable = import <unstable> {};
+in
+
 {
 
 #  nixpkgs.config = {
@@ -36,17 +46,17 @@
       poppler_utils
       tmux
       keychain
-#      unstable.google-cloud-sdk-gce
-#      unstable.awscli
-#      unstable.terraform_0_12
-#      unstable.kubernetes
-#      unstable.go
-      google-cloud-sdk-gce
-      awscli
-      terraform_0_12
-      kubernetes
+      unstable.google-cloud-sdk-gce
+      unstable.awscli
+      unstable.terraform_0_12
+      unstable.kubernetes
+      unstable.go
+#      google-cloud-sdk-gce
+#      awscli
+#      terraform_0_12
+#      kubernetes
       kubectx
-      go
+#      go
       gnumake
       dep
       python37Full
@@ -73,9 +83,9 @@
       vscode
       sublime
       slack
-      zoom-us
       xmind
       vlc
+      zoom-us
     ];
   };
 

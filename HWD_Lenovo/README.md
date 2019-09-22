@@ -22,6 +22,11 @@ mkswap /mnt/swapfile
 nixos-generate-config --root /mnt
 vim /mnt/etc/nixos/configuration.nix
 
+nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+nix-channel --list
+nix-channel --update unstable
+nix-channel --update nixos
+
 nixos-install
 reboot
 

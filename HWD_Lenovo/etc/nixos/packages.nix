@@ -58,6 +58,8 @@ in
     msr-tools
     nvtop
     sshfs
+    vdpauinfo
+
 #    networkmanager
 
   ];

@@ -41,7 +41,10 @@
         xterm.enable = false;
       };
       displayManager = {
-#        setupCommands = "xrandr --setprovideroutputsource modesetting NVIDIA-0";
+#        setupCommands = ''
+#          ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0 
+#          ${pkgs.xorg.xrandr}/bin/xrandr --auto
+#          '';
         lightdm = {
           enable = true;
           greeter.enable = false;

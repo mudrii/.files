@@ -38,8 +38,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
 #    kernelModules = [ "bcm2835-v4l2" ];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
-#    kernelParams = [ /* list of command line arguments */ ];
-#    kernelPackages = pkgs.linuxPackages_5_1;
+#    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
 
   networking = {

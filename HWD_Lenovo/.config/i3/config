@@ -33,11 +33,13 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+#bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec dmenu_run
 #bindsym $mod+d exec dmenu_run
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -102,6 +104,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+bindsym $mod+z focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -155,20 +158,20 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 1 px or 1 ppt
+        bindsym k resize grow height 1 px or 1 ppt
+        bindsym l resize shrink height 1 px or 1 ppt
+        bindsym semicolon resize grow width 1 px or 1 ppt
 
         # same bindings, but for the arrow keys
         #bindsym Left resize shrink width 10 px or 10 ppt
         #bindsym Down resize grow height 10 px or 10 ppt
         #bindsym Up resize shrink height 10 px or 10 ppt
         #bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Left resize grow width 10 px 
-        bindsym Right resize shrink width 10 px
-        bindsym Down resize shrink height 10 px
-        bindsym Up resize grow height 10 px
+        bindsym Left resize grow width 5 px or 5 ppt
+        bindsym Right resize shrink width 5 px or 5 ppt 
+        bindsym Down resize shrink height 5 px or 5 ppt 
+        bindsym Up resize grow height 5 px or 5 ppt 
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -202,9 +205,36 @@ bar {
     }
 }
 
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (d) DP0 ON, (f) DP1 ON, (e) eDP ON, (h) HDMI ON, (x) DP0 OFF, (y) DP1 OFF, (w) eDP OFF, (z) HDMI OFF
+mode "$mode_display" {
+    bindsym d exec --no-startup-id xrandr --output DP-0 --primary --auto, mode "default"
+	bindsym f exec --no-startup-id xrandr --output DP-1 --primary --auto, mode "default"
+	bindsym e exec --no-startup-id xrandr --output eDP-1-1 --auto, mode "default"
+	bindsym h exec --no-startup-id xrandr --output HDMI-0 --auto, mode "default"
+	bindsym x exec --no-startup-id xrandr --output DP-0 --off, mode "default"
+	bindsym y exec --no-startup-id xrandr --output DP-1 --off, mode "default"
+	bindsym w exec --no-startup-id xrandr --output eDP-1-1 --off, mode "default"
+    bindsym z exec --no-startup-id xrandr --output HDMI-0 --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+m mode "$mode_display"
+
 # i3 gaps
 gaps inner 5
 gaps outer 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
 
 # Mouse, please stop focus whenever you hover to whatever windows plz :(
 focus_follows_mouse no
@@ -220,7 +250,6 @@ for_window [window_role="task_dialog"] floating enable
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute
 bindsym XF86AudioLowerVolume  exec amixer -q sset Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q sset Master toggle
-#bindsym XF86AudioMute exec amixer set Master toggle
 bindsym XF86AudioMicMute exec amixer -q sset Capture toggle
 
 bindsym $mod+= exec amixer -q sset Master 5%+ unmute
@@ -237,29 +266,33 @@ exec_always --no-startup-id numlockx on
 #exec_always --no-startup-id conky
 
 # Assign application to start on a specific workspace xprop
-assign [class="^Firefox$"] 1
-assign [class="^Chromium$"] 3
-assign [class="^Slack$"] 6
-assign [class="^zoom$"] 6
-assign [class="^eddie-ui$"] 6
-assign [class="^Subl3$"] 3
+assign [class=Firefox] 1
+assign [class=chromium] 3
+assign [class=Slack] 4
+assign [class=zoom-us] 4
+assign [class="^eddie-ui$"] 5
+assign [class=sublime] 3
 assign [class="^Code$"] 2
-assign [class="^Vlc$"] 9
+assign [class="^Vlc$"] 6
 assign [class="^Spotify$"] 10
 # fix for spotify not moving to workspace 10
 for_window [class="Spotify"] move to workspace 10
 
 # for_window [title="Preferences$"] floating enable
 # for_window [class="(?i)mplayer"] floating enable
-# for_window [class="^Subl3$"] floating enable
+#assign [class="^Firefox$"] 1
 
-for_window [class="^eddie-ui$"] floating enable
-for_window [class="^zoom$"] floating enable
-for_window [class="^Slack$"] floating enable
+for_window [class=URxvt|Firefox|Chromium|vlc|Slack|zoom-us|eddie-ui] focus
+for_window [class=zoom-us|Slack|eddie-ui|arandr|psensor|Pavucontrol] floating enable
+
+#for_window [class="^zoom$"] floating enable
+#for_window [class="^Slack$"] floating enable
 
 # exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
 
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
+
+bindsym $mod+p exec --no-startup-id $Locker, mode "default"
 
 #set $Locker i3lock && sleep 1
 set $Locker i3lock -d -c 000000 && sleep 1

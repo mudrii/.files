@@ -6,6 +6,10 @@
 #        https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
 #  in
 
+let
+  unstable = import <unstable> {};
+in
+
 {
   
 #  nixpkgs.config = {
@@ -53,7 +57,9 @@
     cpufrequtils
     msr-tools
     nvtop
+    sshfs
 #    networkmanager
 
   ];
+
 }

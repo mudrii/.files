@@ -5,10 +5,16 @@
 #  environment.systemPackages = with pkgs; [ xorg.xbacklight ];
 
 #  hardware.nvidia.modesetting.enable = true;                                    
-  hardware.nvidia.optimus_prime = {                                             
-    enable = true;                                                              
-    intelBusId = "PCI:0:2:0";                                                   
-    nvidiaBusId = "PCI:1:0:0";                                                  
+  hardware = {
+    opengl.driSupport32Bit = true;
+    nvidia = {
+      optimus_prime = {                                             
+        enable = true;                                                              
+        intelBusId = "PCI:0:2:0";                                                   
+        nvidiaBusId = "PCI:1:0:0";                                                  
+      };
+      modesetting.enable = true;
+    };
   };
  
 #  services.udev.path = pkgs.coreutils # for chgrp
@@ -34,12 +40,15 @@
         default = "none";
         xterm.enable = false;
       };
-      displayManager.lightdm = {
-        enable = true;
-        greeter.enable = false;
-        autoLogin.enable = true;
-        autoLogin.user = "mudrii";
+      displayManager = {
+#        setupCommands = "xrandr --setprovideroutputsource modesetting NVIDIA-0";
+        lightdm = {
+          enable = true;
+          greeter.enable = false;
+          autoLogin.enable = true;
+          autoLogin.user = "mudrii";
 #        enable = lib.mkForce false; 
+        };
       };
 
       windowManager = {

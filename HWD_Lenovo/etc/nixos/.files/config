@@ -145,8 +145,10 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -283,7 +285,7 @@ for_window [class="Spotify"] move to workspace 10
 #assign [class="^Firefox$"] 1
 
 for_window [class=URxvt|Firefox|Chromium|vlc|Slack|zoom-us|eddie-ui] focus
-for_window [class=zoom-us|Slack|eddie-ui|arandr|psensor|Pavucontrol] floating enable
+for_window [class=zoom-us|Slack|eddie-ui|arandr|psensor|Pavucontrol|nvidia-settings] floating enable
 
 #for_window [class="^zoom$"] floating enable
 #for_window [class="^Slack$"] floating enable

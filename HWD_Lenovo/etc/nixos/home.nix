@@ -25,7 +25,29 @@
 
       ".tmux.conf".source = .files/.tmux.conf;
 
+      ".bashrc".source = .files/.bashrc;
+
+      ".inputrc".source = .files/.inputrc;
+
+      ".dircolors".source = .files/.dircolors;
+
+      ".git-completion.bash".source = .files/.git-completion.bash;
+
+      ".git-prompt.sh".source = .files/.git-prompt.sh;
+
       ".nanorc".source = .files/.nanorc;
+
+      ".Xresources".source = .files/.Xresources;
+
+      ".config/i3/config".source  = .files/config;
+
+      ".config/i3status-rs/config.toml".source  = .files/config.toml;
+      
+      ".config/networkmanager-dmenu/config.ini".source  = .files/config.ini;
+
+#      ".config/conky/conky.conf".source  = .files/conky.conf;
+
+      ".config/nixpkgs/config.nix".source  = .files/config.nix;
 
       ".config/fish/config.fish".source  = .files/fish/config.fish;
       

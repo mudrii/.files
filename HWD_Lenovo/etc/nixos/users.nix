@@ -89,7 +89,7 @@ in
         slack
         xmind
         vlc
-        zoom-us
+#        zoom-us
         filezilla
       ];
     };

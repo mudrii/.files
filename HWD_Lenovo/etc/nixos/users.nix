@@ -12,7 +12,9 @@
 # sudo nix-channel --update nixos
 # sudo nix-channel --list
 let
-  unstable = import <unstable> {};
+  unstable = import <unstable> { 
+    config.allowUnfree = true; 
+  };
 in
 
 {
@@ -43,7 +45,7 @@ in
         screenfetch
         ranger
         elinks
-         mediainfo
+        mediainfo
         w3m
         ffmpegthumbnailer
         mupdf
@@ -76,7 +78,6 @@ in
         highlight
         jq
         direnv
-#        busybox
         ncurses
         bat
         fd
@@ -87,13 +88,17 @@ in
         vscode
         sublime
         slack
-        xmind
+        unstable.xmind
+#        xmind
         vlc
-#        zoom-us
         filezilla
+        openvpn
+        gpicview
+        unstable.zoom-us
+#        zoom-us
+
       ];
     };
   };
 
-#  nixpkgs.config.allowUnfree = true;
 }

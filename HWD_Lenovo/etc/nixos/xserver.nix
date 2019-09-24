@@ -1,10 +1,9 @@
 { config, lib, pkgs, callPackage, ... }:
 
 {
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
+#  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
 #  environment.systemPackages = with pkgs; [ xorg.xbacklight ];
 
-#  hardware.nvidia.modesetting.enable = true;                                    
   hardware = {
     opengl.driSupport32Bit = true;
     nvidia = {
@@ -17,8 +16,6 @@
     };
   };
  
-#  services.udev.path = pkgs.coreutils # for chgrp
-
   services = {
     udev = {
       path = [ pkgs.coreutils ];
@@ -50,7 +47,6 @@
           greeter.enable = false;
           autoLogin.enable = true;
           autoLogin.user = "mudrii";
-#        enable = lib.mkForce false; 
         };
       };
 

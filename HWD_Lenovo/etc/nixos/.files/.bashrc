@@ -47,9 +47,8 @@ PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 eval "`dircolors -b ~/.dircolors`"
 
 # less colors
+#export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
 #export LESS='-R'
-export LESSOPEN='|pygmentize -f terminal256 -g -P style=monokai %s'
-export LESS='-R'
 
 # man pages in colores
 man() {

@@ -7,7 +7,9 @@
 #  in
 
 let
-  unstable = import <unstable> {};
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
 in
 
 {
@@ -59,7 +61,6 @@ in
     nvtop
     sshfs
     vdpauinfo
-
 #    networkmanager
 
   ];

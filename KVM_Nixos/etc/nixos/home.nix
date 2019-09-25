@@ -31,7 +31,7 @@
       
       ".config/fish/functions/a.fish".source  = .files/fish/a.fish;
      
-      ".config/fish/functions/cat.fish".source  = .files/fish/cat.fish;
+      ".config/fish/functions/ccat.fish".source  = .files/fish/ccat.fish;
 
       ".config/fish/functions/ccd.fish".source  = .files/fish/ccd.fish;
 
@@ -69,7 +69,7 @@
 
       ".config/fish/functions/la.fish".source = .files/fish/la.fish;
 
-      ".config/fish/functions/less.fish".source = .files/fish/less.fish;
+      ".config/fish/functions/lless.fish".source = .files/fish/lless.fish;
 
       ".config/fish/functions/ll.fish".source = .files/fish/ll.fish;
 

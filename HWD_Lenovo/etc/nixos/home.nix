@@ -72,6 +72,7 @@
       ".config/fish/functions/gadcm.fish".source = .files/fish/gadcm.fish;
       ".config/fish/functions/gcm.fish".source = .files/fish/gcm.fish;
       ".config/fish/functions/gdf.fish".source = .files/fish/gdf.fish;
+      ".config/fish/functions/gl.fish".source = .files/fish/gl.fish;
       ".config/fish/functions/glg.fish".source = .files/fish/glg.fish;
       ".config/fish/functions/gpl.fish".source = .files/fish/gpl.fish;
       ".config/fish/functions/gps.fish".source = .files/fish/gps.fish;

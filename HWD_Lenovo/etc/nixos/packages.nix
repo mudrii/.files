@@ -29,7 +29,13 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    fish
+    nix-index
+    nix-review
+    nix-prefetch-git 
+    nix-prefetch-scripts
+    traceroute
+    whois
+    nmap
     wget
     vim
     commonsCompress
@@ -69,6 +75,12 @@ in
     vdpauinfo
     dmidecode
     fwupd
+    ncdu
+    fzf
+    pass encfs 
+    bat
+    fd
+    ripgrep-all
 #    networkmanager
 
   ];

@@ -142,6 +142,10 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" coc-prettier setup
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 " Key Bindings
 nmap <C-n> :NERDTreeToggle<CR>
 

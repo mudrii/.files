@@ -60,7 +60,7 @@
     firewall = {
   # Or disable the firewall altogether.
       enable = false;
-      allowedTCPPorts = [ 22 80 ];
+      allowedTCPPorts = [ 22 80 443 ];
       allowedUDPPorts = [ 53 ];
       allowPing = true;
       trustedInterfaces = [ "docker0" ];
@@ -86,6 +86,7 @@
   virtualisation = {
     docker.enable = true;
 #    virtualbox.host.enable = true;
+#    virtualbox.host.enableExtensionPack = true;
   };
 
   programs = {

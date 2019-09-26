@@ -10,6 +10,7 @@ unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
+show_percentage = true
 
 #[[block]]
 #block = "memory"

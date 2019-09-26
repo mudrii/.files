@@ -94,7 +94,14 @@ in
         filezilla
         openvpn
         gpicview
+        home-manager
+#        gnupg
+        mc
+        skypeforlinux
+        whois
         unstable.zoom-us
+        fzf
+        ripgrep-all
 #        zoom-us
 
       ];

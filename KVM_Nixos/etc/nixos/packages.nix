@@ -1,20 +1,27 @@
 { config, pkgs, ... }:
 
 
-  let
-    unstableTarball =
-      fetchTarball
-        https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
-  in
+#  let
+#    unstableTarball =
+#      fetchTarball
+#        https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+#  in
+
+let
+  unstable = import <unstable> { 
+    config.allowUnfree = true; 
+  };
+in
+
 {
   
-    nixpkgs.config = {
-      packageOverrides = pkgs: {
-        unstable = import unstableTarball {
-          config = config.nixpkgs.config;
-        };
-      };
-    };
+#    nixpkgs.config = {
+#      packageOverrides = pkgs: {
+#        unstable = import unstableTarball {
+#          config = config.nixpkgs.config;
+#        };
+#      };
+#    };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -54,6 +61,12 @@
     hwinfo
     lshw
     dmidecode
+    inxi
+    s-tui
+    stress-ng
+    tpacpi-bat
+    msr-tools
+    vdpauinfo
 
   ];
 }

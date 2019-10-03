@@ -61,6 +61,7 @@ nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
+cmap w!! w !sudo tee > /dev/null %
 
 " Scrolling
 set scrolljump=5

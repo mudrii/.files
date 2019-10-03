@@ -56,6 +56,7 @@ in
         unstable.google-cloud-sdk-gce
         unstable.awscli
         unstable.terraform_0_12
+        unstable.tflint
         unstable.kubernetes
         unstable.go
         unstable.xmind
@@ -99,7 +100,6 @@ in
         vscode
         sublime
         slack
-#        xmind
         vlc
         filezilla
         openvpn
@@ -113,7 +113,7 @@ in
         weechat
         gcc gnumake
         gnupg
-#        zoom-us
+        spotify
 
       ];
     };

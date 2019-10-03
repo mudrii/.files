@@ -72,6 +72,7 @@
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
   # Set your time zone.
@@ -108,7 +109,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+#  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;

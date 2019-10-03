@@ -1,3 +1,3 @@
-function glg --description 'alias git log'
-  git log $argv;
+function glg --description 'alias git log --color --graph --pretty --oneline'
+  git log --color --graph --pretty --oneline $argv;
 end

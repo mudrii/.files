@@ -27,9 +27,13 @@ nixos-generate-config --root /mnt
 vim /mnt/etc/nixos/configuration.nix
 
 nix-channel --add https://nixos.org/channels/nixos-unstable unstable
+nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager
 nix-channel --list
+nix-channel --update
+
 nix-channel --update unstable
 nix-channel --update nixos
+nix-channel --update home-manager
 
 nixos-install
 reboot

@@ -1,6 +1,4 @@
-#
 # ~/.bashrc
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -101,4 +99,3 @@ ext () {
 
 # startup shell notification
 #screenfetch
-

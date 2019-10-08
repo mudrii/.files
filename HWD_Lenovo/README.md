@@ -1,5 +1,9 @@
 # install
 
+## wifi
+nmtui
+
+
 parted /dev/nvme1n1 -- mklabel gpt
 parted /dev/nvme1n1 -- mkpart ESP fat32 1MiB 512MiB
 parted /dev/nvme1n1 -- set 1 boot on

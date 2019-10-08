@@ -13,7 +13,8 @@
       ./aliases.nix
       ./xserver.nix
       ./users.nix
-      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+      <home-manager/nixos>
+#      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       ./home.nix
 #      ./containers.nix      
     ];
@@ -40,6 +41,8 @@
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
+
+  powerManagement.enable = true;
 
   networking = {
     hostName = "nixos";

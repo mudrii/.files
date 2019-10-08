@@ -81,8 +81,7 @@ in
     bat
     fd
     ripgrep-all
-#    networkmanager
-
+    networkmanager
   ];
 
 }

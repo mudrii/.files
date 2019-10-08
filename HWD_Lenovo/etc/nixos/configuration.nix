@@ -42,7 +42,11 @@
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
 
-  powerManagement.enable = true;
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor =  "ondemand" # "powersave", "performance" 
+  };
 
   networking = {
     hostName = "nixos";

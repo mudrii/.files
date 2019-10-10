@@ -7,7 +7,7 @@ nmtui
 parted /dev/nvme1n1 -- mklabel gpt
 parted /dev/nvme1n1 -- mkpart ESP fat32 1MiB 512MiB
 parted /dev/nvme1n1 -- set 1 boot on
-parted /dev/nvme1n1 -- mkpart primary 512MiB -1
+parted /dev/nvme1n1 -- mkpart primary 512MiB 100%
 
 mkfs.fat -F 32 -n boot /dev/nvme1n1p1
 ls -la /dev/disk/by-uuid/

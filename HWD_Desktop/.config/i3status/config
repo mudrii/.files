@@ -1,0 +1,92 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+#    output_format = "dzen2"
+        colors = true
+        interval = 3
+}
+
+order += "cpu_usage"
+order += "load"
+order += "cpu_temperature 0"
+order += "memory"
+order += "disk /"
+order += "wireless wlp82s0"
+order += "ethernet enp0s31f6"
+order += "battery 0"
+order += "volume master"
+order += "tztime local"
+
+wireless wlp82s0 {
+        format_up = "W: (%quality at %essid, %bitrate) %ip"
+        format_down = "W: down"
+}
+
+ethernet  enp0s31f6 {
+        # if you use %speed, i3status requires root privileges
+#        format_up = "E: %ip (%speed)"
+        format_up = "eth: %ip"
+        format_down = "E: down"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡ CHR"
+        status_bat = "🔋 BAT"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+cpu_usage {
+        format = "CPU %usage "
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+
+load {
+        format = "%1min %5min %15min"
+}
+
+disk "/" {
+  format = "Used / %percentage_used"
+  separator = false
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+memory {
+        format = "%used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhcp*.pid"
+}

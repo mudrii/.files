@@ -133,7 +133,8 @@
   # Enable sound.
   sound.enable = true;
   
-#  programs.bash.shellInit = "screenfetch";
+#  programs.bash.shellInit = "neofetch";
+#  programs.fish.shellInit = "neofetch";
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database

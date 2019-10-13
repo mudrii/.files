@@ -82,6 +82,9 @@ in
     fd
     ripgrep-all
     networkmanager
+    wirelesstools
+    blueman
+
   ];
 
 }

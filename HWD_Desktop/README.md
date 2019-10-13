@@ -56,6 +56,11 @@ omf reload
 
 rfkill list
 
+# create missing folders
+
+mkdir ~/.local/share/Trash
+mkdir ~/Images
+
 
 # Debug wifi
 
@@ -124,23 +129,8 @@ nix eval --json '(import <nixpkgs> {}).tuxguitar.meta.maintainers'
 ## or
 nix eval nixpkgs.tuxguitar.meta.maintainers
 
-
-# Errors to fix
-
-nixos kernel: mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 1)
-nixos kernel: tpm tpm0: tpm_try_transmit: send(): error -5
-nixos kernel: tpm tpm0: [Firmware Bug]: TPM interrupt not working, polling instead
-nixos kernel: Bluetooth: hci0: Failed to load Intel firmware file (-2)
-nixos kernel: iwlwifi 0000:52:00.0: no suitable firmware found!
-nixos kernel: iwlwifi 0000:52:00.0: minimum version required: iwlwifi-cc-a0-39
-nixos kernel: iwlwifi 0000:52:00.0: maximum version supported: iwlwifi-cc-a0-46
-nixos kernel: iwlwifi 0000:52:00.0: check git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.g>
-nixos kernel: iTCO_wdt iTCO_wdt: can't request region for resource [mem 0x00c5fffc-0x00c5ffff]
-nixos kernel: irq 48: nobody cared (try booting with the "irqpoll" option)
-nixos kernel: handlers:
-nixos kernel: [<0000000070ec9b05>] tis_int_handler [tpm_tis_core]
-nixos kernel: Disabling IRQ #48
-nixos dhcpcd[1020]: ipv6_addaddr1: Permission denied
+## Update OS
+sudo nixos-rebuild switch --upgrade
 
 # Wirless i3
 

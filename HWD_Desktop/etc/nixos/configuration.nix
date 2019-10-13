@@ -37,7 +37,9 @@
       grub.enableCryptodisk = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-#    kernelModules = [ "bcm2835-v4l2" ];
+    kernelModules = [ "kvm-intel" ];
+#    initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+#    initrd.kernelModules = [ ];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };

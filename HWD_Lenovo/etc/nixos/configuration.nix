@@ -37,15 +37,18 @@
       grub.enableCryptodisk = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-#    kernelModules = [ "bcm2835-v4l2" ];
+    kernelModules = [ "kvm-intel" ];
+#    boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+#    boot.initrd.kernelModules = [ ];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
 
   powerManagement = {
     enable = true;
-    powertop.enable = true;
-    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+#    powertop.enable = true;
+#    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+#    cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
   };
 
   networking = {
@@ -116,7 +119,7 @@
   };
 
   # Enable CUPS to print documents.
-#  services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;

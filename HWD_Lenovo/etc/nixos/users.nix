@@ -106,6 +106,7 @@ in
         gpicview
         home-manager
         mc
+        fzf
         skypeforlinux
         zathura
         mpv
@@ -114,6 +115,10 @@ in
         gcc gnumake
         gnupg
         spotify
+        (tor-browser-bundle-bin.override {
+          mediaSupport = true;
+          pulseaudioSupport = true;
+        })        
 
       ];
     };

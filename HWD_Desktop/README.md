@@ -4,14 +4,14 @@
 nmtui
 
 
-parted /dev/nvme1n1 -- mklabel gpt
-parted /dev/nvme1n1 -- mkpart ESP fat32 1MiB 512MiB
-parted /dev/nvme1n1 -- set 1 boot on
-parted /dev/nvme1n1 -- mkpart primary 512MiB 100%
+parted /dev/sda -- mklabel gpt
+parted /dev/sda -- mkpart ESP fat32 1MiB 512MiB
+parted /dev/sda -- set 1 boot on
+parted /dev/sda -- mkpart primary 512MiB 100%
 
-mkfs.fat -F 32 -n boot /dev/nvme1n1p1
+mkfs.fat -F 32 -n boot /dev/sda1
 ls -la /dev/disk/by-uuid/
-export PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme1n1p2) && echo $PARTUUID
+export PARTUUID=$(blkid -s PARTUUID -o value /dev/sda2) && echo $PARTUUID
 cryptsetup luksFormat /dev/disk/by-partuuid/$PARTUUID
 cryptsetup luksOpen /dev/disk/by-partuuid/$PARTUUID crypted
 mkfs.ext4 -L nixos /dev/mapper/crypted
@@ -40,7 +40,7 @@ reboot
 
 # recover
 
-export PARTUUID=$(blkid -s PARTUUID -o value /dev/nvme1n1p2) && \
+export PARTUUID=$(blkid -s PARTUUID -o value /dev/sda1) && \
 echo $PARTUUID
 
 cryptsetup luksOpen /dev/disk/by-partuuid/$PARTUUID crypted

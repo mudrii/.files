@@ -50,7 +50,7 @@ chip = "coretemp-isa-0000"
 
 [[block]]
 block = "net"
-device = "wlp82s0"
+device = "wlp0s20u9u2"
 ssid = true
 interval = 5
 speed_up = false
@@ -58,7 +58,7 @@ speed_down = false
 
 [[block]]
 block = "net"
-device = "enp0s31f6"
+device = "enp3s0f0"
 ssid = true
 interval = 5
 speed_up = false
@@ -67,16 +67,6 @@ ip = true
 
 [[block]]
 block = "sound"
-
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-
-[[block]]
-block = "battery"
-interval = 10
-format = "{percentage}% {time}"
-#collapsed = true
 
 [[block]]
 block = "time"

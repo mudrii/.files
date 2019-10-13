@@ -44,13 +44,21 @@
 
   powerManagement = {
     enable = true;
-    powertop.enable = true;
-    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+#    powertop.enable = true;
+#    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
   };
 
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
+    useDHCP = false;
+    interfaces = {
+      enp3s0f0.useDHCP = true;
+#      enp3s0f1.useDHCP = true;
+#      enp3s0f2.useDHCP = true;
+#      enp3s0f3.useDHCP = true;
+#      wlp0s20u9u2.useDHCP = true;
+    };
   # Enables wireless support via wpa_supplicant.
 #    wireless.enable = true;  
   #  Configure network proxy if necessary
@@ -61,7 +69,7 @@
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
-      externalInterface = "enp0s31f6";
+      externalInterface = "enp3s0f0";
     };
   # Open ports in the firewall.
     firewall = {
@@ -101,6 +109,8 @@
     fish.enable = true;
     vim.defaultEditor = true;
     bash.enableCompletion = true;
+    mtr.enable = true;
+    gnupg.agent = { enable = true; enableSSHSupport = true; };
   };
 
   nixpkgs.config = {
@@ -116,7 +126,7 @@
   };
 
   # Enable CUPS to print documents.
-#  services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -137,7 +147,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 20d";
+    options = "--delete-older-than 10d";
   };
 
   swapDevices = [ { device = "/swapfile"; } ];

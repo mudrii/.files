@@ -5,13 +5,6 @@
 #  environment.systemPackages = with pkgs; [ xorg.xbacklight ];
 
   services = {
-    udev = {
-      path = [ pkgs.coreutils ];
-      extraRules = ''
-        ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video %S%p/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
-      '';
-  };
- 
     xserver = {
       enable = true;
 #      autorun = false;
@@ -19,16 +12,11 @@
 
       layout = "us";
       xkbOptions = "eurosign:e";
-      libinput.enable = true;
       desktopManager = {
         default = "none";
         xterm.enable = false;
       };
       displayManager = {
-#        setupCommands = ''
-#          ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0 
-#          ${pkgs.xorg.xrandr}/bin/xrandr --auto
-#          '';
         lightdm = {
           enable = true;
           greeter.enable = false;
@@ -49,13 +37,13 @@
           i3status-rust
           i3-gaps
           rofi
+          numlockx
 #          conky
 #          rxvt_unicode
           rxvt_unicode-with-plugins
           urxvt_perls
           urxvt_font_size
           acpilight
-#          xorg.xbacklight
           glxinfo
           pavucontrol
           networkmanager_dmenu

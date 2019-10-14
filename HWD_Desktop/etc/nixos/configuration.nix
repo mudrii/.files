@@ -4,6 +4,12 @@
 
 { config, pkgs, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -123,12 +129,19 @@
 
   # Enable the OpenSSH daemon.
   services = {
-    openssh.enable = true;
-    openssh.permitRootLogin = "no";
+    openssh = {
+      enable = true;
+      permitRootLogin = "no";
+    };
+    printing = {
+      enable = true;
+      drivers = [ unstable.pkgs.epson-escpr ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;

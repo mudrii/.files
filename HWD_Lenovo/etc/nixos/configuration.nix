@@ -114,12 +114,22 @@
 
   # Enable the OpenSSH daemon.
   services = {
-    openssh.enable = true;
-    openssh.permitRootLogin = "no";
+    openssh = { 
+        enable = true;
+        permitRootLogin = "no";
+    };
+	printing = {
+      enable = true;
+      drivers = [ pkgs.epson-escpr ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+#  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -140,9 +150,9 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 20d";
+    options = "--delete-older-than 10d";
   };
 
-  swapDevices = [ { device = "/swapfile"; } ];
+#  swapDevices = [ { device = "/swapfile"; } ];
 
 }

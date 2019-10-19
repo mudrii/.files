@@ -78,6 +78,7 @@
       ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
       ".nanorc".source = dotfiles/.nanorc;
       ".Xresources".source = dotfiles/.Xresources;
+      ".config/neofetch/config.conf".source  = dotfiles/config.conf;
       ".config/i3/config".source  = dotfiles/config;
       ".config/i3status-rs/config.toml".source  = dotfiles/config.toml;
       ".config/networkmanager-dmenu/config.ini".source  = dotfiles/config.ini;

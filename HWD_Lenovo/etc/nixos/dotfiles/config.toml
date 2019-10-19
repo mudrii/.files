@@ -72,6 +72,10 @@ block = "sound"
 block = "backlight"
 device = "intel_backlight"
 
+#[[block]]
+#block = "bluetooth"
+#mac = "DC:71:96:F0:ED:B1"
+
 [[block]]
 block = "battery"
 interval = 10

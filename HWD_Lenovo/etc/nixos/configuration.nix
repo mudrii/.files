@@ -150,9 +150,9 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 20d";
+    options = "--delete-older-than 10d";
   };
 
-  swapDevices = [ { device = "/swapfile"; } ];
+#  swapDevices = [ { device = "/swapfile"; } ];
 
 }

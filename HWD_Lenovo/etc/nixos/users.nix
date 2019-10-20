@@ -55,7 +55,8 @@ in
         keychain
         unstable.google-cloud-sdk-gce
         unstable.awscli
-        unstable.terraform_0_12
+        unstable.terraform
+        unstable.terraform-lsp
         unstable.tflint
         unstable.kubernetes
         unstable.go
@@ -105,7 +106,6 @@ in
         openvpn
         gpicview
         home-manager
-        mc
         fzf
         skypeforlinux
         zathura

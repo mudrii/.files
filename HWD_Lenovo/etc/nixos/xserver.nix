@@ -63,12 +63,10 @@
           i3-gaps
           rofi
 #          conky
-#          rxvt_unicode
           rxvt_unicode-with-plugins
           urxvt_perls
           urxvt_font_size
           acpilight
-#          xorg.xbacklight
           glxinfo
           pavucontrol
           networkmanager_dmenu

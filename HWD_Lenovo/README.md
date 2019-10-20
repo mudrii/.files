@@ -1,5 +1,8 @@
 # install
 
+# write cd
+sudo cp /home/mudrii/Downloads/nixos-graphical-19.09.840.8bf142e001b-x86_64-linux.iso  /dev/sda
+
 ## wifi
 nmtui
 

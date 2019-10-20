@@ -33,6 +33,7 @@ in
     nix-review
     nix-prefetch-git 
     nix-prefetch-scripts
+    mc
     traceroute
     whois
     nmap

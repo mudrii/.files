@@ -37,9 +37,6 @@
       grub.enableCryptodisk = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" ];
-#    boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-#    boot.initrd.kernelModules = [ ];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
@@ -61,11 +58,13 @@
 #    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
     enableIPv6 = false;
-    nat = {
-      enable = true;
-      internalInterfaces = ["ve-+"];
-      externalInterface = "enp0s31f6";
-    };
+#    nat = {
+#      enable = true;
+#      internalInterfaces = ["ve-+"];
+#      externalInterface = "enp0s31f6";
+#    };
+    useDHCP = false;
+    interfaces.enp0s31f6.useDHCP = true;
   # Open ports in the firewall.
     firewall = {
   # Or disable the firewall altogether.
@@ -153,6 +152,6 @@
     options = "--delete-older-than 10d";
   };
 
-#  swapDevices = [ { device = "/swapfile"; } ];
+  swapDevices = [ { device = "/swapfile"; } ];
 
 }

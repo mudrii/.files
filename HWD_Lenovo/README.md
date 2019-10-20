@@ -23,7 +23,7 @@ mount /dev/disk/by-label/nixos /mnt
 mkdir -p /mnt/boot
 ls -la /dev/disk/by-label/
 mount /dev/disk/by-label/boot /mnt/boot
-fallocate -l 1G /mnt/swapfile
+fallocate -l 2G /mnt/swapfile
 chmod 600 /mnt/swapfile
 mkswap /mnt/swapfile
 nixos-generate-config --root /mnt

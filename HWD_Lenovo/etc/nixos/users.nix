@@ -115,10 +115,10 @@ in
         gcc gnumake
         gnupg
         spotify
-#        (tor-browser-bundle-bin.override {
-#          mediaSupport = true;
-#          pulseaudioSupport = true;
-#        })        
+        (tor-browser-bundle-bin.override {
+          mediaSupport = true;
+          pulseaudioSupport = true;
+        })        
 
       ];
     };

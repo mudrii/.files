@@ -68,8 +68,20 @@ in
 #        go
         kubectx
         dep
+        (unstable.terraform.withPlugins(p: with p; [
+          archive
+          aws
+          external
+          google
+          helm
+          kubernetes
+          local
+          null
+          random
+          template
+        ]))
         python37Full
-        (python3.withPackages(ps: with ps; [
+        (unstable.python3.withPackages(ps: with ps; [
           pip
           virtualenv
           powerline
@@ -115,7 +127,7 @@ in
         gcc gnumake
         gnupg
         spotify
-        (tor-browser-bundle-bin.override {
+        (unstable.tor-browser-bundle-bin.override {
           mediaSupport = true;
           pulseaudioSupport = true;
         })

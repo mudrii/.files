@@ -69,6 +69,18 @@ in
 #        go
         kubectx
         dep
+        (unstable.terraform.withPlugins(p: with p; [
+          archive
+          aws
+          external
+          google
+          helm
+          kubernetes
+          local
+          null
+          random
+          template
+        ]))
         python37Full
         (python3.withPackages(ps: with ps; [
           pip
@@ -86,8 +98,6 @@ in
 #        python37Packages.virtualenv
 #        python37Packages.powerline
 #        python37Packages.pygments
-#        python37Packages.pygments-markdown-lexer
-#        python37Packages.xstatic-pygments
         git
         neovim
         asciinema
@@ -115,6 +125,7 @@ in
         gcc gnumake
         gnupg
         spotify
+        bookworm
         (tor-browser-bundle-bin.override {
           mediaSupport = true;
           pulseaudioSupport = true;

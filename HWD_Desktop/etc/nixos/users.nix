@@ -68,18 +68,18 @@ in
 #        go
         kubectx
         dep
-        (unstable.terraform.withPlugins(p: with p; [
-          archive
-          aws
-          external
-          google
-          helm
-          kubernetes
-          local
-          null
-          random
-          template
-        ]))
+#        (unstable.terraform.withPlugins(p: with p; [
+#          archive
+#          aws
+#          external
+#          google
+#          helm
+#          kubernetes
+#          local
+#          null
+#          random
+#          template
+#        ]))
         python37Full
         (unstable.python3.withPackages(ps: with ps; [
           pip
@@ -119,6 +119,8 @@ in
         home-manager
         mc
         fzf
+        bat
+        fd
         skypeforlinux
         zathura
         mpv
@@ -127,6 +129,7 @@ in
         gcc gnumake
         gnupg
         spotify
+        bookworm
         (unstable.tor-browser-bundle-bin.override {
           mediaSupport = true;
           pulseaudioSupport = true;

@@ -26,8 +26,9 @@ in
     ];
 
   hardware = {
-#    enableRedistributableFirmware = true;
-    enableAllFirmware = true;
+    cpu.intel.updateMicrocode = true;
+    enableRedistributableFirmware = true;
+#    enableAllFirmware = true;
 #    bluetooth.enable = true;
     pulseaudio = {
       enable = true;
@@ -74,11 +75,11 @@ in
 #    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
     enableIPv6 = false;
-    nat = {
-      enable = true;
-      internalInterfaces = ["ve-+"];
-      externalInterface = "enp3s0f0";
-    };
+#    nat = {
+#      enable = true;
+#      internalInterfaces = ["ve-+"];
+#      externalInterface = "enp3s0f0";
+#    };
   # Open ports in the firewall.
     firewall = {
   # Or disable the firewall altogether.
@@ -141,10 +142,11 @@ in
       enable = true;
       nssmdns = true;
     };
+ #   blueman.enable = true;
   };
 
   # Enable sound.
-  sound.enable = true;
+   sound.enable = true;
   
 #  programs.bash.shellInit = "neofetch";
 #  programs.fish.shellInit = "neofetch";
@@ -157,15 +159,20 @@ in
 
   system.autoUpgrade = {
     enable = true;
-    dates = "22:00";
-  };
-
-  nix.gc = {
-    automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 10d";
   };
-
-  swapDevices = [ { device = "/swapfile"; } ];
+  
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 10d";
+    };
+    autoOptimiseStore = true;
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+  };
 
 }

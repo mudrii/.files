@@ -76,14 +76,13 @@ in
     dmidecode
     fwupd
     ncdu
-    fzf
     pass encfs 
-    bat
-    fd
     ripgrep-all
     networkmanager
     wirelesstools
     blueman
+    bluez
+    bluez-tools
   ];
 
 }

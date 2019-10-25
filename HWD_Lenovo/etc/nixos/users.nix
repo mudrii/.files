@@ -45,10 +45,12 @@ in
         fish
         neofetch
         ranger
+        poppler_utils
         elinks
         mediainfo
         w3m
-        ffmpegthumbnailer
+        ffmpeg-full
+#        ffmpegthumbnailer
         mupdf
         poppler_utils
         tmux
@@ -69,18 +71,18 @@ in
 #        go
         kubectx
         dep
-        (terraform.withPlugins(p: with p; [
-          archive
-          aws
-          external
-          google
-          helm
-          kubernetes
-          local
-          null
-          random
-          template
-        ]))
+#        (terraform.withPlugins(p: with p; [
+#          archive
+#          aws
+#          external
+#          google
+#          helm
+#          kubernetes
+#          local
+#          null
+#          random
+#          template
+#        ]))
         python37Full
         (unstable.python3.withPackages(ps: with ps; [
           pip

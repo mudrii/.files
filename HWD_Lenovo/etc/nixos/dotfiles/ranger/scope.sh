@@ -109,20 +109,20 @@ handle_image() {
             # but might fail for unsupported types.
             exit 7;;
 
-        # Video
-        # video/*)
-        #     # Thumbnail
-        #     ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
-        #     exit 1;;
-        # PDF
-        # application/pdf)
-        #     pdftoppm -f 1 -l 1 \
-        #              -scale-to-x 1920 \
-        #              -scale-to-y -1 \
-        #              -singlefile \
-        #              -jpeg -tiffcompression jpeg \
-        #              -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
-        #         && exit 6 || exit 1;;
+         # Video
+         video/*)
+             # Thumbnail
+             ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
+             exit 1;;
+         # PDF
+         application/pdf)
+           pdftoppm -f 1 -l 1 \
+                      -scale-to-x 1920 \
+                      -scale-to-y -1 \
+                      -singlefile \
+                      -jpeg -tiffcompression jpeg \
+                      -- "${FILE_PATH}" "${IMAGE_CACHE_PATH%.*}" \
+                 && exit 6 || exit 1;;
 
         # Preview archives using the first image inside.
         # (Very useful for comic book collections for example.)
@@ -179,9 +179,9 @@ handle_mime() {
                 local pygmentize_format='terminal'
                 local highlight_format='ansi'
             fi
-/nix/store/dxdh4k8zg9v5klla3m4qjy1jw911ky3c-highlight-3.53/bin/highlight --replace-tabs="${HIGHLIGHT_TABWIDTH}" --out-format="${highlight_format}" \
+          highlight --replace-tabs="${HIGHLIGHT_TABWIDTH}" --out-format="${highlight_format}" \
                 --style="${HIGHLIGHT_STYLE}" --force -- "${FILE_PATH}" && exit 5
-            # pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
+           # pygmentize -f "${pygmentize_format}" -O "style=${PYGMENTIZE_STYLE}" -- "${FILE_PATH}" && exit 5
             exit 2;;
 
         # Image

@@ -20,6 +20,7 @@
     ];
 
   hardware = {
+    cpu.intel.updateMicrocode = true;
 #    enableRedistributableFirmware = true;
     enableAllFirmware = true;
     bluetooth.enable = true;
@@ -37,16 +38,17 @@
       grub.enableCryptodisk = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+    blacklistedKernelModules = ["nouveau"];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
 
-  powerManagement = {
-    enable = true;
-#    powertop.enable = true;
-#    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
-#    cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
-  };
+#  powerManagement = {
+#    enable = true;
+##    powertop.enable = true;
+##    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+##    cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
+#  };
 
   networking = {
     hostName = "nixos";
@@ -117,7 +119,8 @@
         enable = true;
         permitRootLogin = "no";
     };
-	printing = {
+  # Enable CUPS to print documents.
+    printing = {
       enable = true;
       drivers = [ pkgs.epson-escpr ];
     };
@@ -125,10 +128,23 @@
       enable = true;
       nssmdns = true;
     };
+    tlp = {
+      enable = true;
+      extraConfig = ''
+#        DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
+        START_CHARGE_THRESH_BAT0=60
+        STOP_CHARGE_THRESH_BAT0=80
+        CPU_SCALING_GOVERNOR_ON_AC=powersave
+        CPU_SCALING_GOVERNOR_ON_BAT=powersave
+        ENERGY_PERF_POLICY_ON_AC=balance-performance
+        ENERGY_PERF_POLICY_ON_BAT=power
+      '';
+    };
+    blueman.enable = true;
   };
 
-  # Enable CUPS to print documents.
-#  services.printing.enable = true;
+  # TPM has hardware RNG
+  security.rngd.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -143,15 +159,20 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "22:00";
-  };
-
-  nix.gc = {
-    automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 10d";
   };
 
-  swapDevices = [ { device = "/swapfile"; } ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 10d";
+    };
+    autoOptimiseStore = true;
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
+  };
 
 }

@@ -10,8 +10,11 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-intel" "acpi_call" "tp_smapi" ];
+  boot.extraModulePackages = [ 
+    config.boot.kernelPackages.acpi_call
+    config.boot.kernelPackages.tp_smapi
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/7f4bbb31-4183-4ec4-9927-0a5fa2c5f2e9";
@@ -25,7 +28,7 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices = [ { device = "/swapfile"; } ];
 
   nix.maxJobs = lib.mkDefault 16;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

@@ -69,7 +69,7 @@ in
 #        go
         kubectx
         dep
-        (unstable.terraform.withPlugins(p: with p; [
+        (terraform.withPlugins(p: with p; [
           archive
           aws
           external
@@ -82,7 +82,7 @@ in
           template
         ]))
         python37Full
-        (python3.withPackages(ps: with ps; [
+        (unstable.python3.withPackages(ps: with ps; [
           pip
           virtualenv
           powerline
@@ -117,6 +117,8 @@ in
         gpicview
         home-manager
         fzf
+        bat
+        fd
         skypeforlinux
         zathura
         mpv
@@ -126,7 +128,7 @@ in
         gnupg
         spotify
         bookworm
-        (tor-browser-bundle-bin.override {
+        (unstable.tor-browser-bundle-bin.override {
           mediaSupport = true;
           pulseaudioSupport = true;
         })        

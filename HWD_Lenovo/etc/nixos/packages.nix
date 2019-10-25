@@ -69,6 +69,7 @@ in
     s-tui
     stress-ng
     tpacpi-bat
+    tlp
     cpufrequtils
     msr-tools
     nvtop
@@ -77,14 +78,13 @@ in
     dmidecode
     fwupd
     ncdu
-    fzf
     pass encfs 
-    bat
-    fd
     ripgrep-all
     networkmanager
     wirelesstools
     blueman
+    bluez
+    bluez-tools
 
   ];
 

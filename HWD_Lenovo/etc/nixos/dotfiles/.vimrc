@@ -52,7 +52,7 @@ set winminheight=0
 set wildmenu
 set wildmode=list:longest,full
 set whichwrap=b,s,h,l,<,>,[,]
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " For regular expressions turn magic on
 set magic

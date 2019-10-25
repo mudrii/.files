@@ -13,12 +13,15 @@
       ./aliases.nix
       ./xserver.nix
       ./users.nix
+      <home-manager/nixos>
 #      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
-#      ./home.nix
+      ./home.nix
     ];
 
   hardware = {
-    enableAllFirmware = true;
+    cpu.intel.updateMicrocode = true;
+    enableRedistributableFirmware = true;
+#    enableAllFirmware = true;
     bluetooth.enable = true;
     pulseaudio = {
       enable = true;
@@ -35,16 +38,20 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  powerManagement = {
+    enable = true;
+#   powertop.enable = true;
+#    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+  };
+
+
   networking = {
     hostName = "hp-nixos";
     networkmanager.enable = true;
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
     enableIPv6 = false;
-    nat = {
-      enable = true;
-      internalInterfaces = ["ve-+"];
-      externalInterface = "eno1";
-    };
+    useDHCP = false;
+    interfaces.eno1.useDHCP = true;
     firewall = {
       enable = false;
       allowedTCPPorts = [ 22 80 443 ];
@@ -91,8 +98,32 @@
 
   # Enable the OpenSSH daemon.
   services = {
-    openssh.enable = true;
-    openssh.permitRootLogin = "no";
+    openssh = { 
+      enable = true;
+      permitRootLogin = "no";
+    };
+    # Enable CUPS to print documents.
+    printing = {
+      enable = true;
+      drivers = [ pkgs.epson-escpr ];
+    };
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+    tlp = {
+      enable = true;
+      extraConfig = ''
+  #        DEVICES_TO_DISABLE_ON_STARTUP="bluetooth"
+        START_CHARGE_THRESH_BAT0=60
+        STOP_CHARGE_THRESH_BAT0=80
+        CPU_SCALING_GOVERNOR_ON_AC=powersave
+        CPU_SCALING_GOVERNOR_ON_BAT=powersave
+        ENERGY_PERF_POLICY_ON_AC=balance-performance
+        ENERGY_PERF_POLICY_ON_BAT=power
+      '';
+    };
+    blueman.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -111,15 +142,20 @@
 
   system.autoUpgrade = {
     enable = true;
-    dates = "23:00";
-  };
-
-  nix.gc = {
-    automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 20d";
   };
 
-  swapDevices = [ { device = "/swapfile"; } ];
+   nix = {
+     gc = {
+       automatic = true;
+       dates = "weekly";
+       options = "--delete-older-than 10d";
+     };
+     autoOptimiseStore = true;
+     optimise = {
+       automatic = true;
+       dates = [ "weekly" ];
+     };
+   };
 
 }

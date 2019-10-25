@@ -50,7 +50,7 @@ chip = "coretemp-isa-0000"
 
 [[block]]
 block = "net"
-device = "wlp82s0"
+device = "wlo1"
 ssid = true
 interval = 5
 speed_up = false
@@ -58,7 +58,7 @@ speed_down = false
 
 [[block]]
 block = "net"
-device = "enp0s31f6"
+device = "eno1"
 ssid = true
 interval = 5
 speed_up = false

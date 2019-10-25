@@ -33,6 +33,7 @@ in
     nix-review
     nix-prefetch-git 
     nix-prefetch-scripts
+    mc
     traceroute
     whois
     nmap
@@ -70,18 +71,20 @@ in
     tpacpi-bat
     cpufrequtils
     msr-tools
-    nvtop
     sshfs
     vdpauinfo
     dmidecode
     fwupd
     ncdu
     fzf
-    pass encfs 
-    bat
     fd
+    bat
+    pass encfs 
     ripgrep-all
     networkmanager
+    blueman
+    bluez
+    bluez-tools
 
   ];
 

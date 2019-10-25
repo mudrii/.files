@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+
+  imports = [
+    .files/.tmux.conf
+  ];
+
+
   home-manager.users.irutsu = {
     programs = {
       home-manager = {
@@ -35,12 +41,12 @@
         userName  = "mudrii";
         userEmail = "mudreac@gmail.com";
       };
+      direnv.enable = true;
     };
 
 #    home.sessionVariables.LESS = "-R";
 
     home.file = {
-      ".tmux.conf".source = .files/.tmux.conf;
       ".bashrc".source = .files/.bashrc;
       ".inputrc".source = .files/.inputrc;
       ".dircolors".source = .files/.dircolors;

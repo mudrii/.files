@@ -48,25 +48,26 @@ in
         elinks
         mediainfo
         w3m
-        ffmpegthumbnailer
+        ffmpeg-full
+#        ffmpegthumbnailer
         mupdf
         poppler_utils
         tmux
         keychain
-        unstable.google-cloud-sdk-gce
-        unstable.awscli
-        unstable.terraform_0_12
-        unstable.tflint
-        unstable.kubernetes
-        unstable.go
-        unstable.xmind
-        unstable.zoom-us
+#        unstable.google-cloud-sdk-gce
+#        unstable.awscli
+#        unstable.terraform_0_12
+#        unstable.tflint
+#        unstable.kubernetes
+#        unstable.go
+#        unstable.xmind
+#        unstable.zoom-us
 #        google-cloud-sdk-gce
 #        awscli
 #        terraform_0_12
 #        kubernetes
 #        go
-        kubectx
+#        kubectx
         dep
         python37Full
         (python3.withPackages(ps: with ps; [
@@ -76,8 +77,8 @@ in
           pygments
           pygments-markdown-lexer
           xstatic-pygments
-          pandas
-          jupyter
+#          pandas
+#          jupyter
           xonsh
           virtualenvwrapper
         ]))
@@ -97,15 +98,17 @@ in
         psensor
         firefox
         chromium
-        vscode
+#        vscode
         sublime
-        slack
+#        slack
         vlc
         filezilla
         openvpn
         gpicview
         home-manager
-        mc
+        fzf
+        fd
+        bat
         skypeforlinux
         zathura
         mpv
@@ -114,7 +117,7 @@ in
         gcc gnumake
         gnupg
         spotify
-
+        bookworm
       ];
     };
   };

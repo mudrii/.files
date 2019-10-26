@@ -117,7 +117,6 @@ in
         openvpn
         gpicview
         home-manager
-        mc
         fzf
         bat
         fd

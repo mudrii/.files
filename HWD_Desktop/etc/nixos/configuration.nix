@@ -44,18 +44,15 @@ in
       grub.enableCryptodisk = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "kvm-intel" ];
-#    initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-#    initrd.kernelModules = [ ];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
 
-  powerManagement = {
-    enable = true;
+#  powerManagement = {
+#    enable = true;
 #    powertop.enable = true;
 #    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
-  };
+#  };
 
   networking = {
     hostName = "nixos";
@@ -142,7 +139,7 @@ in
       enable = true;
       nssmdns = true;
     };
- #   blueman.enable = true;
+    blueman.enable = true;
   };
 
   # Enable sound.

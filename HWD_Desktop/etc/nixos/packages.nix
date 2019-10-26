@@ -33,6 +33,7 @@ in
     nix-review
     nix-prefetch-git 
     nix-prefetch-scripts
+    mc
     traceroute
     whois
     nmap
@@ -68,6 +69,7 @@ in
     s-tui
     stress-ng
     tpacpi-bat
+    tlp
     cpufrequtils
     msr-tools
     nvtop

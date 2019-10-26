@@ -22,11 +22,11 @@ in
 #    };
 #  };
 
-#  nixpkgs.config.packageOverrides = pkgs: {
-#    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-#      inherit pkgs;
-#    };
-#  };
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     nix-index
@@ -69,6 +69,7 @@ in
     s-tui
     stress-ng
     tpacpi-bat
+    tlp
     cpufrequtils
     msr-tools
     sshfs
@@ -76,16 +77,14 @@ in
     dmidecode
     fwupd
     ncdu
-    fzf
-    fd
-    bat
     pass encfs 
     ripgrep-all
     networkmanager
+    wirelesstools
     blueman
     bluez
     bluez-tools
-
+    mtr
   ];
 
 }

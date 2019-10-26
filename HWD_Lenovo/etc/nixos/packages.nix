@@ -85,7 +85,7 @@ in
     blueman
     bluez
     bluez-tools
-
+    mtr
   ];
 
 }

@@ -52,7 +52,6 @@ in
         ffmpeg-full
 #        ffmpegthumbnailer
         mupdf
-        poppler_utils
         tmux
         keychain
         unstable.google-cloud-sdk-gce
@@ -71,7 +70,7 @@ in
 #        go
         kubectx
         dep
-#        (terraform.withPlugins(p: with p; [
+#        (unstable.terraform.withPlugins(p: with p; [
 #          archive
 #          aws
 #          external

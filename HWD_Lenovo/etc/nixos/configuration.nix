@@ -4,6 +4,12 @@
 
 { config, pkgs, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -51,7 +57,7 @@
 #  };
 
   networking = {
-    hostName = "desktop-nixos";
+    hostName = "lenovo-nixos";
     networkmanager.enable = true;
   # Enables wireless support via wpa_supplicant.
 #    wireless.enable = true;  
@@ -105,6 +111,8 @@
     fish.enable = true;
     vim.defaultEditor = true;
     bash.enableCompletion = true;
+    mtr.enable = true;
+    gnupg.agent = { enable = true; enableSSHSupport = true; };
   };
 
   nixpkgs.config = {
@@ -122,7 +130,7 @@
   # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ pkgs.epson-escpr ];
+      drivers = [ unstable.pkgs.epson-escpr ];
     };
     avahi = {
       enable = true;

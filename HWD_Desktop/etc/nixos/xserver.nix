@@ -1,5 +1,11 @@
 { config, lib, pkgs, callPackage, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+
 {
 #  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
 #  environment.systemPackages = with pkgs; [ xorg.xbacklight ];
@@ -49,7 +55,6 @@
           networkmanager_dmenu
           arandr
           escrotum
- 
         ];
       };
     };

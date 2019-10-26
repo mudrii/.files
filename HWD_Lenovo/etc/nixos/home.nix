@@ -20,6 +20,7 @@
           nerdtree
           ctrlp-vim
           vim-fugitive
+          fzf-vim
         ];
         settings = { ignorecase = true; };
         extraConfig = builtins.readFile dotfiles/.vimrc;
@@ -32,6 +33,7 @@
           nerdtree
           ctrlp-vim
           vim-fugitive
+          fzf-vim
         ];
         extraConfig = builtins.readFile dotfiles/.vimrc;
       };
@@ -79,21 +81,21 @@
       ".nanorc".source = dotfiles/.nanorc;
       ".Xresources".source = dotfiles/.Xresources;
       ".config/neofetch/config.conf".source  = dotfiles/config.conf;
-      ".config/i3/config".source  = dotfiles/config;
-      ".config/i3status-rs/config.toml".source  = dotfiles/config.toml;
-      ".config/networkmanager-dmenu/config.ini".source  = dotfiles/config.ini;
-      ".config/conky/conky.conf".source  = dotfiles/conky.conf;
-      ".config/nixpkgs/config.nix".source  = dotfiles/config.nix;
-      ".config/ranger/commands_full.py".source  = dotfiles/ranger/commands_full.py;
-      ".config/ranger/commands.py".source  = dotfiles/ranger/commands.py;
-      ".config/ranger/rc.conf".source  = dotfiles/ranger/rc.conf;
-      ".config/ranger/rifle.conf".source  = dotfiles/ranger/rifle.conf;
-      ".config/ranger/scope.sh".source  = dotfiles/ranger/scope.sh;
-      ".config/fish/config.fish".source  = dotfiles/fish/config.fish;
-      ".config/fish/functions/a.fish".source  = dotfiles/fish/a.fish;
-      ".config/fish/functions/ccat.fish".source  = dotfiles/fish/ccat.fish;
-      ".config/fish/functions/ccd.fish".source  = dotfiles/fish/ccd.fish;
-      ".config/fish/functions/cp.fish".source  = dotfiles/fish/cp.fish;
+      ".config/i3/config".source = dotfiles/config;
+      ".config/i3status-rs/config.toml".source = dotfiles/config.toml;
+      ".config/networkmanager-dmenu/config.ini".source = dotfiles/config.ini;
+      ".config/conky/conky.conf".source = dotfiles/conky.conf;
+      ".config/nixpkgs/config.nix".source = dotfiles/config.nix;
+      ".config/ranger/commands_full.py".source = dotfiles/ranger/commands_full.py;
+      ".config/ranger/commands.py".source = dotfiles/ranger/commands.py;
+      ".config/ranger/rc.conf".source = dotfiles/ranger/rc.conf;
+      ".config/ranger/rifle.conf".source = dotfiles/ranger/rifle.conf;
+      ".config/ranger/scope.sh".source = dotfiles/ranger/scope.sh;
+      ".config/fish/config.fish".source = dotfiles/fish/config.fish;
+      ".config/fish/functions/a.fish".source = dotfiles/fish/a.fish;
+      ".config/fish/functions/ccat.fish".source = dotfiles/fish/ccat.fish;
+      ".config/fish/functions/ccd.fish".source = dotfiles/fish/ccd.fish;
+      ".config/fish/functions/cp.fish".source = dotfiles/fish/cp.fish;
       ".config/fish/functions/diff.fish".source = dotfiles/fish/diff.fish;
       ".config/fish/functions/dmesg.fish".source = dotfiles/fish/dmesg.fish;
       ".config/fish/functions/egrep.fish".source = dotfiles/fish/egrep.fish;

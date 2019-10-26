@@ -1,5 +1,11 @@
 { config, lib, pkgs, callPackage, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+
 {
 
   hardware = {

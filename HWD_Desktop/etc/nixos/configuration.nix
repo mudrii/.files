@@ -44,6 +44,7 @@ in
       grub.enableCryptodisk = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
+    blacklistedKernelModules = ["nouveau"];
 #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
   };
@@ -55,7 +56,7 @@ in
 #  };
 
   networking = {
-    hostName = "nixos";
+    hostName = "desktop-nixos";
     networkmanager.enable = true;
     useDHCP = false;
     interfaces = {
@@ -131,6 +132,7 @@ in
       enable = true;
       permitRootLogin = "no";
     };
+  # Enable CUPS to print documents.
     printing = {
       enable = true;
       drivers = [ unstable.pkgs.epson-escpr ];

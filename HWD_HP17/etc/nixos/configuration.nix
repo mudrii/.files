@@ -4,6 +4,12 @@
 
 { config, pkgs, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -38,12 +44,11 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  powerManagement = {
-    enable = true;
-#   powertop.enable = true;
-#    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
-  };
-
+#  powerManagement = {
+#    enable = true;
+##   powertop.enable = true;
+##    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+#  };
 
   networking = {
     hostName = "hp-nixos";
@@ -88,6 +93,8 @@
     fish.enable = true;
     vim.defaultEditor = true;
     bash.enableCompletion = true;
+    mtr.enable = true;
+    gnupg.agent = { enable = true; enableSSHSupport = true; };
   };
 
   nixpkgs.config = {
@@ -105,7 +112,7 @@
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ pkgs.epson-escpr ];
+      drivers = [ unstable.pkgs.epson-escpr ];
     };
     avahi = {
       enable = true;

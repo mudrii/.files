@@ -48,14 +48,16 @@ in
         elinks
         mediainfo
         w3m
-        ffmpegthumbnailer
+        ffmpeg-full
+#        ffmpegthumbnailer
         mupdf
         poppler_utils
         tmux
         keychain
         unstable.google-cloud-sdk-gce
         unstable.awscli
-        unstable.terraform_0_12
+        unstable.terraform
+        unstable.terraform-lsp
         unstable.tflint
         unstable.kubernetes
         unstable.go

@@ -1,5 +1,11 @@
 { config, lib, pkgs, callPackage, ... }:
 
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+
 {
 #  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
 #  environment.systemPackages = with pkgs; [ xorg.xbacklight ];
@@ -62,6 +68,7 @@
           i3status-rust
           i3-gaps
           rofi
+          numlockx
 #          conky
           rxvt_unicode-with-plugins
           urxvt_perls
@@ -72,7 +79,6 @@
           networkmanager_dmenu
           arandr
           escrotum
- 
         ];
       };
     };

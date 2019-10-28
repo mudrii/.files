@@ -27,7 +27,7 @@ interval = 5
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}% {frequency}GHz"
+format = "{utilization}% {frequency}GHz {barchart}"
 info = 30
 warning = 60
 critical = 95

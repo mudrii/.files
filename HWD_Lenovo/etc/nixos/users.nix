@@ -90,6 +90,7 @@ in
           pygments
           pygments-markdown-lexer
           xstatic-pygments
+          pylint
           pandas
           jupyter
           xonsh

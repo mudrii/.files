@@ -78,6 +78,7 @@ in
     vdpauinfo
     dmidecode
     fwupd
+    fwupdate
     ncdu
     pass encfs 
     ripgrep-all

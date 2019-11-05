@@ -92,6 +92,7 @@ in
           xstatic-pygments
           pylint
           pandas
+          numpy
           jupyter
           xonsh
           virtualenvwrapper
@@ -101,6 +102,7 @@ in
 #        python37Packages.powerline
 #        python37Packages.pygments
         git
+        git-lfs
         neovim
         asciinema
         highlight

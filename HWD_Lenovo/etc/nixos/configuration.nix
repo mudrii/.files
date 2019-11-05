@@ -149,6 +149,8 @@ in
       '';
     };
     blueman.enable = true;
+    fwupd.enable = true;
+    dbus.packages = [ pkgs.fwupd ];
   };
 
   # TPM has hardware RNG

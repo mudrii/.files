@@ -145,6 +145,9 @@ in
     };
     blueman.enable = true;
     fwupd.enable = true;
+#    dbus.packages = with pkgs; [ fwupd ];
+    dbus.packages = [ pkgs.fwupd ];
+
   };
 
   # Enable sound.

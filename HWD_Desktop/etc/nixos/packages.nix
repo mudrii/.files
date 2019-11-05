@@ -34,6 +34,11 @@ in
     nix-prefetch-git 
     nix-prefetch-scripts
     nixFlakes
+    patchelf
+    binutils
+    cryptsetup
+    dstat
+    gptfdisk
     mc
     traceroute
     whois
@@ -88,6 +93,10 @@ in
     bluez
     bluez-tools
     mtr
+    nftables
+    psmisc
+    ripgrep-all
+    tcpdump
   ];
 
 }

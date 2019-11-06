@@ -99,6 +99,12 @@ in
     psmisc
     ripgrep-all
     tcpdump
+    ethtool
+    bmon
+    inetutils
+    socat
+    iptables
+    nload
   ];
 
 }

@@ -67,6 +67,7 @@ in
 #          i3blocks #if you are planning on using i3blocks over i3status
           i3status-rust
           i3-gaps
+          i3lock-fancy
           rofi
           numlockx
 #          conky

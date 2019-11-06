@@ -23,5 +23,13 @@
     g="gcloud";
     a="aws";
     p="python";
+    gad="git add .";
+    gcm="git commit -a";
+    gdf="git diff";
+    glg="git log --color --graph --pretty --oneline";
+    gl="git log";
+    gpl="git pull";
+    gps="git push";
+    gst="git status";
   };
 }

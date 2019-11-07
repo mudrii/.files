@@ -105,6 +105,7 @@ in
     socat
     iptables
     nload
+    nvme-cli
   ];
 
 }

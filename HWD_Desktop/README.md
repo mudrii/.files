@@ -209,3 +209,18 @@ nix-index
 # locate specific library
 nix-locate -1 -w lib/ld-linux-x86-64.so.2
 
+# Bulk update
+
+sudo nix-channel --update ; sudo nixos-rebuild switch ; nix-channel --update ; nixos-rebuild switch ; sudo nix-store --optimise -v ; nix-store --optimise -v ; sudo nix-collect-garbage -d ; nix-collect-garbage -d
+
+# Update only user
+nix-channel --update
+sudo nixos-rebuild switch
+nix-store --optimise -v
+nix-collect-garbage -d
+
+# Update only root
+sudo nix-channel --update
+sudo nixos-rebuild switch
+sudo nix-store --optimise -v
+sudo nix-collect-garbage -d

@@ -11,6 +11,7 @@
 # sudo nix-channel --update unstable
 # sudo nix-channel --update nixos
 # sudo nix-channel --list
+
 let
   unstable = import <unstable> { 
     config.allowUnfree = true; 
@@ -65,7 +66,7 @@ in
         unstable.zoom-us
 #        google-cloud-sdk-gce
 #        awscli
-#        terraform_0_12
+#        terraform
 #        kubernetes
 #        go
         kubectx

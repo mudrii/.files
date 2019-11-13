@@ -113,7 +113,7 @@ in
         psensor
         firefox
         chromium
-        vscode
+        unstable.vscode
         sublime
         slack
         vlc

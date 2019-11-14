@@ -71,6 +71,7 @@ in
           rofi
           numlockx
 #          conky
+#          rxvt_unicode
           rxvt_unicode-with-plugins
           urxvt_perls
           urxvt_font_size

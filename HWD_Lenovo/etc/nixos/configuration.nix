@@ -27,8 +27,8 @@ in
 
   hardware = {
     cpu.intel.updateMicrocode = true;
-#    enableRedistributableFirmware = true;
-    enableAllFirmware = true;
+    enableRedistributableFirmware = true;
+#    enableAllFirmware = true;
     bluetooth.enable = true;
     pulseaudio = {
       enable = true;

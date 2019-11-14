@@ -50,7 +50,6 @@ in
         mediainfo
         w3m
         ffmpeg-full
-#        ffmpegthumbnailer
         mupdf
         tmux
         keychain
@@ -63,11 +62,17 @@ in
         unstable.go
         unstable.xmind
         unstable.zoom-us
-#        google-cloud-sdk-gce
-#        awscli
-#        terraform_0_12
-#        kubernetes
-#        go
+#        (with unstable [
+#          google-cloud-sdk-gce
+#          awscli
+#          terraform
+#          terraform-lsp
+#          tflint
+#          kubernetes
+#          go
+#          xmind
+#          zoom-us
+#        ]);
         kubectx
         dep
 #        (unstable.terraform.withPlugins(p: with p; [
@@ -112,7 +117,7 @@ in
         psensor
         firefox
         chromium
-        vscode
+        unstable.vscode
         sublime
         slack
         vlc
@@ -136,7 +141,9 @@ in
           mediaSupport = true;
           pulseaudioSupport = true;
         })        
-
+        keepassxc
+        openconnect_openssl
+        networkmanager-openconnect
       ];
     };
   };

@@ -62,17 +62,7 @@ in
         unstable.go
         unstable.xmind
         unstable.zoom-us
-#        (with unstable [
-#          google-cloud-sdk-gce
-#          awscli
-#          terraform
-#          terraform-lsp
-#          tflint
-#          kubernetes
-#          go
-#          xmind
-#          zoom-us
-#        ]);
+#        (unstable [ zoom-us ])
         kubectx
         dep
 #        (unstable.terraform.withPlugins(p: with p; [

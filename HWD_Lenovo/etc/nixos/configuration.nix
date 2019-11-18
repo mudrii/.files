@@ -29,7 +29,10 @@ in
     cpu.intel.updateMicrocode = true;
     enableRedistributableFirmware = true;
 #    enableAllFirmware = true;
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluezFull;
+    };
     pulseaudio = {
       enable = true;
       support32Bit = true;

@@ -38,7 +38,14 @@ in
 
       layout = "us";
       xkbOptions = "eurosign:e";
-      libinput.enable = true;
+      libinput = {
+        enable = true;
+        disableWhileTyping = true;
+        naturalScrolling = true;
+        additionalOptions = ''
+          Option "PalmDetection" "True"
+        '';
+      };
       desktopManager = {
         default = "none";
         xterm.enable = false;

@@ -134,6 +134,7 @@ in
         keepassxc
         openconnect_openssl
         networkmanager-openconnect
+        unstable.riot-desktop
       ];
     };
   };

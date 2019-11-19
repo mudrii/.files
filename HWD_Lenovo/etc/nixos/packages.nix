@@ -31,6 +31,8 @@ in
   environment.systemPackages = with pkgs; [
     nix-index
     nix-review
+    nixpkgs-fmt
+    nix-prefetch-github
     nix-prefetch-git 
     nix-prefetch-scripts
     nixFlakes

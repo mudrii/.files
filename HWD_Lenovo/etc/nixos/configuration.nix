@@ -153,6 +153,7 @@ in
     };
     blueman.enable = true;
     fwupd.enable = true;
+    fstrim.enable = true;
     dbus.packages = [ pkgs.fwupd ];
   };
 

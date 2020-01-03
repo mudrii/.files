@@ -41,7 +41,7 @@ in
       libinput = {
         enable = true;
         disableWhileTyping = true;
-        naturalScrolling = true;
+        naturalScrolling = false;
         additionalOptions = ''
           Option "PalmDetection" "True"
         '';

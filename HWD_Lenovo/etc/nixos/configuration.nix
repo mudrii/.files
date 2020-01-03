@@ -151,6 +151,8 @@ in
         ENERGY_PERF_POLICY_ON_BAT=power
       '';
     };
+#    localtime.enable = true;
+    timesyncd.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
     fstrim.enable = true;

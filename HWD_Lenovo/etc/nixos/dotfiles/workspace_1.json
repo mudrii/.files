@@ -1,0 +1,25 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1371,
+       "width": 2538,
+       "x": 0,
+       "y": 0
+    },
+    "name": "How Operating Systems Work: 10 Concepts you Should Know as a Developer - Mozilla Firefox",
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^Firefox$",
+        "instance": "^Navigator$",
+       // "title": "^How\\ Operating\\ Systems\\ Work\\:\\ 10\\ Concepts\\ you\\ Should\\ Know\\ as\\ a\\ Developer\\ \\-\\ Mozilla\\ Firefox$",
+        "window_role": "^browser$",
+        "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+

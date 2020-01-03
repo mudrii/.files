@@ -1,0 +1,25 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1371,
+       "width": 2538,
+       "x": 11,
+       "y": 58
+    },
+    "name": "OKR: Definition and examples of John Doerr's goal-setting system | Measure What Matters - Chromium",
+    "percent": 1,
+    "swallows": [
+       {
+       "class": "^Chromium\\-browser$",
+       "instance": "^chromium\\-browser$",
+       // "title": "^OKR\\:\\ Definition\\ and\\ examples\\ of\\ John\\ Doerr\\'s\\ goal\\-setting\\ system\\ \\|\\ Measure\\ What\\ Matters\\ \\-\\ Chromium$",
+       "window_role": "^browser$",
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+

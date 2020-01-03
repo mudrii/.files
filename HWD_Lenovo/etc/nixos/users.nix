@@ -53,8 +53,10 @@ in
         mupdf
         tmux
         keychain
+        unstable.minio-client
         unstable.google-cloud-sdk-gce
         unstable.awscli
+        unstable.pulumi-bin
         unstable.terraform
         unstable.terraform-lsp
         unstable.tflint
@@ -108,7 +110,7 @@ in
         firefox
         chromium
         unstable.vscode
-        sublime
+        unstable.sublime3
         slack
         vlc
         filezilla

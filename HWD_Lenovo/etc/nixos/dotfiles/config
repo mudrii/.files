@@ -271,11 +271,11 @@ exec_always --no-startup-id numlockx on
 assign [class=Firefox] 1
 assign [class=Chromium] 3
 assign [class=Slack] 4
-assign [class=zoom-us] 4
+assign [class="^zoom$"] 4
 assign [class=riot-desktop] 4
 assign [class="^eddie-ui$"] 5
-assign [class=sublime] 2
-assign [class="^code$"] 2
+assign [class="^sublime_text$"] 6
+assign [class="^Code$"] 2
 assign [class="^vlc$"] 6
 assign [class="^spotify$"] 10
 # fix for spotify not moving to workspace 10
@@ -286,8 +286,8 @@ for_window [class="spotify"] move to workspace 10
 #for_window [class="^Slack$"] floating enable
 #assign [class="^Firefox$"] 1
 
-for_window [class=URxvt|firefox|chromium|vlc|slack|zoom-us|Riot] focus
-for_window [class=zoom-us|Slack|Riot|arandr|psensor|pavucontrol|nvidia-settings] floating enable
+for_window [class=URxvt|Firefox|Chromium|vlc|Slack|zoom|Riot] focus
+for_window [class=zoom|Slack|Riot|arandr|psensor|pavucontrol|nvidia-settings] floating enable
 
 # exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
 

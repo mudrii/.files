@@ -1,0 +1,26 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1371,
+       "width": 2538,
+       "x": 11,
+       "y": 58
+    },
+    "name": "CODEOWNERS - monohooq - Visual Studio Code",
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^Code$",
+        "instance": "^code$",
+       // "title": "^CODEOWNERS\\ \\-\\ monohooq\\ \\-\\ Visual\\ Studio\\ Code$",
+        "window_role": "^browser\\-window$",
+        "transient_for": "^$"
+
+       }
+    ],
+    "type": "con"
+}
+

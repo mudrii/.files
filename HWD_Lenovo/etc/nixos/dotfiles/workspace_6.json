@@ -1,0 +1,46 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1371,
+       "width": 2538,
+       "x": 11,
+       "y": 58
+    },
+    "name": "Passwords.kdbx [Locked] - KeePassXC",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^keepassxc$",
+       "instance": "^keepassxc$",
+       // "title": "^Passwords\\.kdbx\\ \\[Locked\\]\\ \\-\\ KeePassXC$"
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1371,
+       "width": 1265,
+       "x": 1282,
+       "y": 58
+    },
+    "name": "untitled - Sublime Text (UNREGISTERED)",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^Sublime_text$",
+       "instance": "^sublime_text$",
+       // "title": "^untitled\\ \\-\\ Sublime\\ Text\\ \\(UNREGISTERED\\)$"
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}

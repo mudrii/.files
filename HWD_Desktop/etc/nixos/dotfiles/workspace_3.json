@@ -1,0 +1,49 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1531,
+       "width": 1272,
+       "x": 1924,
+       "y": 58
+    },
+    "name": "Amazon Web Services Sign-In - Chromium",
+    "percent": 0.75,
+    "swallows": [
+       {
+       "class": "^Chromium\\-browser$",
+       "instance": "^chromium\\-browser$",
+       // "title": "^Amazon\\ Web\\ Services\\ Sign\\-In\\ \\-\\ Chromium$",
+       "window_role": "^browser$",
+       "transient_for": "^$"
+
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1600,
+       "width": 2164,
+       "x": 0,
+       "y": 0
+    },
+    "name": "mudrii@desktop-nixos fish /home/mudrii",
+    "percent": 0.25,
+    "swallows": [
+       {
+       "class": "^URxvt$",
+       "instance": "^urxvt$",
+       // "title": "^mudrii\\@desktop\\-nixos\\ fish\\ \\/home\\/mudrii$"
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+

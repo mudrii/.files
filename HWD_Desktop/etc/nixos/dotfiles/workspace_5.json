@@ -1,0 +1,47 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1600,
+       "width": 2164,
+       "x": 0,
+       "y": 0
+    },
+    "name": "ranger",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^URxvt$",
+       "instance": "^urxvt$",
+       // "title": "^ranger$"
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1600,
+       "width": 2164,
+       "x": 0,
+       "y": 0
+    },
+    "name": "mudrii@desktop-nixos tmux /home/mudrii/src/.files/HWD_Lenovo/etc/nixos/dotfiles",
+    "percent": 0.5,
+    "swallows": [
+       {
+       "class": "^URxvt$",
+       "instance": "^urxvt$",
+       // "title": "^mudrii\\@desktop\\-nixos\\ tmux\\ \\/home\\/mudrii\\/src\\/\\.files\\/HWD_Lenovo\\/etc\\/nixos\\/dotfiles$"
+       "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+

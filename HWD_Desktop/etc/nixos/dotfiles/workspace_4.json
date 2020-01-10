@@ -1,0 +1,119 @@
+// vim:ts=4:sw=4:et
+{
+    // floating_con with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 986,
+       "width": 1540,
+       "x": 110,
+       "y": 147
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 960,
+               "width": 1536,
+               "x": 107,
+               "y": 100
+            },
+            "name": "Slack | engineers | HOOQ | 22 new items",
+            "percent": 1,
+            "swallows": [
+               {
+               "class": "^Slack$",
+               "instance": "^slack$",
+               // "title": "^Slack\\ \\|\\ engineers\\ \\|\\ HOOQ\\ \\|\\ 22\\ new\\ items$",
+               "window_role": "^browser\\-window$",
+               "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 626,
+       "width": 380,
+       "x": 1685,
+       "y": 188
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 600,
+               "width": 376,
+               "x": 0,
+               "y": 0
+            },
+            "name": "Zoom - Pro Account",
+            "percent": 1,
+            "swallows": [
+               {
+               "class": "^zoom$",
+               "instance": "^zoom$",
+               // "title": "^Zoom\\ \\-\\ Pro\\ Account$"
+               "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 981,
+       "width": 1543,
+       "x": 2099,
+       "y": 180
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 768,
+               "width": 1024,
+               "x": 1408,
+               "y": 416
+            },
+            "name": "Riot [1] | #nixos",
+            "percent": 1,
+            "swallows": [
+               {
+               // "class": "^Riot$",
+               // "instance": "^riot$",
+               // "title": "^Riot\\ \\[1\\]\\ \\|\\ \\#nixos$",
+               // "window_role": "^browser\\-window$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

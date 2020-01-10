@@ -55,6 +55,7 @@ in
         poppler_utils
         tmux
         keychain
+        unstable.pulumi-bin
         unstable.google-cloud-sdk-gce
         unstable.awscli
         unstable.terraform
@@ -87,15 +88,14 @@ in
         (unstable.python3.withPackages(ps: with ps; [
           pip
           virtualenv
+          virtualenvwrapper
           powerline
           pygments
           pygments-markdown-lexer
           xstatic-pygments
           pylint
-          pandas
-          jupyter
-          xonsh
-          virtualenvwrapper
+#          pandas
+#          jupyter
         ]))
 #        python37Packages.pip
 #        python37Packages.virtualenv
@@ -114,7 +114,7 @@ in
         firefox
         chromium
         unstable.vscode
-        sublime
+        unstable.sublime3
         slack
         vlc
         filezilla
@@ -137,7 +137,8 @@ in
           mediaSupport = true;
           pulseaudioSupport = true;
         })
-
+        unstable.keepassxc
+        unstable.riot-desktop
       ];
     };
   };

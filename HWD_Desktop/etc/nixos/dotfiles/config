@@ -269,14 +269,15 @@ exec_always --no-startup-id numlockx on
 
 # Assign application to start on a specific workspace xprop
 assign [class=Firefox] 1
-assign [class=chromium] 3
+assign [class=Chromium] 3
 assign [class=Slack] 4
-assign [class=zoom-us] 4
+assign [class="^zoom$"] 4
+assign [class=riot-desktop] 4
 assign [class="^eddie-ui$"] 5
-assign [class=sublime] 3
+assign [class="^sublime_text$"] 6
 assign [class="^Code$"] 2
-assign [class="^Vlc$"] 6
-assign [class="^Spotify$"] 10
+assign [class="^vlc$"] 6
+assign [class="^spotify$"] 10
 # fix for spotify not moving to workspace 10
 for_window [class="Spotify"] move to workspace 10
 
@@ -284,8 +285,8 @@ for_window [class="Spotify"] move to workspace 10
 # for_window [class="(?i)mplayer"] floating enable
 #assign [class="^Firefox$"] 1
 
-for_window [class=URxvt|Firefox|Chromium|vlc|Slack|zoom-us|eddie-ui] focus
-for_window [class=zoom-us|Slack|eddie-ui|arandr|psensor|Pavucontrol|nvidia-settings] floating enable
+for_window [class=URxvt|Firefox|Chromium|vlc|Slack|zoom|Riot] focus
+for_window [class=zoom|Slack|Riot|arandr|psensor|pavucontrol|nvidia-settings] floating enable
 
 #for_window [class="^zoom$"] floating enable
 #for_window [class="^Slack$"] floating enable

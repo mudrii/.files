@@ -109,7 +109,7 @@ in
         fzf
         fd
         bat
-        skypeforlinux
+        unstable.skypeforlinux
         zathura
         mpv
         feh
@@ -118,10 +118,10 @@ in
         gnupg
         spotify
         bookworm
-        (unstable.tor-browser-bundle-bin.override {
-          mediaSupport = true;
-          pulseaudioSupport = true;
-        })
+#        (unstable.tor-browser-bundle-bin.override {
+#          mediaSupport = true;
+#          pulseaudioSupport = true;
+#        })
       ];
     };
   };

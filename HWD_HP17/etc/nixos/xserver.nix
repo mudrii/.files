@@ -35,9 +35,11 @@ in
       displayManager = {
         lightdm = {
           enable = true;
-          greeter.enable = false;
-          autoLogin.enable = true;
-          autoLogin.user = "irutsu";
+          greeter.enable = true;
+          autoLogin.enable = false;
+#          greeter.enable = false;
+#          autoLogin.enable = true;
+#          autoLogin.user = "irutsu";
         };
       };
 
@@ -50,6 +52,7 @@ in
           i3lock #default i3 screen locker
           i3status-rust
           i3-gaps
+          i3lock-fancy
           rofi
 #          conky
 #          rxvt_unicode

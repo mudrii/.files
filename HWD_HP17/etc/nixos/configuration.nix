@@ -131,6 +131,8 @@ in
       '';
     };
     blueman.enable = true;
+    fwupd.enable = true;
+    dbus.packages = [ pkgs.fwupd ];
   };
 
   # Enable CUPS to print documents.

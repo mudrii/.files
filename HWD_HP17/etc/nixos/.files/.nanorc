@@ -1,5 +1,0 @@
-#set autoindent
-unset backup
-set nonewlines
-set tabsize 4
-set nowrap

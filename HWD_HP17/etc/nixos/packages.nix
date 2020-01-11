@@ -33,6 +33,12 @@ in
     nix-review
     nix-prefetch-git 
     nix-prefetch-scripts
+    nixFlakes
+    patchelf
+    binutils
+    cryptsetup
+    dstat
+    gptfdisk
     mc
     traceroute
     whois
@@ -76,8 +82,10 @@ in
     vdpauinfo
     dmidecode
     fwupd
+    fwupdate
     ncdu
     pass encfs 
+    linuxPackages.perf
     ripgrep-all
     networkmanager
     wirelesstools
@@ -85,6 +93,18 @@ in
     bluez
     bluez-tools
     mtr
+    nftables
+    psmisc
+    ripgrep-all
+    tcpdump
+    ethtool
+    bmon
+    inetutils
+    socat
+    iptables
+    nload
+    nvme-cli
+
   ];
 
 }

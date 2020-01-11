@@ -27,7 +27,7 @@ interval = 5
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization}% {frequency}GHz {barchart}"
+format = "{utilization}% {frequency}GHz"
 info = 30
 warning = 60
 critical = 95
@@ -47,6 +47,13 @@ info = 70
 warning = 90
 format = "{max}° cpu"
 chip = "coretemp-isa-0000"
+
+[[block]]
+block = "nvidia_gpu"
+label = "RTX"
+show_memory = false
+show_clocks = false
+interval = 1
 
 [[block]]
 block = "net"

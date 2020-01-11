@@ -83,16 +83,16 @@ in
         (unstable.python3.withPackages(ps: with ps; [
           pip
           virtualenv
+          virtualenvwrapper
           powerline
           pygments
           pygments-markdown-lexer
           xstatic-pygments
           pylint
-          pandas
+          pycuda
+#          pandas
           numpy
           jupyter
-          xonsh
-          virtualenvwrapper
         ]))
 #        python37Packages.pip
 #        python37Packages.virtualenv

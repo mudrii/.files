@@ -49,12 +49,25 @@ format = "{max}° cpu"
 chip = "coretemp-isa-0000"
 
 [[block]]
+block = "nvidia_gpu"
+label = "GTX 780"
+show_temperature = true
+show_fan_speed = false
+show_memory = false
+show_clocks = false
+show_utilization = false
+show_clocks = false
+interval = 1
+
+[[block]]
 block = "net"
 device = "wlp0s20u9u3"
 ssid = true
 interval = 5
 speed_up = false
 speed_down = false
+hide_missing = true
+hide_inactive = true
 
 [[block]]
 block = "net"
@@ -64,6 +77,8 @@ interval = 5
 speed_up = false
 speed_down = false
 ip = true
+hide_missing = true
+hide_inactive = true
 
 [[block]]
 block = "sound"

@@ -111,7 +111,13 @@ in
   };
 
   programs = {
-    fish.enable = true;
+    fish = {
+      enable = true;
+      vendor ={ 
+        completions.enable = true;
+        config.enable = true;
+      };
+    };
     vim.defaultEditor = true;
     bash.enableCompletion = true;
     mtr.enable = true;

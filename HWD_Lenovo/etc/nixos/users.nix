@@ -89,8 +89,7 @@ in
           pygments-markdown-lexer
           xstatic-pygments
           pylint
-          pycuda
-#          pandas
+          pandas
           numpy
           jupyter
         ]))
@@ -98,6 +97,7 @@ in
 #        python37Packages.virtualenv
 #        python37Packages.powerline
 #        python37Packages.pygments
+#        python37Packages.pycuda
         git
         git-lfs
         neovim
@@ -129,14 +129,15 @@ in
         gnupg
         spotify
         bookworm
-        (unstable.tor-browser-bundle-bin.override {
-          mediaSupport = true;
-          pulseaudioSupport = true;
-        })        
-        keepassxc
+#        (unstable.tor-browser-bundle-bin.override {
+#          mediaSupport = true;
+#          pulseaudioSupport = true;
+#        })        
+        unstable.keepassxc
         openconnect_openssl
         networkmanager-openconnect
         unstable.riot-desktop
+        unstable.ansible
       ];
     };
   };

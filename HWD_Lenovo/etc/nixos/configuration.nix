@@ -118,6 +118,16 @@ in
         config.enable = true;
       };
     };
+
+    nano.nanorc = ''
+      unset backup
+      set nonewlines
+      set nowrap
+      set tabstospaces
+      set tabsize 4
+      set constantshow
+    '';
+
     vim.defaultEditor = true;
     bash.enableCompletion = true;
     mtr.enable = true;
@@ -132,19 +142,23 @@ in
 
   # Enable the OpenSSH daemon.
   services = {
+
     openssh = { 
         enable = true;
         permitRootLogin = "no";
     };
+
   # Enable CUPS to print documents.
     printing = {
       enable = true;
       drivers = [ unstable.pkgs.epson-escpr ];
     };
+
     avahi = {
       enable = true;
       nssmdns = true;
     };
+
     tlp = {
       enable = true;
       extraConfig = ''
@@ -157,12 +171,48 @@ in
         ENERGY_PERF_POLICY_ON_BAT=power
       '';
     };
+
 #    localtime.enable = true;
     timesyncd.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
     fstrim.enable = true;
     dbus.packages = [ pkgs.fwupd ];
+
+    locate = {
+      enable = true;
+      locate = pkgs.mlocate;
+      localuser = null; # mlocate does not support this option so it must be null
+      # interval = "daily";
+      interval = "hourly";
+      pruneNames = [
+        ".git"
+        "cache"
+        ".cache"
+        ".cpcache"
+        ".aot_cache"
+        ".boot"
+        "node_modules"
+        "USB"
+      ];
+      prunePaths = [
+	"/tmp" 
+	"/var/tmp" 
+	"/var/cache" 
+	"/var/lock" 
+	"/var/run" 
+	"/var/spool" 
+	"/nix/store"
+        "/dev"
+        "/lost+found"
+        "/nix/var"
+        "/proc"
+        "/run"
+        "/sys"
+        "/usr/tmp"
+      ];
+    };
+
   };
 
   # TPM has hardware RNG

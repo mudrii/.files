@@ -8,10 +8,12 @@
 
   home-manager.users.mudrii = {
     programs = {
+
       home-manager = {
         enable = true;
         path = [ pkgs.user-environment ];
       };
+
       vim = {
         enable = true;
         plugins = with pkgs.vimPlugins; [
@@ -25,6 +27,7 @@
         settings = { ignorecase = true; };
         extraConfig = builtins.readFile dotfiles/.vimrc;
       };
+
       neovim = {
         enable = true;
         plugins = with pkgs.vimPlugins; [ 
@@ -37,6 +40,7 @@
         ];
         extraConfig = builtins.readFile dotfiles/.vimrc;
       };
+
       git = {
         enable = true;
         userName  = "mudrii";
@@ -67,7 +71,9 @@
           merge.conflictstyle = "diff3";
         };
       };
+
       direnv.enable = true;
+
     };
 
 #    home.sessionVariables.LESS = "-R";
@@ -78,7 +84,7 @@
       ".dircolors".source = dotfiles/.dircolors;
       ".git-completion.bash".source = dotfiles/.git-completion.bash;
       ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
-      ".nanorc".source = dotfiles/.nanorc;
+#      ".nanorc".source = dotfiles/.nanorc;
       ".Xresources".source = dotfiles/.Xresources;
       ".config/neofetch/config.conf".source  = dotfiles/config.conf;
       ".config/i3/config".source = dotfiles/config;

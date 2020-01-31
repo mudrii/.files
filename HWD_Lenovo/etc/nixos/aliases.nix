@@ -32,6 +32,7 @@
     gps="git push";
     gst="git status";
   };
+
   programs.fish.shellAliases = {
     a="aws";
     ans="ansible";
@@ -71,4 +72,5 @@
     t="terraform";
     vdir="vdir --color=auto";
   }; 
+
 }

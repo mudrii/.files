@@ -1,14 +1,13 @@
 { config, pkgs, ... }:
 
 {
-
   imports = [
     dotfiles/.tmux.conf
   ];
 
   home-manager.users.mudrii = {
     programs = {
-
+      direnv.enable = true;
       home-manager = {
         enable = true;
         path = [ pkgs.user-environment ];
@@ -16,6 +15,8 @@
 
       vim = {
         enable = true;
+        settings = { ignorecase = true; };
+        extraConfig = builtins.readFile dotfiles/.vimrc;
         plugins = with pkgs.vimPlugins; [
           vim-airline
           vim-airline-themes
@@ -24,12 +25,11 @@
           vim-fugitive
           fzf-vim
         ];
-        settings = { ignorecase = true; };
-        extraConfig = builtins.readFile dotfiles/.vimrc;
       };
 
       neovim = {
         enable = true;
+        extraConfig = builtins.readFile dotfiles/.vimrc;
         plugins = with pkgs.vimPlugins; [ 
           vim-airline
           vim-airline-themes
@@ -38,7 +38,6 @@
           vim-fugitive
           fzf-vim
         ];
-        extraConfig = builtins.readFile dotfiles/.vimrc;
       };
 
       git = {
@@ -67,13 +66,11 @@
           pp = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)";
           recent-branches = "branch --sort=-committerdate"; 
         };
+
         extraConfig = {
           merge.conflictstyle = "diff3";
         };
       };
-
-      direnv.enable = true;
-
     };
 
 #    home.sessionVariables.LESS = "-R";
@@ -114,5 +111,4 @@
       ".config/fish/functions/fish_greeting.fish".source = dotfiles/fish/fish_greeting.fish;
     };
   };
-
 }

@@ -1,10 +1,11 @@
 { config, pkgs, ... }:
 
 {
-
   fonts = {
     enableFontDir = true;
+    enableCoreFonts = true;
     enableGhostscriptFonts = true;
+
     fonts = with pkgs; [
       corefonts
       inconsolata

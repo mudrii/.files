@@ -18,7 +18,6 @@ let
 in
 
 {
-
 #  nixpkgs.config = {
 #    packageOverrides = pkgs: {
 #      unstable = import unstableTarball {
@@ -28,7 +27,6 @@ in
 #  };
 
 #  programs.fish.shellInit = "screenfetch";
-  security.sudo.wheelNeedsPassword = false;
 
   users = {
     mutableUsers = false;
@@ -80,6 +78,7 @@ in
 #          template
 #        ]))
         python37Full
+
         (unstable.python3.withPackages(ps: with ps; [
           pip
           virtualenv
@@ -141,5 +140,4 @@ in
       ];
     };
   };
-
 }

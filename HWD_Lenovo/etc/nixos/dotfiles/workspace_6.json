@@ -4,16 +4,16 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1371,
-       "width": 2538,
-       "x": 11,
-       "y": 58
+       "height": 600,
+       "width": 800,
+       "x": 0,
+       "y": 0
     },
     "name": "Passwords.kdbx [Locked] - KeePassXC",
     "percent": 0.5,
     "swallows": [
        {
-       "class": "^keepassxc$",
+       "class": "^KeePassXC$",
        "instance": "^keepassxc$",
        // "title": "^Passwords\\.kdbx\\ \\[Locked\\]\\ \\-\\ KeePassXC$"
        "transient_for": "^$"
@@ -32,15 +32,16 @@
        "x": 1282,
        "y": 58
     },
-    "name": "untitled - Sublime Text (UNREGISTERED)",
+    "name": "~/src/my_docs/corp/Interview_qa.md • (my_docs) - Sublime Text",
     "percent": 0.5,
     "swallows": [
        {
        "class": "^Sublime_text$",
        "instance": "^sublime_text$",
-       // "title": "^untitled\\ \\-\\ Sublime\\ Text\\ \\(UNREGISTERED\\)$"
+       // "title": "^\\~\\/src\\/my_docs\\/corp\\/Interview_qa\\.md\\ \\•\\ \\(my_docs\\)\\ \\-\\ Sublime\\ Text$"
        "transient_for": "^$"
        }
     ],
     "type": "con"
 }
+

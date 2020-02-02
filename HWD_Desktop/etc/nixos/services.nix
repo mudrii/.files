@@ -1,4 +1,4 @@
-{ config, lib, pkgs, callPackage, ... }:
+{ config, options, pkgs, lib, callPackage, ... }:
 
 let
   unstable = import <unstable> {
@@ -7,10 +7,68 @@ let
 in
 
 {
-#  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
-#  environment.systemPackages = with pkgs; [ xorg.xbacklight ];
-
   services = {
+#    localtime.enable = true;
+    blueman.enable = true;
+    fwupd.enable = true;
+    fstrim.enable = true;
+    sysstat.enable = true;  
+
+    timesyncd = {
+      enable = true;
+      servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
+    };
+
+    openssh = {
+      enable = true;
+      permitRootLogin = "no";
+    };
+
+  # Enable CUPS to print documents.
+    printing = {
+      enable = true;
+      drivers = [ unstable.pkgs.epson-escpr ];
+    };
+
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+
+    dbus = {
+      enable = true; 
+      packages = [ pkgs.fwupd ];
+    };
+
+    locate = {
+      enable = true;
+      locate = pkgs.mlocate;
+      localuser = null; # mlocate does not support this option so it must be null
+      # interval = "daily";
+      interval = "hourly";
+
+      pruneNames = [
+        ".git"
+        "cache"
+        ".cache"
+        ".cpcache"
+        ".aot_cache"
+        ".boot"
+        "node_modules"
+        "USB"
+      ];
+
+      prunePaths = options.services.locate.prunePaths.default ++ [
+        "/dev"
+        "/lost+found"
+        "/nix/var"
+        "/proc"
+        "/run"
+        "/sys"
+        "/usr/tmp"
+      ];
+    };
+
     xserver = {
       enable = true;
 #      autorun = false;

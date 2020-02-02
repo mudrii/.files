@@ -4,90 +4,31 @@
 
 { config, pkgs, ... }:
 
-let
-  unstable = import <unstable> {
-    config.allowUnfree = true;
-  };
-in
-
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./hardware.nix
+      ./boot.nix
+      ./networking.nix
+      ./programs.nix
+      ./services.nix
       ./packages.nix
       ./fonts.nix
       ./aliases.nix
-      ./xserver.nix
       ./users.nix
       <home-manager/nixos>
 #      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       ./home.nix
+      ./nix.nix
 #      ./containers.nix      
     ];
-
-  hardware = {
-    cpu.intel.updateMicrocode = true;
-    enableRedistributableFirmware = true;
-#    enableAllFirmware = true;
-#    bluetooth.enable = true;
-    pulseaudio = {
-      enable = true;
-      support32Bit = true;
-      package = pkgs.pulseaudioFull;
-    };
-  };
-
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-      grub.enableCryptodisk = true;
-    };
-    kernelPackages = pkgs.linuxPackages_latest;
-    blacklistedKernelModules = ["nouveau"];
-#    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
-#    kernelParams = [ "nvidia-drm.modeset=1" ];
-  };
 
 #  powerManagement = {
 #    enable = true;
 #    powertop.enable = true;
 #    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
 #  };
-
-  networking = {
-    hostName = "desktop-nixos";
-    networkmanager.enable = true;
-    useDHCP = false;
-    interfaces = {
-      enp3s0f0.useDHCP = true;
-#      enp3s0f1.useDHCP = true;
-#      enp3s0f2.useDHCP = true;
-#      enp3s0f3.useDHCP = true;
-#      wlp0s20u9u2.useDHCP = true;
-    };
-  # Enables wireless support via wpa_supplicant.
-#    wireless.enable = true;  
-  #  Configure network proxy if necessary
-#    proxy.default = "http://user:password@proxy:port/";
-#    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-    nameservers = [ "8.8.8.8" "8.8.4.4" ];
-    enableIPv6 = false;
-#    nat = {
-#      enable = true;
-#      internalInterfaces = ["ve-+"];
-#      externalInterface = "enp3s0f0";
-#    };
-  # Open ports in the firewall.
-    firewall = {
-  # Or disable the firewall altogether.
-      enable = false;
-      allowedTCPPorts = [ 22 80 443 ];
-      allowedUDPPorts = [ 53 ];
-      allowPing = true;
-      trustedInterfaces = [ "docker0" ];
-    };
-  };
 
   # Select internationalisation properties.
   i18n = {
@@ -112,42 +53,11 @@ in
 #    virtualbox.host.enableExtensionPack = true;
   };
 
-  programs = {
-    #bash.shellInit = "neofetch";
-    #fish.shellInit = "neofetch";
-    fish.enable = true;
-    vim.defaultEditor = true;
-    bash.enableCompletion = true;
-    mtr.enable = true;
-    gnupg.agent = { enable = true; enableSSHSupport = true; };
-  };
-
-  nixpkgs.config = {
-    pulseaudio = true;
-    allowBroken = true;
-    allowUnfree = true; 
-  };
-
-  # Enable the OpenSSH daemon.
-  services = {
-    openssh = {
+  security = {
+    sudo = {
       enable = true;
-      permitRootLogin = "no";
+      wheelNeedsPassword = false;
     };
-  # Enable CUPS to print documents.
-    printing = {
-      enable = true;
-      drivers = [ unstable.pkgs.epson-escpr ];
-    };
-    avahi = {
-      enable = true;
-      nssmdns = true;
-    };
-    blueman.enable = true;
-    fwupd.enable = true;
-#    dbus.packages = with pkgs; [ fwupd ];
-    dbus.packages = [ pkgs.fwupd ];
-
   };
 
   # Enable sound.
@@ -163,18 +73,4 @@ in
     enable = true;
     dates = "weekly";
   };
-  
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 10d";
-    };
-    autoOptimiseStore = true;
-    optimise = {
-      automatic = true;
-      dates = [ "weekly" ];
-    };
-  };
-
 }

@@ -103,7 +103,8 @@ in
     socat
     iptables
     nload
-
+    gcc-unwrapped
+    robo3t
   ];
 
 }

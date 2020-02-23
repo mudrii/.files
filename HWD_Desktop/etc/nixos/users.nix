@@ -28,9 +28,6 @@ in
 #    };
 #  };
 
-#  programs.fish.shellInit = "screenfetch";
-  security.sudo.wheelNeedsPassword = false;
-
   users = {
     mutableUsers = false;
     users.mudrii = {
@@ -94,8 +91,9 @@ in
           pygments-markdown-lexer
           xstatic-pygments
           pylint
+#          pycuda
 #          pandas
-#          jupyter
+          jupyter
         ]))
 #        python37Packages.pip
 #        python37Packages.virtualenv
@@ -133,12 +131,13 @@ in
         gnupg
         spotify
         bookworm
-        (unstable.tor-browser-bundle-bin.override {
-          mediaSupport = true;
-          pulseaudioSupport = true;
-        })
+#        (unstable.tor-browser-bundle-bin.override {
+#          mediaSupport = true;
+#          pulseaudioSupport = true;
+#        })
         unstable.keepassxc
         unstable.riot-desktop
+        unstable.calibre 
       ];
     };
   };

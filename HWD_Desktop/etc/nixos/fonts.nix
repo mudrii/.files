@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
   fonts = {
     enableFontDir = true;
     enableGhostscriptFonts = true;
@@ -30,5 +29,4 @@
 #      twemoji-color-font
     ];
   };
-
 }

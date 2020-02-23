@@ -61,7 +61,7 @@ in
 
     locate = {
       enable = true;
-      locate = pkgs.mlocate;
+      locate = unstable.pkgs.mlocate;
       localuser = null; # mlocate does not support this option so it must be null
       # interval = "daily";
       interval = "hourly";

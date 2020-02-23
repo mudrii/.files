@@ -13,12 +13,29 @@ let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 
 let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
 
-set nocompatible
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+set nocompatible " not compatible with vi
+set autoread " detect when a file is changed
+
+" make backspace behave in a sane manner
+set backspace=indent,eol,start
+
+" Set a map leader for more key combos
+" let mapleader = ','
 
 " Turn Off Swap Files
 set noswapfile
@@ -32,19 +49,16 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb
 set binary
-set ttyfast
 set fileformats=unix
 set t_Co=256
 
 " General Config
 set title
 set number
-set backspace=indent,eol,start
 set history=1000
 set showcmd
 set showmode
 set gcr=a:blinkon0
-set autoread
 set hidden
 set linespace=0
 set showmatch
@@ -57,40 +71,38 @@ set clipboard^=unnamed,unnamedplus
 " For regular expressions turn magic on
 set magic
 
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" :W sudo saves the file
-command W w !sudo tee % > /dev/null
-cmap w!! w !sudo tee > /dev/null %
-
 " Scrolling
 set scrolljump=5
 set scrolloff=3
 set sidescrolloff=15
 set sidescroll=1
 
-" Folds
-set foldenable
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
+" Ccode folding settings
+set foldmethod=syntax " fold based on indent
+"set foldmethod=indent
+set foldnestmax=10 " deepest fold is 10 levels
+set nofoldenable " don't fold by default
+"set foldenable
+set foldlevel=1
 set foldcolumn=1
 
 " Always wrap long lines
 set wrap
 set linebreak
 
-" Fix backspace indent
-set backspace=indent,eol,start
-
-" Tabs. May be overriten by autocmd rules
-set smarttab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
+" Tab control
+set noexpandtab " tabs ftw
+set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
+set tabstop=4 " the visible width of tabs
+set softtabstop=4 " edit as if the tabs are 4 characters wide
+set shiftwidth=4 " number of spaces to use for indent and unindent
+set shiftround " round indent to a multiple of 'shiftwidth'
 set expandtab
+
+set clipboard=unnamed
+
+" faster redrawing
+set ttyfast
 
 " Display tabs and trailing spaces visually
 "set list listchars=tab:\ \ ,trail:
@@ -138,15 +150,23 @@ if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
     set undofile
 endif
 
-" Search
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
+" Searching
+ set ignorecase " case insensitive searching
+ set smartcase " case-sensitive if expresson contains a capital letter
+ set hlsearch
+ set incsearch " set incremental search, like modern browsers
+ set nolazyredraw " don't redraw while executing macros
+ 
+" Fast saving
+nmap <leader>w :w!<cr>
 
-" coc-prettier setup
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" :W sudo saves the file
+command W w !sudo tee % > /dev/null
+" cmap w!! w !sudo tee > /dev/null %
+
+" Coc-prettier setup
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 " Key Bindings
 nmap <C-n> :NERDTreeToggle<CR>
@@ -161,24 +181,17 @@ noremap <leader>q :bn<CR>
 noremap <leader>a :ls<CR>
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
+map <leader>tn :tabnew<CR>
+map <leader>to :tabonly<CR>
+map <leader>tc :tabclose<CR>
+map <leader>tm :tabmove<CR>
+map <leader>t :tabnext<CR>
 
 " Close buffer
 noremap <leader>c :bd<CR>
 
-" Configure spell checking
-nmap <silent> <leader>p :set spell!<CR>
-
 " Fix indentation in file
 map <leader>i mmgg=G`m<CR>
-
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
 
 " Toggle highlighting of search results
 nnoremap <leader><space> :nohlsearch<cr>
@@ -186,12 +199,20 @@ nnoremap <leader><space> :nohlsearch<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Configure spell checking
+nmap <silent> <leader>p :set spell!<CR>
+
 " Quick timeouts on key combinations.
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
+
 set timeoutlen=300
 
 " Completion
 set wildmode=list:longest
 set wildmenu
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildignore=*.o,*.obj,*~
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*

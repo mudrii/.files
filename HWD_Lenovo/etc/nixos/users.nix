@@ -77,12 +77,11 @@ in
 #          random
 #          template
 #        ]))
-        python37Full
-
+        unstable.python37Full
         (unstable.python3.withPackages(ps: with ps; [
           pip
-          virtualenv
-          virtualenvwrapper
+#          virtualenv
+#          virtualenvwrapper
           powerline
           pygments
           pygments-markdown-lexer
@@ -90,10 +89,12 @@ in
           pylint
           pandas
           numpy
+          scipy
+          matplotlib
           jupyter
         ]))
 #        python37Packages.pip
-#        python37Packages.virtualenv
+#        unstable.python37Packages.virtualenv
 #        python37Packages.powerline
 #        python37Packages.pygments
 #        python37Packages.pycuda
@@ -104,7 +105,6 @@ in
         highlight
         jq
         direnv
-        ncurses
         psensor
         firefox
         chromium
@@ -128,10 +128,10 @@ in
         gnupg
         spotify
         bookworm
-#        (unstable.tor-browser-bundle-bin.override {
-#          mediaSupport = true;
-#          pulseaudioSupport = true;
-#        })        
+        (unstable.tor-browser-bundle-bin.override {
+          mediaSupport = true;
+          pulseaudioSupport = true;
+        })        
         unstable.keepassxc
         openconnect_openssl
         networkmanager-openconnect

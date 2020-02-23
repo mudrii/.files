@@ -2,7 +2,11 @@
 
 {
   imports = [
-    dotfiles/.tmux.conf
+    ./dotfiles/.tmux.conf.nix
+#    dotfiles/.tmux.conf
+    ./dotfiles/.inputrc.nix 
+    ./dotfiles/.dircolors.nix
+    ./dotfiles/.Xresources.nix
   ];
 
   home-manager.users.mudrii = {
@@ -24,6 +28,7 @@
           ctrlp-vim
           vim-fugitive
           fzf-vim
+          syntastic
         ];
       };
 
@@ -37,6 +42,7 @@
           ctrlp-vim
           vim-fugitive
           fzf-vim
+          syntastic
         ];
       };
 
@@ -77,12 +83,12 @@
 
     home.file = {
       ".bashrc".source = dotfiles/.bashrc;
-      ".inputrc".source = dotfiles/.inputrc;
-      ".dircolors".source = dotfiles/.dircolors;
+#      ".inputrc".source = dotfiles/.inputrc;
+#      ".dircolors".source = dotfiles/.dircolors;
       ".git-completion.bash".source = dotfiles/.git-completion.bash;
       ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
 #      ".nanorc".source = dotfiles/.nanorc;
-      ".Xresources".source = dotfiles/.Xresources;
+#      ".Xresources".source = dotfiles/.Xresources;
       ".config/neofetch/config.conf".source  = dotfiles/config.conf;
       ".config/i3/config".source = dotfiles/config;
       ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;

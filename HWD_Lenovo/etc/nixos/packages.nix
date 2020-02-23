@@ -107,5 +107,6 @@ in
     iptables
     nload
     nvme-cli
+    ncurses
   ];
 }

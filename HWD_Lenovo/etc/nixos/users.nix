@@ -55,6 +55,7 @@ in
         unstable.google-cloud-sdk-gce
         unstable.awscli
         unstable.pulumi-bin
+        unstable.gitAndTools.gh
         unstable.terraform
         unstable.terraform-lsp
         unstable.tflint
@@ -77,7 +78,7 @@ in
 #          random
 #          template
 #        ]))
-        unstable.python37Full
+        unstable.python38Full
         (unstable.python3.withPackages(ps: with ps; [
           pip
 #          virtualenv

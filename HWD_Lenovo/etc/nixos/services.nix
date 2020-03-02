@@ -13,10 +13,15 @@ in
     fwupd.enable = true;
     fstrim.enable = true;
     sysstat.enable = true;  
-    timesyncd = {
+
+    chrony = { 
       enable = true;
       servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
     };
+#    timesyncd = {
+#      enable = true;
+#      servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
+#    };
 
     openssh = { 
       enable = true;
@@ -34,6 +39,7 @@ in
       nssmdns = true;
     };
 
+    thermald.enable = true;
     tlp = {
       enable = true;
       extraConfig = ''

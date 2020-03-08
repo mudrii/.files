@@ -7,17 +7,70 @@ let
 in
 
 {
+
   services = {
 #    localtime.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
     fstrim.enable = true;
     sysstat.enable = true;  
+    thinkfan.enable = true;
+    
+# as a root
+# acpidump > acpi.out
+# acpixtract -a acpi.out
+# dptfxtract *.dat
+
+    thermald = {
+      enable = true;
+      configFile = builtins.toFile "thermal-conf.xml" ''
+         <!-- BEGIN --> 
+         <ThermalConfiguration> 
+         <Platform>
+                <Name> Auto generated </Name>
+                <ProductName>Standard PC (Q35 + ICH9, 2009)</ProductName>
+                <Preference>QUIET</Preference>
+                <ThermalZones>
+                        <ThermalZone>
+                                <Type>auto_zone_0</Type>
+                                <TripPoints>
+                                        <TripPoint>
+                                                <SensorType>B0D4</SensorType>
+                                                <Temperature>100000</Temperature>
+                                                <Type>Passive</Type>
+                                                <CoolingDevice>
+                                                        <Type>B0D4</Type>
+                                                        <SamplingPeriod>0</SamplingPeriod>
+                                                </CoolingDevice>
+                                        </TripPoint>
+                                </TripPoints>
+                        </ThermalZone>
+                        <ThermalZone>
+                                <Type>auto_zone_1</Type>
+                                <TripPoints>
+                                        <TripPoint>
+                                                <SensorType>SEN1</SensorType>
+                                                <Temperature>99000</Temperature>
+                                                <Type>Passive</Type>
+                                                <CoolingDevice>
+                                                        <Type>B0D4</Type>
+                                                        <SamplingPeriod>1</SamplingPeriod>
+                                                </CoolingDevice>
+                                        </TripPoint>
+                                </TripPoints>
+                        </ThermalZone>
+                </ThermalZones>
+        </Platform>
+        </ThermalConfiguration>
+        <!-- END -->
+      '';
+    };      
 
     chrony = { 
       enable = true;
       servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
     };
+
 #    timesyncd = {
 #      enable = true;
 #      servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
@@ -39,7 +92,6 @@ in
       nssmdns = true;
     };
 
-    thermald.enable = true;
     tlp = {
       enable = true;
       extraConfig = ''
@@ -81,7 +133,6 @@ in
         "node_modules"
         "USB"
       ];
-
       prunePaths = options.services.locate.prunePaths.default ++ [
         "/dev"
         "/lost+found"
@@ -100,6 +151,7 @@ in
       videoDrivers = [ "nvidia" ];
       layout = "us";
       xkbOptions = "eurosign:e";
+
       libinput = {
         enable = true;
         disableWhileTyping = true;
@@ -145,8 +197,8 @@ in
 #          conky
 #          rxvt_unicode
           rxvt_unicode-with-plugins
-          urxvt_perls
-          urxvt_font_size
+          (lowPrio urxvt_perls)
+          (lowPrio urxvt_font_size)
           acpilight
           glxinfo
           pavucontrol
@@ -157,4 +209,5 @@ in
       };
     };
   };
+
 }

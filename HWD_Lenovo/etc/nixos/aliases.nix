@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   programs.bash.shellAliases = {
     la="ls -lha --color=auto --group-directories-first";
     dmesg="dmesg --color=always | less";

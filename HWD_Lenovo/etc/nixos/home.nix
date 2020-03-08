@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
+
   imports = [
     ./dotfiles/.tmux.conf.nix
-#    dotfiles/.tmux.conf
     ./dotfiles/.inputrc.nix 
     ./dotfiles/.dircolors.nix
     ./dotfiles/.Xresources.nix
@@ -83,12 +83,8 @@
 
     home.file = {
       ".bashrc".source = dotfiles/.bashrc;
-#      ".inputrc".source = dotfiles/.inputrc;
-#      ".dircolors".source = dotfiles/.dircolors;
       ".git-completion.bash".source = dotfiles/.git-completion.bash;
       ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
-#      ".nanorc".source = dotfiles/.nanorc;
-#      ".Xresources".source = dotfiles/.Xresources;
       ".config/neofetch/config.conf".source  = dotfiles/config.conf;
       ".config/i3/config".source = dotfiles/config;
       ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;
@@ -117,4 +113,5 @@
       ".config/fish/functions/fish_greeting.fish".source = dotfiles/fish/fish_greeting.fish;
     };
   };
+
 }

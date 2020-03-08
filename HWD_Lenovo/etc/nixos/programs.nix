@@ -1,11 +1,13 @@
 { config, pkgs, ... }:
 
 {
+
   programs = {
     vim.defaultEditor = true;
     bash.enableCompletion = true;
     mtr.enable = true;
     gnupg.agent = { enable = true; enableSSHSupport = true; };
+#    bash.shellInit = "neofetch";
 
     fish = {
       enable = true;
@@ -13,6 +15,8 @@
         completions.enable = true;
         config.enable = true;
       };
+#      shellInit = "neofetch";
+
     };
   
     nano.nanorc = ''
@@ -25,5 +29,4 @@
     '';
   };
 
-#  programs.bash.shellInit = "neofetch";
 }

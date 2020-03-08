@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+
   home-manager.users.mudrii.home.file.".inputrc".text = ''
 #.inputrc
 "\e[A": history-search-backward
@@ -24,4 +25,5 @@ set show-all-if-ambiguous on
 set bell-style none
 TAB: menu-complete
 '';
+
 }

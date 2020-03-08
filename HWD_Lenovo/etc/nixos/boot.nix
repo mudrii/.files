@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -14,4 +15,5 @@
 #    kernelParams = [ "nvidia-drm.modeset=1" ];
     cleanTmpDir = true;
   };
+
 }

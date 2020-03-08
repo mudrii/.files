@@ -22,6 +22,7 @@
 #      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       ./home.nix
       ./nix.nix
+      ./virtualisation.nix
 #      ./containers.nix      
     ];
 
@@ -46,13 +47,6 @@
   # Set your time zone.
   time.timeZone = "Asia/Singapore";
 
-  # List services that you want to enable:
-  virtualisation = {
-    docker.enable = true;
-#    virtualbox.host.enable = true;
-#    virtualbox.host.enableExtensionPack = true;
-  };
-
   # TPM has hardware RNG
   security = {
     rngd.enable = true;
@@ -71,8 +65,4 @@
   # should.
   system.stateVersion = "19.09"; # Did you read the comment?
 
-  system.autoUpgrade = {
-    enable = true;
-    dates = "weekly";
-  };
 }

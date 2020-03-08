@@ -1,4 +1,5 @@
 {
+
   home-manager.users.mudrii.home.file.".Xresources".text = ''
 !--------------------------
 ! ROFI Color theme
@@ -131,4 +132,5 @@ URxvt*color14: #54FFFF
 URxvt*color7:  #B2B2B2
 URxvt*color15: #FFFFFF
 '';
+
 }

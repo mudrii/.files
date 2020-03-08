@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   nix = {
     autoOptimiseStore = true;
     gc = {
@@ -20,4 +21,10 @@
     allowBroken = true;
     allowUnfree = true; 
   };
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+  };
+
 }

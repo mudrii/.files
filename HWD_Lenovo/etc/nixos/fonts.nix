@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  
   fonts = {
     enableFontDir = true;
     enableCoreFonts = true;
@@ -31,4 +32,5 @@
 #      twemoji-color-font
     ];
   };
+
 }

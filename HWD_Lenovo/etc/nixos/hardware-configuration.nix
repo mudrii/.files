@@ -4,13 +4,14 @@
 { config, lib, pkgs, ... }:
 
 {
+
   imports =
     [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "acpi_call" "tp_smapi" ];
+  boot.kernelModules = [ "coretemp" "kvm-intel" "acpi_call" "tp_smapi" ];
   boot.extraModulePackages = [ 
     config.boot.kernelPackages.acpi_call
     config.boot.kernelPackages.tp_smapi
@@ -32,4 +33,5 @@
 
   nix.maxJobs = lib.mkDefault 16;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+
 }

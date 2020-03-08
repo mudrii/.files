@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+
   home-manager.users.mudrii.home.file.".tmux.conf".text = ''
     source ${pkgs.python37Packages.powerline}/share/tmux/powerline.conf
 
@@ -101,4 +102,5 @@
     setw -g monitor-activity on
     set -g visual-activity on
   '';
+
 }

@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   networking = {
     hostName = "p53-nixos";
     networkmanager.enable = true;
@@ -30,4 +31,5 @@
       trustedInterfaces = [ "docker0" ];
     };
   };
+
 }

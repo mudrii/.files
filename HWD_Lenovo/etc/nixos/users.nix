@@ -58,7 +58,7 @@ in
         unstable.minio-client
         unstable.google-cloud-sdk-gce
         unstable.awscli
-        unstable.pulumi-bin
+#        unstable.pulumi-bin
         unstable.gitAndTools.gh
         unstable.terraform
         unstable.terraform-lsp
@@ -67,7 +67,7 @@ in
         unstable.go
         unstable.xmind
         unstable.zoom-us
-        unstable.bluejeans-gui
+#        unstable.bluejeans-gui
 #        (unstable [ zoom-us ])
         kubectx
         dep

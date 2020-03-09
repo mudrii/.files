@@ -4,9 +4,6 @@
 
   imports = [
     ./dotfiles/.tmux.conf.nix
-    ./dotfiles/.inputrc.nix 
-    ./dotfiles/.dircolors.nix
-    ./dotfiles/.Xresources.nix
   ];
 
   home-manager.users.mudrii = {
@@ -83,9 +80,12 @@
 
     home.file = {
       ".bashrc".source = dotfiles/.bashrc;
+      ".inputrc".source = dotfiles/.inputrc;
+      ".dircolors".source = dotfiles/.dircolors;
       ".git-completion.bash".source = dotfiles/.git-completion.bash;
       ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
       ".config/neofetch/config.conf".source  = dotfiles/config.conf;
+      ".Xresources".source = dotfiles/.Xresources;
       ".config/i3/config".source = dotfiles/config;
       ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;
       ".config/i3/start_w2.sh".source = dotfiles/start_w2.sh;

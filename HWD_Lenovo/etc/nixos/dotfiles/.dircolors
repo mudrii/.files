@@ -1,8 +1,3 @@
-{ pkgs, ... }:
-
-{
-
-  home-manager.users.mudrii.home.file.".dircolors".text = ''
 # Configuration file for dircolors, a utility to help you set the
 # LS_COLORS environment variable used by GNU ls with the --color option.
 # Copyright (C) 1996-2017 Free Software Foundation, Inc.
@@ -196,6 +191,3 @@ EXEC 01;32
 .opus 00;36
 .spx 00;36
 .xspf 00;36
-'';
-
-}

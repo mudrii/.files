@@ -8,6 +8,7 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
+      #dates = "Mon *-*-* 06:00:00";      
     };
 
     optimise = {
@@ -25,6 +26,7 @@
   system.autoUpgrade = {
     enable = true;
     dates = "weekly";
+    #dates = "Sun *-*-* 04:00:00";
   };
 
 }

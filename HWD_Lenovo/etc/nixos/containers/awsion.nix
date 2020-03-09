@@ -1,22 +1,22 @@
 { config, pkgs, ... }:
+
 {
-  containers.awsion =
-  {
+
+  containers.awsion =   {
     privateNetwork = true;
     hostAddress = "192.168.0.1";
     localAddress = "192.168.0.2";
-    config =
-    { config, lib, pkgs, ... }:
+    config = { config, lib, pkgs, ... }:
+
     with lib;
     {
       boot.isContainer = true;
-  
       services.openssh.enable = true;
       services.openssh.permitRootLogin = "yes";
 
       environment.systemPackages = with pkgs; [
-				screenfetch
-				asciinema
+		screenfetch
+		asciinema
         highlight
         git
         wget
@@ -28,9 +28,9 @@
         tree
         ag
         htop
-				python37Full
-				python37Packages.pip
-        python37Packages.pygments
+		python38Full
+		python38Packages.pip
+        python38Packages.pygments
         atool
         rsync
         gnutls
@@ -38,7 +38,7 @@
         file
         openssl
         awscli
-				aws-iam-authenticator
+		aws-iam-authenticator
         terraform
         kubernetes
       ];
@@ -71,11 +71,13 @@
         exit="clear ; exit";
         ping="ping -c3";
       };
-      programs.bash.shellInit = "screenfetch";
+
+      programs.bash.shellInit = "neofetch";
       programs.bash.enableCompletion = true;
       security.sudo.wheelNeedsPassword = false;
       nixpkgs.config.allowUnfree = true;
       system.autoUpgrade.enable = true;
     };
   };
+
 }

@@ -16,6 +16,10 @@ in
     sysstat.enable = true;  
     thinkfan.enable = true;
     
+#    undervolt = {
+#      enable = true;
+#    };
+    
 # as a root
 # acpidump > acpi.out
 # acpixtract -a acpi.out

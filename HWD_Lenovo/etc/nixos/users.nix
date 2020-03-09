@@ -67,7 +67,7 @@ in
         unstable.go
         unstable.xmind
         unstable.zoom-us
-#        unstable.bluejeans-gui
+        unstable.bluejeans-gui
 #        (unstable [ zoom-us ])
         kubectx
         dep

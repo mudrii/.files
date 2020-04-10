@@ -24,6 +24,7 @@ in
       <home-manager/nixos>
 #      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       ./home-manager.nix
+#      ./containers.nix      
     ];
 
  boot = {
@@ -155,6 +156,23 @@ in
 #      host.enableExtensionPack = true;
 #    };
   };
+
+
+/*  
+  imports = [
+      ./containers/gcpdrgn.nix
+      ./containers/gcpsndp.nix
+      ./containers/gcpion.nix
+      ./containers/awsndp.nix
+      ./containers/awsion.nix
+  ];
+
+  containers.gcpdrgn.autoStart = false;
+  containers.gcpsndp.autoStart = false;
+  containers.gcpion.autoStart = true;
+  containers.awsndp.autoStart = false;
+  containers.awsion.autoStart = true;  
+*/
 
   services = {
 #    localtime.enable = true;
@@ -719,3 +737,4 @@ in
   };
 
 }
+

@@ -29,6 +29,7 @@ in
 #  };
 
 #  programs.fish.shellInit = "screenfetch";
+#  programs.fish.shellInit = "neofetch";
 
   users = {
     mutableUsers = false;
@@ -58,7 +59,7 @@ in
         unstable.minio-client
         unstable.google-cloud-sdk-gce
         unstable.awscli
-#        unstable.pulumi-bin
+        unstable.pulumi-bin
         unstable.gitAndTools.gh
         unstable.terraform
         unstable.terraform-lsp
@@ -67,7 +68,7 @@ in
         unstable.go
         unstable.xmind
         unstable.zoom-us
-#        unstable.bluejeans-gui
+        unstable.teams
 #        (unstable [ zoom-us ])
         kubectx
         dep
@@ -105,8 +106,8 @@ in
 #        python37Packages.powerline
 #        python37Packages.pygments
 #        python37Packages.pycuda
-        git
-        git-lfs
+        unstable.git
+        unstable.git-lfs
         neovim
         asciinema
         highlight

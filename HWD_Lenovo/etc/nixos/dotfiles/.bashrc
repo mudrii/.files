@@ -1,23 +1,18 @@
 # ~/.bashrc
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-# bash completion
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+#[[ $- != *i* ]] && return
 
 # add ssh key to ssh-agent rsa and dsa keys
 #eval `keychain --eval --quiet --agents ssh id_rsa id_dsa`
 
-[ -z "$PS1" ] && return
+#[ -z "$PS1" ] && return
 
-if [[ ${EUID} == 0 ]] ; then
-PS1='\[\e[01;31m\]\h\[\e[01;34m\] \W \$\[\e[00m\] '
-else
-PROMPT_COMMAND='__git_ps1 "\[\e[01;32m\]\u@\h\[\e[01;36m\] \W\[\e[00m\]" " \\\$ "'
-fi
+#if [[ ${EUID} == 0 ]] ; then
+#PS1='\[\e[01;31m\]\h\[\e[01;34m\] \W \$\[\e[00m\] '
+#else
+#PROMPT_COMMAND='__git_ps1 "\[\e[01;32m\]\u@\h\[\e[01;36m\] \W\[\e[00m\]" " \\\$ "'
+#fi
 
 # git completion
 # curl -O https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash --output ~/.git-completion.bash
@@ -97,5 +92,3 @@ ext () {
 #export PATH=$PATH:~/local/bin
 #PATH=$PATH:~/.local/bin:~/go/bin
 
-# startup shell notification
-#screenfetch

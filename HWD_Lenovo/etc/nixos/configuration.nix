@@ -362,6 +362,7 @@ in
           i3status-rust
           i3-gaps
           i3lock-fancy
+          xautolock
           rofi
           numlockx
 #          conky
@@ -618,6 +619,8 @@ in
         unstable.terraform-lsp
         unstable.tflint
         unstable.kubernetes
+        unstable.kubernetes-helm
+        unstable.kind
         unstable.go
         unstable.xmind
         unstable.zoom-us

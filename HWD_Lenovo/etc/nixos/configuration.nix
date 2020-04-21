@@ -91,7 +91,7 @@ in
   # Open ports in the firewall.
     firewall = {
   # Or disable the firewall altogether.
-      enable = false;
+      enable = true;
       allowedTCPPorts = [ 22 80 443 ];
       allowedUDPPorts = [ 53 ];
       allowPing = true;
@@ -332,7 +332,6 @@ in
       };
 
       desktopManager = {
-        default = "none";
         xterm.enable = false;
       };
 
@@ -341,6 +340,7 @@ in
 #          ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0 
 #          ${pkgs.xorg.xrandr}/bin/xrandr --auto
 #          '';
+        defaultSession = "none+i3";
 
         lightdm = {
           enable = true;
@@ -351,7 +351,6 @@ in
       };
 
       windowManager = {
-        default = "i3";
         i3.enable = true;
         i3.package = pkgs.i3-gaps;
         i3.extraPackages = with pkgs; [
@@ -383,16 +382,19 @@ in
 
   # Select internationalisation properties.
   i18n = {
-    #consoleFont = "Powerline";
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
 
+  console = {
+    #font = "Powerline";
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
   fonts = {
     enableFontDir = true;
-    enableCoreFonts = true;
+#    enableCoreFonts = true;
     enableGhostscriptFonts = true;
 
     fonts = with pkgs; [
@@ -609,6 +611,7 @@ in
         ffmpeg-full
         mupdf
         tmux
+        screen
         keychain
         unstable.minio-client
         unstable.google-cloud-sdk-gce
@@ -625,7 +628,6 @@ in
         unstable.xmind
         unstable.zoom-us
         unstable.teams
-#        (unstable [ zoom-us ])
         kubectx
         dep
 #        (unstable.terraform.withPlugins(p: with p; [
@@ -640,12 +642,10 @@ in
 #          random
 #          template
 #        ]))
-        (lowPrio unstable.python38Full)
-        unstable.python38Full
-        (unstable.python3.withPackages(ps: with ps; [
+#        (lowPrio unstable.python38Full)
+        python37Full
+        (python3.withPackages(ps: with ps; [
           pip
-#          virtualenv
-#          virtualenvwrapper
           powerline
           pygments
           pygments-markdown-lexer
@@ -688,7 +688,8 @@ in
         mpv
         feh
         weechat
-        gcc gnumake
+        gcc 
+        gnumake
         gnupg
         spotify
         bookworm
@@ -731,7 +732,7 @@ in
   # servers. You should change this only after NixOS release notes say you
   # should.
   system = {
-    stateVersion = "19.09"; # Did you read the comment?
+    stateVersion = "20.03"; # Did you read the comment?
     autoUpgrade = {
       enable = true;
       dates = "weekly";

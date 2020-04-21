@@ -53,6 +53,7 @@ in
         mupdf
         poppler_utils
         tmux
+        screen
         keychain
 #        unstable.google-cloud-sdk-gce
 #        unstable.awscli
@@ -61,7 +62,7 @@ in
 #        unstable.kubernetes
 #        unstable.go
 #        unstable.xmind
-#        unstable.zoom-us
+        unstable.zoom-us
 #        google-cloud-sdk-gce
 #        awscli
 #        terraform

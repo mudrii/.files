@@ -9,7 +9,7 @@
          
     set -g default-terminal "screen-256color"
     set -as terminal-overrides ",*:Tc"
-# set -as terminal-overrides ",*-256color:Tc"
+#   set -as terminal-overrides ",*-256color:Tc"
     setw -g xterm-keys on
     set -s escape-time 10
     set -sg repeat-time 600
@@ -50,7 +50,7 @@
     bind C-f command-prompt -p find-session 'switch-client -t %%'
               
     bind - split-window -v
-    bind \ split-window -h
+    bind \\ split-window -h
 
     bind -r h select-pane -L  # move left
     bind -r j select-pane -D  # move down

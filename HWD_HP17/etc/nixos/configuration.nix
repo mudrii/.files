@@ -68,11 +68,16 @@ in
 
   # Select internationalisation properties.
   i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [ "en_US.UTF-8/UTF-8" ];
   };
+
+    console = {
+      #font = "Powerline";
+      font = "Lat2-Terminus16";
+      keyMap = "us";
+    };
+
 
   # Set your time zone.
   time.timeZone = "Asia/Singapore";
@@ -147,7 +152,7 @@ in
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "19.09"; # Did you read the comment?
+  system.stateVersion = "20.03"; # Did you read the comment?
 
   system.autoUpgrade = {
     enable = true;

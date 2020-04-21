@@ -1,47 +1,41 @@
 // vim:ts=4:sw=4:et
 {
+    // floating_con with 1 children
     "border": "normal",
-    "current_border_width": 2,
     "floating": "auto_off",
-    "geometry": {
-       "height": 1600,
-       "width": 2164,
-       "x": 0,
-       "y": 0
+    "layout": "splith",
+    "percent": null,
+    "rect": {
+       "height": 949,
+       "width": 1382,
+       "x": 18,
+       "y": 49
     },
-    "name": "ranger",
-    "percent": 0.5,
-    "swallows": [
-       {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^ranger$"
-       "transient_for": "^$"
-       }
-    ],
-    "type": "con"
-}
-
-{
-    "border": "normal",
-    "current_border_width": 2,
-    "floating": "auto_off",
-    "geometry": {
-       "height": 1600,
-       "width": 2164,
-       "x": 0,
-       "y": 0
-    },
-    "name": "mudrii@lenovo-nixos tmux /home/mudrii/src/.files/HWD_Arch/.config/i3",
-    "percent": 0.5,
-    "swallows": [
-       {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^mudrii\\@lenovo\\-nixos\\ tmux\\ \\/home\\/mudrii\\/src\\/\\.files\\/HWD_Arch\\/\\.config\\/i3$"
-       "transient_for": "^$"
-       }
-    ],
-    "type": "con"
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 923,
+               "width": 1378,
+               "x": 41,
+               "y": 104
+            },
+            "name": "Slack | general | HOOQ | 3 new items",
+            "percent": 1,
+            "swallows": [
+               {
+                "class": "^Slack$",
+                "instance": "^slack$",
+               // "title": "^Slack\\ \\|\\ general\\ \\|\\ HOOQ\\ \\|\\ 3\\ new\\ items$",
+                "window_role": "^browser\\-window$"
+                "transient_for": "^$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
 }
 

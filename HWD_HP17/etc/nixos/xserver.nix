@@ -28,11 +28,14 @@ in
       layout = "us";
       xkbOptions = "eurosign:e";
       libinput.enable = true;
+
       desktopManager = {
-        default = "none";
         xterm.enable = false;
       };
+
       displayManager = {
+        defaultSession = "none+i3";        
+
         lightdm = {
           enable = true;
           greeter.enable = true;
@@ -44,7 +47,6 @@ in
       };
 
       windowManager = {
-        default = "i3";
         i3.enable = true;
         i3.package = pkgs.i3-gaps;
         i3.extraPackages = with pkgs; [
@@ -53,7 +55,9 @@ in
           i3status-rust
           i3-gaps
           i3lock-fancy
+          xautolock
           rofi
+          numlockx
 #          conky
 #          rxvt_unicode
           rxvt_unicode-with-plugins

@@ -49,7 +49,7 @@
         userEmail = "mudreac@gmail.com";
         ignores = [ "*~" "*.swp" ];
         signing = {
-          key = "mudreac@gmail.com";
+          key = "CBF0AF1C6FF0D4A72F4D785E9C6F71507347D063";
           signByDefault = true;
         };
 
@@ -84,14 +84,33 @@
 #        '';
 
         extraConfig = {
-          merge.conflictstyle = "diff3";
+          branch = { autoSetupMerge = "always"; };
+          stash = { showPatch = true; };
+          status = { showUntrackedFiles = "all"; };
+          transfer = { fsckobjects = false; };
+          
+          merge = {
+            conflictstyle = "diff3";
+            ff = "only";
+            summary = true;
+            tool = "vimdiff";
+          };
+
           core = {
-            editor ="nvim";
+#            pager = "less -R";
+#            autocrlf = "input";
+			editor ="nvim";
           };
 
           remote = {
             push = [ "refs/heads/*:refs/heads/*" "refs/tags/*:refs/tags/*" ];
             fetch = [ "refs/heads/*:refs/remotes/origin/*" "refs/tags/*:refs/tags/*" ];
+          };
+
+          rebase = {
+            stat = true;
+            autoSquash = true;
+            autostash = true;
           };
         };
       };

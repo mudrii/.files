@@ -118,7 +118,10 @@ in
   programs = {
     vim.defaultEditor = true;
     mtr.enable = true;
-    gnupg.agent = { enable = true; enableSSHSupport = true; };
+    gnupg.agent = { 
+      enable = true; 
+      enableSSHSupport = true; 
+    };
 
     bash = {
       enableCompletion = true;
@@ -619,7 +622,7 @@ in
         unstable.awscli
         unstable.pulumi-bin
         unstable.gitAndTools.gitFull
-#        unstable.git-lfs
+        unstable.git-lfs
         unstable.terraform
         unstable.terraform-lsp
         unstable.tflint

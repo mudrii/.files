@@ -285,6 +285,15 @@ user@domain.org:/home/user  /media/user   fuse.sshfs    defaults,allow_other,_ne
 llib@192.168.1.200:/home/llib/FAH  /media/FAH2  fuse.sshfs  defaults,_netdev  0  0
 ```
 
+# create gpg key for git
+
+```sh
+gpg --list-key
+gpg --gen-key
+# Ex
+git config --global user.signingkey 6AB3587A
+```
+
 # Errors to fix
 
 ```sh

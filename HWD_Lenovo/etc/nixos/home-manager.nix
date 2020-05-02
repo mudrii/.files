@@ -47,6 +47,12 @@
         enable = true;
         userName  = "mudrii";
         userEmail = "mudreac@gmail.com";
+        ignores = [ "*~" "*.swp" ];
+        signing = {
+          key = "mudreac@gmail.com";
+          signByDefault = true;
+        };
+
         aliases = {
           unstage = "reset HEAD --";
           pr = "pull --rebase";
@@ -70,8 +76,23 @@
           recent-branches = "branch --sort=-committerdate"; 
         };
 
+#        extraConfig = ''
+#          [push]
+#          default = simple
+#          [commit]
+#          template = ~/.config/nixpkgs/git-commit-template
+#        '';
+
         extraConfig = {
           merge.conflictstyle = "diff3";
+          core = {
+            editor ="nvim";
+          };
+
+          remote = {
+            push = [ "refs/heads/*:refs/heads/*" "refs/tags/*:refs/tags/*" ];
+            fetch = [ "refs/heads/*:refs/remotes/origin/*" "refs/tags/*:refs/tags/*" ];
+          };
         };
       };
     };

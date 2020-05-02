@@ -478,6 +478,7 @@ in
       usbutils
       powertop
       tree
+      jdupes
       ag
       htop
       iftop
@@ -617,7 +618,8 @@ in
         unstable.google-cloud-sdk-gce
         unstable.awscli
         unstable.pulumi-bin
-        unstable.gitAndTools.gh
+        unstable.gitAndTools.gitFull
+#        unstable.git-lfs
         unstable.terraform
         unstable.terraform-lsp
         unstable.tflint
@@ -662,8 +664,6 @@ in
 #        python37Packages.powerline
 #        python37Packages.pygments
 #        python37Packages.pycuda
-        unstable.git
-        unstable.git-lfs
         neovim
         asciinema
         highlight

@@ -99,12 +99,19 @@
           core = {
 #            pager = "less -R";
 #            autocrlf = "input";
-			editor ="nvim";
+            editor ="nvim";
           };
 
           remote = {
-            push = [ "refs/heads/*:refs/heads/*" "refs/tags/*:refs/tags/*" ];
-            fetch = [ "refs/heads/*:refs/remotes/origin/*" "refs/tags/*:refs/tags/*" ];
+            push = [
+              "refs/heads/*:refs/heads/*" 
+              "refs/tags/*:refs/tags/*" 
+            ];
+
+            fetch = [ 
+              "refs/heads/*:refs/remotes/origin/*" 
+              "refs/tags/*:refs/tags/*" 
+            ];
           };
 
           rebase = {

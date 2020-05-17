@@ -369,10 +369,21 @@ nix-build $NIXPKGS --run-env -A irssi --add-root
 ## Tracking upstream changes and avoiding extra rebuilding
 
 ```sh
+# merge 
 git remote add upstream https://github.com/NixOS/nixpkgs.git
+git remote -v
 git fetch upstream
-git checkout -b upstream-master upstream/master
-git pull --all
+git checkout master
+git merge --no-ff upstream/master
+git push -v origin master
+
+# rebase
+git remote add upstream https://github.com/NixOS/nixpkgs.git
+git remote -v
+git fetch upstream
+git checkout master
+git rebase upstream/master
+git push -f origin master
 ```
 
 ### Merge 

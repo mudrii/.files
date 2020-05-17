@@ -184,6 +184,7 @@ in
     fstrim.enable = true;
     sysstat.enable = true;  
     thinkfan.enable = true;
+    gnome3.gnome-keyring.enable = true;
     
 #    undervolt = {
 #      enable = true;
@@ -450,10 +451,12 @@ in
 
     systemPackages = with pkgs; [
       nix-index
-      nix-review
       nixpkgs-fmt
-      nix-prefetch-github
-      (lowPrio nix-prefetch-git)
+      nixpkgs-lint
+      nix-prefetch
+      nix-du
+      graphviz
+#      (lowPrio nix-prefetch-git)
       nix-prefetch-scripts
       nixFlakes
       unstable.virt-manager
@@ -617,6 +620,8 @@ in
         tmux
         screen
         keychain
+        gnome3.gnome-keyring
+        gnome3.seahorse
         unstable.minio-client
         unstable.google-cloud-sdk-gce
         unstable.awscli

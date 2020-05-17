@@ -312,3 +312,95 @@ nixos kernel: [<0000000070ec9b05>] tis_int_handler [tpm_tis_core]
 nixos kernel: Disabling IRQ #48
 nixos dhcpcd[1020]: ipv6_addaddr1: Permission denied
 ```
+
+## Development
+
+# 1st fork https://github.com/nixos/nixpkgs 
+
+```sh
+git clone --depth=1 git@github.com:mudrii/nixpkgs.git
+
+#bash
+export NIXPKGS=~/tmpdev/nixpkgs
+
+#fish
+set -x NIXPKGS ~/src/nixpkgs
+
+ls -la $NIXPKGS
+echo $NIXPKGS
+```
+
+### list all available software from the local repository $NIXPKGS  
+
+```sh
+nix-env -f $NIXPKGS -qaP '*'
+```
+
+### install software from local repository
+
+```sh
+nix-env -f $NIXPKGS -iA python-urlgrabber
+```
+
+### update the system based on your local $NIXPKGS
+
+```sh
+nixos-rebuild -I nixpkgs=$NIXPKGS switch
+```
+
+### build an expression and put the output in to `pwd`/results
+
+```sh
+nix-build $NIXPKGS -A irssi
+```
+
+###  get an environment which is used to build irssi (also see nix-shell)
+
+```sh
+nix-build $NIXPKGS --run-env -A irssi
+```
+
+### get a persistent environment which is used to build irssi
+
+```sh
+nix-build $NIXPKGS --run-env -A irssi --add-root
+```
+
+## Tracking upstream changes and avoiding extra rebuilding
+
+```sh
+git remote add upstream https://github.com/NixOS/nixpkgs.git
+git fetch upstream
+git checkout -b upstream-master upstream/master
+git pull --all
+```
+
+### Merge 
+
+```sh
+git checkout master
+git pull origin master
+git merge upstream-master
+git push origin master
+```
+
+
+### Change install Pulumi
+
+```sh
+cd /home/mudrii/src/nixpkgs/pkgs/tools/admin/pulumi
+
+vim update.sh
+
+# chcek installed nix-env -f $NIXPKGS -qP '*'
+nix-env -f $NIXPKGS -qP '*'
+
+# install pulumi from local
+nix-env -f $NIXPKGS -iA pulumi-bin
+
+# check installed pulumi version
+pulumi verion
+
+# uninstaled pulumi verion from local repo
+nix-env -f $NIXPKGS -e pulumi
+```

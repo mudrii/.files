@@ -116,6 +116,7 @@ in
 #  };
 
   programs = {
+    seahorse.enable = true;
     vim.defaultEditor = true;
     mtr.enable = true;
     gnupg.agent = { 
@@ -175,6 +176,19 @@ in
   containers.gcpion.autoStart = true;
   containers.awsndp.autoStart = false;
   containers.awsion.autoStart = true;  
+*/
+
+/*
+pam.services = [
+  { name = "gnome_keyring"
+    text = ''
+      auth     optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
+      session  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so auto_start
+
+      password  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
+    '';
+  }
+];
 */
 
   services = {
@@ -620,8 +634,6 @@ in
         tmux
         screen
         keychain
-        gnome3.gnome-keyring
-        gnome3.seahorse
         unstable.minio-client
         unstable.google-cloud-sdk-gce
         unstable.awscli

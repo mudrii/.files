@@ -12,11 +12,13 @@ in
 
 {
 
-#  nixpkgs.config.packageOverrides = pkgs: {
-#    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-#      inherit pkgs;
-#    };
-#  };  
+/*
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };  
+*/
 
   imports =
     [ # Include the results of the hardware scan.
@@ -82,11 +84,13 @@ in
 #    proxy.default = "http://user:password@proxy:port/";
 #    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-#    nat = {
-#      enable = true;
-#      internalInterfaces = ["ve-+"];
-#      externalInterface = "enp0s31f6";
-#    };
+/*
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = "enp0s31f6";
+    };
+*/
 
   # Open ports in the firewall.
     firewall = {
@@ -108,12 +112,14 @@ in
     };
   };
 
-#  powerManagement = {
-#    enable = true;
-##    powertop.enable = true;
-##    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
-##    cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
-#  };
+/*  
+  powerManagement = {
+    enable = true;
+#    powertop.enable = true;
+#    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+#    cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
+  };
+*/
 
   programs = {
     seahorse.enable = true;
@@ -162,7 +168,7 @@ in
   };
 
 
-/*  
+/*
   imports = [
       ./containers/gcpdrgn.nix
       ./containers/gcpsndp.nix
@@ -178,7 +184,7 @@ in
   containers.awsion.autoStart = true;  
 */
 
-/*
+/* example how to use pam
 pam.services = [
   { name = "gnome_keyring"
     text = ''
@@ -199,15 +205,18 @@ pam.services = [
     sysstat.enable = true;  
     thinkfan.enable = true;
     gnome3.gnome-keyring.enable = true;
-    
-#    undervolt = {
-#      enable = true;
-#    };
-    
+
+/*    
+    undervolt = {
+      enable = true;
+    };
+*/
+
 /*  as a root
  acpidump > acpi.out
  acpixtract -a acpi.out
- dptfxtract *.dat */
+ dptfxtract *.dat 
+*/
 
     thermald = {
       enable = true;
@@ -259,10 +268,12 @@ pam.services = [
       servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
     };
 
-#    timesyncd = {
-#      enable = true;
-#      servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
-#    };
+/*    
+    timesyncd = {
+      enable = true;
+      servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
+    };
+*/
 
     openssh = { 
       enable = true;
@@ -597,13 +608,15 @@ pam.services = [
     }; 
   };
 
-#  nixpkgs.config = {
-#    packageOverrides = pkgs: {
-#      unstable = import unstableTarball {
-#        config = config.nixpkgs.config;
-#      };
-#    };
-#  };
+/*  
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+*/
 
 #  programs.fish.shellInit = "screenfetch";
 #  programs.fish.shellInit = "neofetch";
@@ -652,18 +665,19 @@ pam.services = [
         unstable.teams
         kubectx
         dep
-#        (unstable.terraform.withPlugins(p: with p; [
-#          archive
-#          aws
-#          external
-#          google
-#          helm
-#          kubernetes
-#          local
-#          null
-#          random
-#          template
-#        ]))
+/*        (unstable.terraform.withPlugins(p: with p; [
+          archive
+          aws
+          external
+          google
+          helm
+          kubernetes
+          local
+          null
+          random
+          template
+        ]))
+*/
 #        (lowPrio unstable.python38Full)
         python37Full
         (python3.withPackages(ps: with ps; [

@@ -741,6 +741,7 @@ pam.services = [
   };
 
   nix = {
+    useSandbox = true;
     autoOptimiseStore = true;
     gc = {
       automatic = true;

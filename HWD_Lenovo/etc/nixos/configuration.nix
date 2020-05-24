@@ -99,7 +99,7 @@ in
       allowedTCPPorts = [ 22 80 443 ];
       allowedUDPPorts = [ 53 ];
       allowPing = true;
-      trustedInterfaces = [ "docker0" ];
+      trustedInterfaces = [ "docker0" "virbr0" ];
     };
   };
 

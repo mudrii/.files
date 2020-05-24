@@ -22,7 +22,7 @@ source ~/.git-completion.bash
 # curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh --output ~/.git-prompt.sh
 source ~/.git-prompt.sh
 
-export EDITOR=vim
+#export EDITOR=vim
 #set -o noclobber
 shopt -sq checkwinsize
 export HISTSIZE=100000
@@ -31,7 +31,7 @@ HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 PROMPT_COMMAND="history -a; history -c; history -r;$PROMPT_COMMAND"
 
-# cplean mannualy history
+# clean mannualy history
 #history | sort -urk2 | sort -n | sed 's/^ \+[0-9]\+ \+//' > /tmp/history.tmp && mv -f /tmp/history.tmp $HISTFILE
 #tac $HISTFILE | awk '!x[$0]++' | tac > /tmp/history.tmp && mv -f /tmp/history.tmp $HISTFILE
 #nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2 > /tmp/history.tmp && mv -f /tmp/history.tmp $HISTFILE
@@ -61,14 +61,14 @@ ext () {
          *.tar.bz2)   tar xvjf $1    ;;
          *.tar.gz)    tar xvzf $1    ;;
          *.bz2)       bunzip2 $1     ;;
-         *.rar)       rar x $1       ;;
+         *.rar)       unrar $1       ;;
          *.gz)        gunzip $1      ;;
          *.tar)       tar xvf $1     ;;
          *.tbz2)      tar xvjf $1    ;;
          *.tgz)       tar xvzf $1    ;;
          *.zip)       unzip $1       ;;
          *.Z)         uncompress $1  ;;
-         *.7z)        7z x $1        ;;
+         *.7z)        bsdtar xf $1   ;;
          *)           echo "don't know how to extract '$1'..." ;;
      esac
  else

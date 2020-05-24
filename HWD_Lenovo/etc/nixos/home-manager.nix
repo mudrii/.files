@@ -14,11 +14,13 @@
         path = [ pkgs.user-environment ];
       };
 
+/*      
       vim = {
         enable = true;
         settings = { ignorecase = true; };
         extraConfig = builtins.readFile dotfiles/.vimrc;
         plugins = with pkgs.vimPlugins; [
+          vim-nix
           vim-airline
           vim-airline-themes
           nerdtree
@@ -28,11 +30,14 @@
           syntastic
         ];
       };
-
+*/
       neovim = {
         enable = true;
+        vimAlias = true;
         extraConfig = builtins.readFile dotfiles/.vimrc;
         plugins = with pkgs.vimPlugins; [ 
+          vim-nix
+          vim-fish
           vim-airline
           vim-airline-themes
           nerdtree

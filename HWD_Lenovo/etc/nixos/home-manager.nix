@@ -138,6 +138,7 @@
       ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
       ".config/neofetch/config.conf".source  = dotfiles/config.conf;
       ".Xresources".source = dotfiles/.Xresources;
+      ".config/fontconfig/fonts.conf".source = dotfiles/fonts.conf;
       ".config/i3/config".source = dotfiles/config;
       ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;
       ".config/i3/start_w2.sh".source = dotfiles/start_w2.sh;

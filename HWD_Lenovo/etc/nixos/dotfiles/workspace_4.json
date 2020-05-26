@@ -4,8 +4,8 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1600,
-       "width": 2164,
+       "height": 600,
+       "width": 800,
        "x": 0,
        "y": 0
     },
@@ -13,10 +13,10 @@
     "percent": 0.5,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^ranger$"
-       "transient_for": "^$"
+         "class": "^Alacritty$",
+         "instance": "^Alacritty$",
+       // "title": "^Alacritty$"
+         "transient_for": "^$"
        }
     ],
     "type": "con"
@@ -27,19 +27,19 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1600,
-       "width": 2164,
+       "height": 600,
+       "width": 800,
        "x": 0,
        "y": 0
     },
-    "name": "mudrii@lenovo-nixos tmux /home/mudrii/src/.files/HWD_Arch/.config/i3",
+    "name": "Alacritty",
     "percent": 0.5,
     "swallows": [
        {
-       "class": "^URxvt$",
-       "instance": "^urxvt$",
-       // "title": "^mudrii\\@lenovo\\-nixos\\ tmux\\ \\/home\\/mudrii\\/src\\/\\.files\\/HWD_Arch\\/\\.config\\/i3$"
-       "transient_for": "^$"
+         "class": "^Alacritty$",
+         "instance": "^Alacritty$",
+       // "title": "^p53\\-nixos\\:5\\.1\\.1\\ fish\\ mudrii\\@p53\\-nixos\\ i3\\-save\\-tree\\ \\/home\\/mudrii$"
+         "transient_for": "^$"
        }
     ],
     "type": "con"

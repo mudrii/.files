@@ -205,6 +205,7 @@ pam.services = [
 
   services = {
 #    localtime.enable = true;
+    urxvtd.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
     fstrim.enable = true;
@@ -452,10 +453,10 @@ pam.services = [
       powerline-fonts
       font-awesome_4
 #      dejavu_fonts
-#      google-fonts
-#      noto-fonts
+      google-fonts
+      noto-fonts
 #      noto-fonts-cjk
-#      noto-fonts-emoji
+      noto-fonts-emoji
 #      liberation_ttf
 #      fira-code
 #      fira-code-symbols
@@ -463,7 +464,7 @@ pam.services = [
 #      dina-font
 #      proggyfonts
 #      emojione
-#      twemoji-color-font
+      twemoji-color-font
     ];
   };
 
@@ -515,6 +516,10 @@ pam.services = [
       dstat
       gptfdisk
       mc
+      nnn
+#      vifm
+#      lf
+      trash-cli
       traceroute
       whois
       which
@@ -568,7 +573,6 @@ pam.services = [
       smartmontools
       pass encfs 
       linuxPackages.perf
-      ripgrep-all
       networkmanager
       wirelesstools
   #    blueman
@@ -578,6 +582,8 @@ pam.services = [
       nftables
       psmisc
       ripgrep-all
+      du-dust
+      exa
       tcpdump
       ethtool
       bmon
@@ -614,10 +620,13 @@ pam.services = [
       k="kubectl";
       kns="kubens";
       ktx="kubectx";
-      la="ls -lha --color=auto --group-directories-first";
+      la="exa -alg --group-directories-first -s=type";
+#      la="ls -lha --color=auto --group-directories-first";
       lless="set -gx LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s' && set -gx LESS '-R' && less -m -g -i -J -u -Q"; 
-      ll="ls -lah";
-      ls="ls --color=auto";
+#      ll="ls -lah";
+#      ls="ls --color=auto";
+      ll="exa -la";
+      ls="exa";
       mv="mv -i";
       nixcl="sudo nix-store --optimise -v && sudo nix-collect-garbage -d";
       nixup="sudo nix-channel --update && sudo nixos-rebuild switch";
@@ -660,6 +669,7 @@ pam.services = [
       openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCzc7Xx3FVqz2cV1qzkPFV9DmfXCvS98HWs6nzcZ+1zMQDpZUuSGY2hV8UyXgiitogLl3BTaKztvBmrzh3FeeRHYDX39eR+tvcL7mY+qIqUwyCrDcrXC+KHuMVcYWJPJBx+enlId/ZbBgzz4SpBTOVANGDv1AhkNhl1CDfSrIOSdoRdhQpcYqtjwmiy/giGhfwNwtTGFVJNXG5CZEtyKRyjN43dX12/g6eEThLpjAS7QxF8pCzLh754rjD4V4Qmg/t+BawOglSyNaqEBtdyd0xiI353hzdNG4U+6V3yPYKSdkZzHaGACwCNMKSfrF7IrIQtUc5d9b0H+XEjpKzPWaZWXg9Io/vKhSTK4brXeAnsck4kbWYj1RiU6noAZNZRleM8fMO6UdwzLZzrxGMOBFSSZHHUlgLEjadkc2kmGwvXx5bmEUXMCAb7jUIzv+TEoOcJfCj8xUGxCQtlk9kIguV0l8BWY0B6iwyNn8XM7taLdfIEMACkuD9v0y7SCBWRm6DL3PoVijnGX+g3ox1bGvx/9+4h1HbPH3POj5/C2Vh6kWtXFKTVHSrU4m8HsV94slD4ILTyfJxGWgL2TzjSJz3eKUlVNe9r1Pv14CDb2XaN4lGGxWV2aYDYwCwNaZyJTOXi/9tiflfmcHIiYRoABrss6nssfL2f6fNa0hm0ZAUClw== mudrii@arch" ];
 
       packages = with pkgs; [
+        alacritty
         fish
         neofetch
         ranger

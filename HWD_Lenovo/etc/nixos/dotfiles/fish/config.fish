@@ -39,6 +39,17 @@ set --universal fish_greeting
 set -gx GOPATH $HOME/go
 set -gx PATH $PATH $GOPATH/bin
 
+set -x NNN_USE_EDITOR 1
+#set -x NNN_COLORS '1267'
+set -x NNN_TRASH 1
+
+set -x PAGER less
+set -x LESS -R
+
+set -x TERMINAL alacritty
+set -x TERM alacritty
+
+set -x VISUAL nvim
 set -x EDITOR nvim
 
 function __fish_command_not_found_handler --on-event fish_command_not_found

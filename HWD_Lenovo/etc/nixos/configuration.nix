@@ -420,6 +420,7 @@ pam.services = [
           networkmanager_dmenu
           arandr
           escrotum
+          obs-studio
         ];
       };
     };

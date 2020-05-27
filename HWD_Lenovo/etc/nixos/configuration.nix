@@ -125,6 +125,8 @@ in
     seahorse.enable = true;
     vim.defaultEditor = true;
     mtr.enable = true;
+    
+    ssh.startAgent = false;    
 #    ssh.startAgent = true;
 
     chromium = {
@@ -213,6 +215,11 @@ pam.services = [
     thinkfan.enable = true;
     gnome3.gnome-keyring.enable = true;
     fail2ban.enable = true;
+
+#  YubiKey support
+    pcscd.enable = true;
+    udev.packages = [ pkgs.yubikey-personalization ];
+
 
 /*    
     undervolt = {
@@ -491,6 +498,15 @@ pam.services = [
     HWMON_MODULES="coretemp"
     '';
 
+# YubiKey SSH and GPG support    
+    /*
+    shellInit = ''
+      export GPG_TTY="$(tty)"
+      gpg-connect-agent /bye
+      export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+#      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    '';
+*/
     variables = {
     # Preferred applications
       EDITOR = "vim";
@@ -583,6 +599,7 @@ pam.services = [
       nftables
       psmisc
       ripgrep-all
+      ripgrep
       du-dust
       exa
       tcpdump
@@ -761,6 +778,8 @@ pam.services = [
         gcc 
         gnumake
         gnupg
+        pinentry-curses
+        paperkey
         gpa
         imagemagick
         spotify

@@ -4,20 +4,43 @@
     "current_border_width": 2,
     "floating": "auto_off",
     "geometry": {
-       "height": 1371,
-       "width": 2538,
+       "height": 1534,
+       "width": 2673,
        "x": 11,
-       "y": 58
+       "y": 55
     },
-    "name": "OKR: Definition and examples of John Doerr's goal-setting system | Measure What Matters - Chromium",
-    "percent": 1,
+    "name": "(4) Coronavirus Pandemic Update 76: Antibody Testing False Positives in COVID-19 - YouTube - Brave",
+    "percent": 0.719831232642598,
     "swallows": [
        {
-       "class": "^Chromium\\-browser$",
-       "instance": "^chromium\\-browser$",
-       // "title": "^OKR\\:\\ Definition\\ and\\ examples\\ of\\ John\\ Doerr\\'s\\ goal\\-setting\\ system\\ \\|\\ Measure\\ What\\ Matters\\ \\-\\ Chromium$",
-       "window_role": "^browser$",
-       "transient_for": "^$"
+         "class": "^Brave\\-browser$",
+         "instance": "^brave\\-browser$",
+       // "title": "^\\(4\\)\\ Coronavirus\\ Pandemic\\ Update\\ 76\\:\\ Antibody\\ Testing\\ False\\ Positives\\ in\\ COVID\\-19\\ \\-\\ YouTube\\ \\-\\ Brave$",
+         "window_role": "^browser$"
+         "transient_for": "^$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 600,
+       "width": 800,
+       "x": 0,
+       "y": 0
+    },
+    "name": "mudrii@p53-nixos i3-save-tree /home/mudrii/src/my_docs/cert_exam/AWS/AWS SysOps Administrator Associate",
+    "percent": 0.280168767357402,
+    "swallows": [
+       {
+         "class": "^Alacritty$",
+         "instance": "^Alacritty$",
+       // "title": "^mudrii\\@p53\\-nixos\\ i3\\-save\\-tree\\ \\/home\\/mudrii\\/src\\/my_docs\\/cert_exam\\/AWS\\/AWS\\ SysOps\\ Administrator\\ Associate$"
+         "transient_for": "^$"
        }
     ],
     "type": "con"

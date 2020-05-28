@@ -473,6 +473,7 @@ pam.services = [
 #      proggyfonts
 #      emojione
       twemoji-color-font
+      mononoki
     ];
   };
 
@@ -759,6 +760,7 @@ pam.services = [
         firefox
         chromium
         qutebrowser
+        brave
         unstable.vscode
         unstable.sublime3
         slack

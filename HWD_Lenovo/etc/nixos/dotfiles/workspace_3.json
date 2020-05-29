@@ -9,14 +9,14 @@
        "x": 11,
        "y": 55
     },
-    "name": "(4) Coronavirus Pandemic Update 76: Antibody Testing False Positives in COVID-19 - YouTube - Brave",
-    "percent": 0.719831232642598,
+    "name": "Brave",
+    "percent": 0.72,
     "swallows": [
        {
          "class": "^Brave\\-browser$",
          "instance": "^brave\\-browser$",
        // "title": "^\\(4\\)\\ Coronavirus\\ Pandemic\\ Update\\ 76\\:\\ Antibody\\ Testing\\ False\\ Positives\\ in\\ COVID\\-19\\ \\-\\ YouTube\\ \\-\\ Brave$",
-         "window_role": "^browser$"
+         "window_role": "^browser$",
          "transient_for": "^$"
        }
     ],
@@ -33,8 +33,8 @@
        "x": 0,
        "y": 0
     },
-    "name": "mudrii@p53-nixos i3-save-tree /home/mudrii/src/my_docs/cert_exam/AWS/AWS SysOps Administrator Associate",
-    "percent": 0.280168767357402,
+    "name": "Alacritty",
+    "percent": 0.28,
     "swallows": [
        {
          "class": "^Alacritty$",

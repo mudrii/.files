@@ -612,6 +612,8 @@ pam.services = [
       nload
       nvme-cli
       ncurses
+      protonvpn-cli-ng
+      openvpn
     ];
 
     shellAliases = {
@@ -652,6 +654,7 @@ pam.services = [
       p="python";
       ping="ping -c3";
       ps="ps -ef";
+      pvpn="sudo protonvpn";
       rm="rm -i";
       rmf="rm -rf";
       sudo="sudo -i";
@@ -766,7 +769,6 @@ pam.services = [
         slack
         vlc
         filezilla
-        openvpn
         gpicview
         home-manager
         fzf

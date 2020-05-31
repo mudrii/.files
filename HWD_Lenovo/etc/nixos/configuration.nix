@@ -219,13 +219,13 @@ pam.services = [
 #  YubiKey support
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
-
-
-/*    
+ 
     undervolt = {
       enable = true;
+      package = pkgs.undervolt;
+      temp = "98";
+      coreOffset = "-140";
     };
-*/
 
 /*  as a root
  acpidump > acpi.out
@@ -428,6 +428,7 @@ pam.services = [
           arandr
           escrotum
           obs-studio
+          libva-utils
         ];
       };
     };
@@ -526,7 +527,7 @@ pam.services = [
       nixFlakes
       unstable.virt-manager
       unstable.virt-viewer
-  #    undervolt
+#      undervolt
       acpica-tools
       patchelf
       binutils
@@ -550,6 +551,7 @@ pam.services = [
 #      p7zip
       unzip
       unrar
+      unstable.cpu-x
       lsof
       acpi
       pciutils

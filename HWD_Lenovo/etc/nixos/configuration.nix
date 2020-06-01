@@ -223,8 +223,8 @@ pam.services = [
     undervolt = {
       enable = true;
       package = pkgs.undervolt;
-      temp = "98";
-      coreOffset = "-140";
+      temp = "97";
+      coreOffset = "-130";
     };
 
 /*  as a root

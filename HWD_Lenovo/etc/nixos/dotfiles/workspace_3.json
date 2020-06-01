@@ -5,19 +5,18 @@
     "floating": "auto_off",
     "geometry": {
        "height": 1534,
-       "width": 2673,
-       "x": 11,
+       "width": 1265,
+       "x": 2564,
        "y": 55
     },
-    "name": "Brave",
-    "percent": 0.72,
+    "name": "qutebrowser",
+    "percent": 0.75,
     "swallows": [
        {
-         "class": "^Brave\\-browser$",
-         "instance": "^brave\\-browser$",
-       // "title": "^\\(4\\)\\ Coronavirus\\ Pandemic\\ Update\\ 76\\:\\ Antibody\\ Testing\\ False\\ Positives\\ in\\ COVID\\-19\\ \\-\\ YouTube\\ \\-\\ Brave$",
-         "window_role": "^browser$",
-         "transient_for": "^$"
+        "class": "^qutebrowser$",
+        "instance": "^qutebrowser$",
+       // "title": "^Linux\\ Academy\\ \\-\\ qutebrowser$"
+       "transient_for": "^$"
        }
     ],
     "type": "con"
@@ -34,13 +33,13 @@
        "y": 0
     },
     "name": "Alacritty",
-    "percent": 0.28,
+    "percent": 0.25,
     "swallows": [
        {
-         "class": "^Alacritty$",
-         "instance": "^Alacritty$",
-       // "title": "^mudrii\\@p53\\-nixos\\ i3\\-save\\-tree\\ \\/home\\/mudrii\\/src\\/my_docs\\/cert_exam\\/AWS\\/AWS\\ SysOps\\ Administrator\\ Associate$"
-         "transient_for": "^$"
+        "class": "^Alacritty$",
+        "instance": "^Alacritty$",
+       // "title": "^p53\\-nixos\\:brave\\.2\\.1\\ fish\\ mudrii\\@p53\\-nixos\\ i3\\-save\\-tree\\ \\/home\\/mudrii$"
+       "transient_for": "^$"
        }
     ],
     "type": "con"

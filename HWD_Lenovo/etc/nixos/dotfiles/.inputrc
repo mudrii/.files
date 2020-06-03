@@ -3,6 +3,10 @@
 "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
+
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
 #"\eOA": history-search-backward
 #"\eOB": history-search-forward
 #"\eOC": forward-char

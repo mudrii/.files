@@ -790,10 +790,10 @@ pam.services = [
         imagemagick
         spotify
         bookworm
-        (unstable.tor-browser-bundle-bin.override {
+       /* (unstable.tor-browser-bundle-bin.override {
           mediaSupport = true;
           pulseaudioSupport = true;
-        })        
+        })*/        
         unstable.keepassxc
         openconnect_openssl
         networkmanager-openconnect

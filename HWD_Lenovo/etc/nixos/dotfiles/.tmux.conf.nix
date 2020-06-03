@@ -2,11 +2,11 @@
 
 {
 
-  home-manager.users.mudrii.home.file.".tmux.conf".text = ''
+ home-manager.users.mudrii.home.file.".tmux.conf".text = ''
     source ${pkgs.python37Packages.powerline}/share/tmux/powerline.conf
 
     set-option -g default-shell "/run/current-system/sw/bin/fish"
-         
+    
     set -g default-terminal "screen-256color"
     set -as terminal-overrides ",*:Tc"
 #   set -as terminal-overrides ",*-256color:Tc"
@@ -44,6 +44,9 @@
 
     set -g monitor-activity on
     set -g visual-activity off
+
+    bind-key -n Home send Escape "OH"
+    bind-key -n End send Escape "OF"
 
     bind C-c new-session
 

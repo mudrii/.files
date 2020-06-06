@@ -167,7 +167,11 @@ in
 
 # List services that you want to enable:
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      enableNvidia = true;
+    };
+
     libvirtd.enable = true;
 #    virtualbox = {
 #      host.enable = true;
@@ -224,7 +228,7 @@ pam.services = [
       enable = true;
       package = pkgs.undervolt;
       temp = "97";
-      coreOffset = "-130";
+      coreOffset = "-125";
     };
 
 /*  as a root
@@ -501,7 +505,7 @@ pam.services = [
     '';
 
 # YubiKey SSH and GPG support    
-    /*
+/*    
     shellInit = ''
       export GPG_TTY="$(tty)"
       gpg-connect-agent /bye
@@ -785,7 +789,15 @@ pam.services = [
         gnumake
         gnupg
         pinentry-curses
+        pinentry-qt
         paperkey
+        pam_u2f
+        yubikey-manager
+        yubico-piv-tool
+        yubikey-manager-qt
+        yubikey-personalization
+        yubikey-personalization-gui
+        yubioath-desktop
         gpa
         imagemagick
         spotify

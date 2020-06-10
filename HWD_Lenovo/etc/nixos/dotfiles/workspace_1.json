@@ -10,7 +10,7 @@
        "y": 0
     },
     "name": "Mozilla Firefox",
-    "percent": 0.7,
+    "percent": 0.75,
     "swallows": [
        {
          "class": "^Firefox$",
@@ -35,7 +35,7 @@
        "y": 0
     },
     "name": "Alacritty",
-    "percent": 0.3,
+    "percent": 0.25,
     "swallows": [
        {
          "class": "^Alacritty$",

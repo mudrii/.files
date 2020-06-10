@@ -541,7 +541,7 @@ pam.services = [
       mc
       nnn
 #      vifm
-#      lf
+      lf
       trash-cli
       traceroute
       whois
@@ -647,7 +647,7 @@ pam.services = [
       k="kubectl";
       kns="kubens";
       ktx="kubectx";
-      la="exa -alg --group-directories-first -s=type";
+      la="exa -alg --group-directories-first -s=type --icons";
 #      la="ls -lha --color=auto --group-directories-first";
       lless="set -gx LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s' && set -gx LESS '-R' && less -m -g -i -J -u -Q"; 
 #      ll="ls -lah";
@@ -715,6 +715,8 @@ pam.services = [
         unstable.awscli
         unstable.pulumi-bin
         unstable.gitAndTools.gitFull
+        unstable.gitAndTools.git-hub
+        unstable.gitAndTools.gh
         unstable.git-lfs
         unstable.terraform
         unstable.terraform-lsp
@@ -792,6 +794,8 @@ pam.services = [
         pinentry-qt
         paperkey
         pam_u2f
+        libu2f-host
+        libu2f-server
         yubikey-manager
         yubico-piv-tool
         yubikey-manager-qt

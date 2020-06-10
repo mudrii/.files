@@ -140,6 +140,7 @@
       ".Xresources".source = dotfiles/.Xresources;
       ".config/alacritty/alacritty.yml".source = dotfiles/alacritty.yml;
       ".config/fontconfig/fonts.conf".source = dotfiles/fonts.conf;
+      ".config/lf/lfrc".source = dotfiles/lfrc;
       ".config/i3/config".source = dotfiles/config;
       ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;
       ".config/i3/start_w2.sh".source = dotfiles/start_w2.sh;
@@ -162,6 +163,8 @@
       ".config/ranger/rc.conf".source = dotfiles/ranger/rc.conf;
       ".config/ranger/rifle.conf".source = dotfiles/ranger/rifle.conf;
       ".config/ranger/scope.sh".source = dotfiles/ranger/scope.sh;
+      ".config/ranger/plugins/ranger_devicons/__init__.py".source = dotfiles/ranger/plugins/ranger_devicons/__init__.py;
+      ".config/ranger/plugins/ranger_devicons/devicons.py".source = dotfiles/ranger/plugins/ranger_devicons/devicons.py;
       ".config/fish/config.fish".source = dotfiles/fish/config.fish;
       ".config/fish/functions/fish_user_key_bindings.fish".source = dotfiles/fish/fish_user_key_bindings.fish;
       ".config/fish/functions/fish_greeting.fish".source = dotfiles/fish/fish_greeting.fish;

@@ -168,15 +168,6 @@ command W w !sudo tee % > /dev/null
 " vmap <leader>f  <Plug>(coc-format-selected)
 " nmap <leader>f  <Plug>(coc-format-selected)
 
-" Handle TERM quirks in vim
-if $TERM =~ '^screen-256color'
-    set t_Co=256
-    nmap <Esc>OH <Home>
-    imap <Esc>OH <Home>
-    nmap <Esc>OF <End>
-    imap <Esc>OF <End>
-endif
-
 " Key Bindings
 nmap <C-n> :NERDTreeToggle<CR>
 

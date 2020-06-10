@@ -1,0 +1,9 @@
+# Basic Settings
+set preview true
+#set previewer ~/scripts/lf/preview
+#set previewer pistol
+set hidden true
+set color256 true
+set drawbox true
+set icons true
+set ignorecase true

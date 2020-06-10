@@ -45,9 +45,6 @@
     set -g monitor-activity on
     set -g visual-activity off
 
-    bind-key -n Home send Escape "OH"
-    bind-key -n End send Escape "OF"
-
     bind C-c new-session
 
     bind C-f command-prompt -p find-session 'switch-client -t %%'

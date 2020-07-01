@@ -51,7 +51,8 @@ ls -la /dev/disk/by-label/
 
 mount /dev/disk/by-label/boot /mnt/boot
 
-fallocate -l 2G /mnt/swapfile
+# fallocate -l 2G /mnt/swapfile # Not working for kernel 5.7
+dd if=/dev/zero of=/mnt/swapfile bs=1M count=2048 status=progress
 
 chmod 600 /mnt/swapfile
 

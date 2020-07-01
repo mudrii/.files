@@ -11,6 +11,34 @@ let
 in
 
 {
+/*
+  nixpkgs.overlays = [
+    (self: super: {
+      linuxPackages_latest = super.linuxPackages_latest.extend (self: super: {
+        nvidiaPackages = super.nvidiaPackages // {
+          stable = super.nvidiaPackages.stable.overrideAttrs (attrs: {
+            patches = [
+              (pkgs.fetchpatch {
+                name = "nvidia-kernel-5.7.patch";
+                url = "https://gitlab.com/snippets/1965550/raw";
+                sha256 = "03iwxhkajk65phc0h5j7v4gr4fjj6mhxdn04pa57am5qax8i2g9w";
+              })
+            ];
+
+            passthru = {
+              settings = pkgs.callPackage (import <nixpkgs/pkgs/os-specific/linux/nvidia-x11/settings.nix> self.nvidiaPackages.stable "15psxvd65wi6hmxmd2vvsp2v0m07axw613hb355nh15r1dpkr3ma") {
+                withGtk2 = true;
+                withGtk3 = false;
+              };
+
+              persistenced = pkgs.lib.mapNullable (hash: pkgs.callPackage (import <nixpkgs/pkgs/os-specific/linux/nvidia-x11/persistenced.nix> self.nvidiaPackages.stable hash) { }) "13izz9p2kg9g38gf57g3s2sw7wshp1i9m5pzljh9v82c4c22x1fw";
+            };
+          });
+        };
+      });
+    })
+  ];
+*/
 
 /*
   nixpkgs.config.packageOverrides = pkgs: {
@@ -33,7 +61,14 @@ in
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      grub.enableCryptodisk = true;
+      grub ={
+        enableCryptodisk = true;
+#        enable = true;
+#        devices = [ "nodev" ];
+#        efiInstallAsRemovable = true;
+#        efiSupport = true;
+#        useOSProber = true;
+      };
     };
   
     kernelPackages = pkgs.linuxPackages_latest;
@@ -216,13 +251,25 @@ pam.services = [
     fwupd.enable = true;
     fstrim.enable = true;
     sysstat.enable = true;  
-    thinkfan.enable = true;
     gnome3.gnome-keyring.enable = true;
     fail2ban.enable = true;
 
 #  YubiKey support
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
+    
+    thinkfan = {
+      enable = true;
+      levels = ''
+        (0,     0,      65)
+        (1,     58,     70)
+        (2,     60,     71)
+        (3,     62,     73)
+        (6,     66,     75)
+        (7,     70,     95)
+        (127,   90,     32767)
+        '';
+    };
  
     undervolt = {
       enable = true;
@@ -549,6 +596,7 @@ pam.services = [
       nmap
       wget
       neovim
+#      micro
       commonsCompress
       libarchive
       archiver
@@ -706,6 +754,7 @@ pam.services = [
         mediainfo
         w3m
         ffmpeg-full
+        ffmpegthumbnailer
         mupdf
         tmux
         screen
@@ -722,7 +771,7 @@ pam.services = [
         unstable.terraform-lsp
         unstable.tflint
         unstable.kubernetes
-        unstable.kubernetes-helm
+        kubernetes-helm
         unstable.kind
         unstable.go
         unstable.xmind

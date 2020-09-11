@@ -131,6 +131,7 @@
 #    home.sessionVariables.LESS = "-R";
 
     home.file = {
+      ".config/nixpkgs/home.nix".source = dotfiles/home.nix;
       ".bashrc".source = dotfiles/.bashrc;
       ".inputrc".source = dotfiles/.inputrc;
       ".dircolors".source = dotfiles/.dircolors;

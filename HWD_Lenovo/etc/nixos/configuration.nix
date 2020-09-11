@@ -843,6 +843,7 @@ pam.services = [
   nix = {
     useSandbox = true;
     autoOptimiseStore = true;
+    allowedUsers = [ "*" ];
     gc = {
       automatic = true;
       dates = "weekly";

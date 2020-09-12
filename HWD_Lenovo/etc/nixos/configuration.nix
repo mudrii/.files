@@ -624,12 +624,12 @@ pam.services = [
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-#      liberation_ttf
-#      fira-code
-#      fira-code-symbols
-#      mplus-outline-fonts
-#      dina-font
-#      proggyfonts
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      mplus-outline-fonts
+      dina-font
+      proggyfonts
 #      emojione
       twemoji-color-font
       mononoki
@@ -1010,6 +1010,7 @@ pam.services = [
     autoUpgrade = {
       enable = true;
       dates = "weekly";
+      allowReboot = false;
       #dates = "Sun *-*-* 04:00:00";
     };
   };

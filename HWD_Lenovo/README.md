@@ -122,6 +122,9 @@ cryptsetup luksOpen /dev/disk/by-partuuid/$PARTUUID crypted
 
 mount /dev/disk/by-label/nixos /mnt
 mount /dev/disk/by-label/boot /mnt/boot
+
+#wifi connect mannually with network manager
+nmtui
 ```
 
 ## NixOS Operations
@@ -261,6 +264,12 @@ la /nix/store/1jqa4bzjqvl97vrdq0chc9k6hd8n7q31-firmware/lib/firmware
 wget https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/iwlwifi-cc-a0-48.ucode
 
 cp iwlwifi-cc-a0-48.ucode /nix/store/1jqa4bzjqvl97vrdq0chc9k6hd8n7q31-firmware/lib/firmware/
+```
+
+## Fix Issue with fonts post update for i3 showing squares
+
+```sh
+fc-cache -f -v 
 ```
 
 ## sshfs

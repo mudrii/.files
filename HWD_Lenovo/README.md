@@ -307,20 +307,19 @@ git config --global user.signingkey 6AB3587A
 # Errors to fix
 
 ```sh
-nixos kernel: mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 1)
-nixos kernel: tpm tpm0: tpm_try_transmit: send(): error -5
-nixos kernel: tpm tpm0: [Firmware Bug]: TPM interrupt not working, polling instead
-nixos kernel: Bluetooth: hci0: Failed to load Intel firmware file (-2)
-nixos kernel: iwlwifi 0000:52:00.0: no suitable firmware found!
-nixos kernel: iwlwifi 0000:52:00.0: minimum version required: iwlwifi-cc-a0-39
-nixos kernel: iwlwifi 0000:52:00.0: maximum version supported: iwlwifi-cc-a0-46
-nixos kernel: iwlwifi 0000:52:00.0: check git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.g>
-nixos kernel: iTCO_wdt iTCO_wdt: can't request region for resource [mem 0x00c5fffc-0x00c5ffff]
-nixos kernel: irq 48: nobody cared (try booting with the "irqpoll" option)
-nixos kernel: handlers:
-nixos kernel: [<0000000070ec9b05>] tis_int_handler [tpm_tis_core]
-nixos kernel: Disabling IRQ #48
-nixos dhcpcd[1020]: ipv6_addaddr1: Permission denied
+[   20.306958] acpi_call: module verification failed: signature and/or required key missing - tainting kernel
+[   20.309198] thinkpad_ec: thinkpad_ec_request_row: arg0 rejected: (0x01:0x00)->0x00
+[   20.309198] thinkpad_ec: thinkpad_ec_read_row: failed requesting row: (0x01:0x00)->0xfffffffb
+[   20.309217] thinkpad_ec: initial ec test failed
+
+
+[   20.628625] tpm_tis STM7364:00: 2.0 TPM (device-id 0x0, rev-id 78)
+[   20.630554] tpm tpm0: tpm_try_transmit: send(): error -5
+[   20.630655] i801_smbus 0000:00:1f.4: enabling device (0000 -> 0003)
+[   20.631463] tpm tpm0: [Firmware Bug]: TPM interrupt not working, polling instead
+
+[   26.503250] virbr0: port 1(virbr0-nic) entered disabled state
+[   26.595625] ucsi_acpi USBC000:00: con2: failed to register alternate modes
 ```
 
 ## Development

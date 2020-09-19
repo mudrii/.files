@@ -887,6 +887,7 @@ pam.services = [
         unstable.xmind
         unstable.zoom-us
         unstable.teams
+        signal-desktop
         kubectx
         dep
 /*        (unstable.terraform.withPlugins(p: with p; [

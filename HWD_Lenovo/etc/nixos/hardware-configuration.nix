@@ -6,26 +6,29 @@
 {
 
   imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
+    [
+      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [];
   boot.kernelModules = [ "coretemp" "kvm-intel" "acpi_call" "tp_smapi" ];
-  boot.extraModulePackages = [ 
+  boot.extraModulePackages = [
     config.boot.kernelPackages.acpi_call
     config.boot.kernelPackages.tp_smapi
   ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7f4bbb31-4183-4ec4-9927-0a5fa2c5f2e9";
+    {
+      device = "/dev/disk/by-uuid/7f4bbb31-4183-4ec4-9927-0a5fa2c5f2e9";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."crypted".device = "/dev/disk/by-uuid/40dd2d7f-06d6-4092-8611-8944d1408cd0";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/7C04-BEEF";
+    {
+      device = "/dev/disk/by-uuid/7C04-BEEF";
       fsType = "vfat";
     };
 

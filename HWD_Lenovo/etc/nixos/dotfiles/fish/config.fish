@@ -56,6 +56,8 @@ function __fish_command_not_found_handler --on-event fish_command_not_found
   command-not-found $argv[1]
 end
 
+eval (direnv hook fish)
+
 export LF_ICONS="\
 tw=:\
 st=:\

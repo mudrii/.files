@@ -684,6 +684,9 @@ in
       nixpkgs-lint
       nix-prefetch
       nix-du
+      nix-linter
+      nixpkgs-review
+      nixpkgs-pytools
       unstable.nix-simple-deploy
       niv
       graphviz
@@ -912,6 +915,7 @@ in
                 ]))
         */
         #        (lowPrio unstable.python38Full)
+        python38Full
         python37Full
         (
           python3.withPackages (

@@ -226,6 +226,7 @@ in
     sysstat.enable = true;
     gnome3.gnome-keyring.enable = true;
     fail2ban.enable = true;
+    emacs.enable = true;
 
     clamav = {
       daemon.enable = true;
@@ -698,6 +699,7 @@ in
       cryptsetup
       dstat
       gptfdisk
+      parted
       mc
       nnn
       #      vifm
@@ -937,6 +939,7 @@ in
         asciinema
         highlight
         jq
+        lorri
         direnv
         psensor
         firefox
@@ -988,6 +991,9 @@ in
         unstable.ansible
         graphviz
         scrcpy
+        unstable.pcmanfm
+        unstable.mucommander
+        unstable.hexchat
       ];
     };
   };

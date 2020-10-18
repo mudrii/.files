@@ -166,6 +166,10 @@
               ];
             };
 
+            pull = {
+              rebase = true;
+            };
+
             rebase = {
               stat = true;
               autoSquash = true;

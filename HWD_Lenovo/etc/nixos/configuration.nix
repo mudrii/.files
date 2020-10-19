@@ -25,10 +25,29 @@ in
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
-      #      "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+      # "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
       ./home-manager.nix
-      #      ./containers.nix      
+      # ./containers.nix      
     ];
+
+  /*
+    imports = [
+      ./containers/gcpdrgn.nix
+      ./containers/gcpsndp.nix
+      ./containers/gcpion.nix
+      ./containers/awsndp.nix
+      ./containers/awsion.nix
+    ];
+
+    containers = {
+      gcpdrgn.autoStart = false;
+      gcpsndp.autoStart = false;
+      gcpion.autoStart = true;
+      awsndp.autoStart = false;
+      awsion.autoStart = true;
+    };
+    */
+
 
   boot = {
     loader = {
@@ -36,25 +55,25 @@ in
       efi.canTouchEfiVariables = true;
       grub = {
         enableCryptodisk = true;
-        #        enable = true;
-        #        devices = [ "nodev" ];
-        #        efiInstallAsRemovable = true;
-        #        efiSupport = true;
-        #        useOSProber = true;
+        # enable = true;
+        # devices = [ "nodev" ];
+        # efiInstallAsRemovable = true;
+        # efiSupport = true;
+        # useOSProber = true;
       };
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = [ "nouveau" ];
-    #    extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
-    #    kernelParams = [ "nvidia-drm.modeset=1" ];
+    # extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
+    # kernelParams = [ "nvidia-drm.modeset=1" ];
     cleanTmpDir = true;
   };
 
   hardware = {
     cpu.intel.updateMicrocode = true;
     enableRedistributableFirmware = true;
-    #    enableAllFirmware = true;
+    # enableAllFirmware = true;
 
     bluetooth = {
       enable = true;
@@ -87,17 +106,17 @@ in
     interfaces.enp0s31f6.useDHCP = true;
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
     # Enables wireless support via wpa_supplicant.
-    #    wireless.enable = true;  
-    #  Configure network proxy if necessary
-    #    proxy.default = "http://user:password@proxy:port/";
-    #    proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # wireless.enable = true;  
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
     /*
-        nat = {
-          enable = true;
-          internalInterfaces = ["ve-+"];
-          externalInterface = "enp0s31f6";
-        };
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = "enp0s31f6";
+    };
     */
 
     # Open ports in the firewall.
@@ -123,9 +142,9 @@ in
   /*  
     powerManagement = {
       enable = true;
-  #    powertop.enable = true;
-  #    cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
-  #    cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
+      powertop.enable = true;
+      cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
+      cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
     };
   */
 
@@ -133,9 +152,7 @@ in
     seahorse.enable = true;
     vim.defaultEditor = true;
     mtr.enable = true;
-
     ssh.startAgent = false;
-    #    ssh.startAgent = true;
 
     chromium = {
       enable = true;
@@ -148,7 +165,7 @@ in
 
     bash = {
       enableCompletion = true;
-      #      shellInit = "neofetch";
+      # shellInit = "neofetch";
       promptInit = ''
         PS1="\n\[\033[1;32m\]\e[0;31m[\[\e]0;\u@\h: \w\a\]\e[01;32m\u@\[\e[1;34m\]\h:\[\e[01;36m\]\w\[\e[01;32m\]\e[0;31m]\[\033[0m\]\$(__git_ps1)\[\e[01;32m\]\$\[\033[0m\] "
       '';
@@ -160,7 +177,7 @@ in
         completions.enable = true;
         config.enable = true;
       };
-      #      shellInit = "neofetch";
+      # shellInit = "neofetch";
     };
 
     nano.nanorc = ''
@@ -181,36 +198,23 @@ in
     };
 
     libvirtd.enable = true;
-    #    virtualbox = {
-    #      host.enable = true;
-    #      host.enableExtensionPack = true;
-    #    };
+
+    /*
+    virtualbox = {
+      host.enable = true;
+      host.enableExtensionPack = true;
+    };
+    */
+
   };
 
-
+  # Example how to use pam
   /*
-    imports = [
-        ./containers/gcpdrgn.nix
-        ./containers/gcpsndp.nix
-        ./containers/gcpion.nix
-        ./containers/awsndp.nix
-        ./containers/awsion.nix
-    ];
-
-    containers.gcpdrgn.autoStart = false;
-    containers.gcpsndp.autoStart = false;
-    containers.gcpion.autoStart = true;
-    containers.awsndp.autoStart = false;
-    containers.awsion.autoStart = true;  
-  */
-
-  /* example how to use pam
   pam.services = [
     { name = "gnome_keyring"
       text = ''
         auth     optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
         session  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so auto_start
-
         password  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
       '';
     }
@@ -218,7 +222,7 @@ in
   */
 
   services = {
-    #    localtime.enable = true;
+    # localtime.enable = true;
     urxvtd.enable = true;
     blueman.enable = true;
     fwupd.enable = true;
@@ -233,7 +237,7 @@ in
       updater.enable = true;
     };
 
-    #  YubiKey support
+    # YubiKey support
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
 
@@ -257,10 +261,11 @@ in
       coreOffset = "-125";
     };
 
-    /*  as a root
-     acpidump > acpi.out
-     acpixtract -a acpi.out
-     dptfxtract *.dat 
+    /*  
+    # As a root
+      acpidump > acpi.out
+      acpixtract -a acpi.out
+      dptfxtract *.dat 
     */
 
     # Power button invokes suspend, not shutdown.
@@ -316,14 +321,24 @@ in
 
     chrony = {
       enable = true;
-      servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
+      servers = [
+        "0.sg.pool.ntp.org"
+        "1.sg.pool.ntp.org"
+        "2.sg.pool.ntp.org"
+        "3.sg.pool.ntp.org"
+      ];
     };
 
     /*    
-        timesyncd = {
-          enable = true;
-          servers = [ "0.sg.pool.ntp.org" "1.sg.pool.ntp.org" "2.sg.pool.ntp.org" "3.sg.pool.ntp.org" ];
-        };
+    timesyncd = {
+      enable = true;
+      servers = [ 
+        "0.sg.pool.ntp.org" 
+        "1.sg.pool.ntp.org" 
+        "2.sg.pool.ntp.org" 
+        "3.sg.pool.ntp.org"
+      ];
+    };
     */
 
     openssh = {
@@ -350,141 +365,123 @@ in
         # Detailked info can be found https://linrunner.de/tlp/settings/index.html
 
         # Disables builtin radio devices on boot:
-        #    bluetooth
-        #    wifi – Wireless LAN (Wi-Fi)
-        #    wwan – Wireless Wide Area Network (3G/UMTS, 4G/LTE, 5G)
-         
-        #       DEVICES_TO_DISABLE_ON_STARTUP="bluetooth wifi"
+        #   bluetooth
+        #   wifi – Wireless LAN (Wi-Fi)
+        #   wwan – Wireless Wide Area Network (3G/UMTS, 4G/LTE, 5G)
+        # DEVICES_TO_DISABLE_ON_STARTUP="bluetooth wifi"
 
         # When a LAN, Wi-Fi or WWAN connection has been established, the stated radio devices are disabled:
-        #    bluetooth
-        #    wifi – Wireless LAN
-        #    wwan – Wireless Wide Area Network (3G/UMTS, 4G/LTE, 5G)
-
-        #        DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan"
-        #        DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
-        #        DEVICES_TO_DISABLE_ON_WWAN_CONNECT="wifi"
+        #   bluetooth
+        #   wifi – Wireless LAN
+        #   wwan – Wireless Wide Area Network (3G/UMTS, 4G/LTE, 5G)
+        # DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan"
+        # DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
+        # DEVICES_TO_DISABLE_ON_WWAN_CONNECT="wifi"
 
         # When a LAN, Wi-Fi, WWAN connection has been disconnected, the stated radio devices are enabled.
-
-        #        DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi wwan"
-        #        DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT=""
-        #        DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
+        # DEVICES_TO_ENABLE_ON_LAN_DISCONNECT="wifi wwan"
+        # DEVICES_TO_ENABLE_ON_WIFI_DISCONNECT=""
+        # DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
 
         # Set battery charge thresholds for main battery (BAT0) and auxiliary/Ultrabay battery (BAT1). Values are given as a percentage of the full capacity. A value of 0 is translated to the hardware defaults 96/100%.        
-                START_CHARGE_THRESH_BAT0=60
-                STOP_CHARGE_THRESH_BAT0=80
+        START_CHARGE_THRESH_BAT0=60
+        STOP_CHARGE_THRESH_BAT0=80
 
         # Control battery feature drivers:
-      
-                NATACPI_ENABLE=1
-                TPACPI_ENABLE=1
-                TPSMAPI_ENABLE=1
+        NATACPI_ENABLE=1
+        TPACPI_ENABLE=1
+        TPSMAPI_ENABLE=1
 
         # Defines the disk devices the following parameters are effective for. Multiple devices are separated with blanks.
-
-                DISK_DEVICES="nvme0n1 nvme1n1"
+        DISK_DEVICES="nvme0n1 nvme1n1"
 
         # Set the “Advanced Power Management Level”. Possible values range between 1 and 255.
-        #    1 – max power saving / minimum performance – Important: this setting may lead to increased disk drive wear and tear because of excessive read-write head unloading (recognizable from the clicking noises)
-        #    128 – compromise between power saving and wear (TLP standard setting on battery)
-        #    192 – prevents excessive head unloading of some HDDs
-        #    254 – minimum power saving / max performance (TLP standard setting on AC)
-        #    255 – disable APM (not supported by some disk models)
-        #    keep – special value to skip this setting for the particular disk (synonym: _)
-
-                DISK_APM_LEVEL_ON_AC="254 254"
-                DISK_APM_LEVEL_ON_BAT="128 128"
+        #  1 – max power saving / minimum performance – Important: this setting may lead to increased disk drive wear and tear because of excessive read-write head unloading (recognizable from the clicking noises)
+        #  128 – compromise between power saving and wear (TLP standard setting on battery)
+        #  192 – prevents excessive head unloading of some HDDs
+        #  254 – minimum power saving / max performance (TLP standard setting on AC)
+        #  255 – disable APM (not supported by some disk models)
+        #  keep – special value to skip this setting for the particular disk (synonym: _)
+        DISK_APM_LEVEL_ON_AC="254 254"
+        DISK_APM_LEVEL_ON_BAT="128 128"
 
         # Set the min/max/turbo frequency for the Intel GPU. Possible values depend on your hardware. See the output of tlp-stat -g for available frequencies.
-
-        #        INTEL_GPU_MIN_FREQ_ON_AC=0
-        #        INTEL_GPU_MIN_FREQ_ON_BAT=0
-        #        INTEL_GPU_MAX_FREQ_ON_AC=0
-        #        INTEL_GPU_MAX_FREQ_ON_BAT=0
-        #        INTEL_GPU_BOOST_FREQ_ON_AC=0
-        #        INTEL_GPU_BOOST_FREQ_ON_BAT=0
+        # INTEL_GPU_MIN_FREQ_ON_AC=0
+        # INTEL_GPU_MIN_FREQ_ON_BAT=0
+        # INTEL_GPU_MAX_FREQ_ON_AC=0
+        # INTEL_GPU_MAX_FREQ_ON_BAT=0
+        # INTEL_GPU_BOOST_FREQ_ON_AC=0
+        # INTEL_GPU_BOOST_FREQ_ON_BAT=0
 
         # Selects the CPU scaling governor for automatic frequency scaling.
         # For Intel Core i 2nd gen. (“Sandy Bridge”) or newer Intel CPUs. Supported governors are:
-        #    powersave – recommended (kernel default)
-        #    performance
-
-                CPU_SCALING_GOVERNOR_ON_AC=powersave
-                CPU_SCALING_GOVERNOR_ON_BAT=powersave
+        #  powersave – recommended (kernel default)
+        #  performance
+        CPU_SCALING_GOVERNOR_ON_AC=powersave
+        CPU_SCALING_GOVERNOR_ON_BAT=powersave
 
         # Set Intel CPU energy/performance policy HWP.EPP. Possible values are
-        #    performance
-        #    balance_performance
-        #    default
-        #    balance_power
-        #    power
+        #  performance
+        #  balance_performance
+        #  default
+        #  balance_power
+        #  power
         # for tlp-stat Version 1.3 and higher 'tlp-stat -p'
+        # CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
+        # CPU_ENERGY_PERF_POLICY_ON_BAT=power
 
-        #        CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
-        #        CPU_ENERGY_PERF_POLICY_ON_BAT=power
-
-        #  Set Intel CPU energy/performance policy HWP.EPP. Possible values are
-        #    performance
-        #    balance_performance
-        #    default
-        #    balance_power
-        #    power
+        # Set Intel CPU energy/performance policy HWP.EPP. Possible values are
+        #   performance
+        #   balance_performance
+        #   default
+        #   balance_power
+        #   power
         # Version 1.2.2 and lower For version 1.3 and higher this parameter is replaced by CPU_ENERGY_PERF_POLICY_ON_AC/BAT
-
-                CPU_HWP_ON_AC=balance_performance
-                CPU_HWP_ON_BAT=power
+        CPU_HWP_ON_AC=balance_performance
+        CPU_HWP_ON_BAT=power
 
         # Define the min/max P-state for Intel Core i processors. Values are stated as a percentage (0..100%) of the total available processor performance.
-
-                CPU_MIN_PERF_ON_AC=0
-                CPU_MAX_PERF_ON_AC=100
-                CPU_MIN_PERF_ON_BAT=0
-                CPU_MAX_PERF_ON_BAT=30
+        CPU_MIN_PERF_ON_AC=0
+        CPU_MAX_PERF_ON_AC=100
+        CPU_MIN_PERF_ON_BAT=0
+        CPU_MAX_PERF_ON_BAT=30
 
         # Disable CPU “turbo boost” (Intel) or “turbo core” (AMD) feature (0 = disable / 1 = allow).
-
-                CPU_BOOST_ON_AC=1
-                CPU_BOOST_ON_BAT=0
+        CPU_BOOST_ON_AC=1
+        CPU_BOOST_ON_BAT=0
 
         # Minimize number of used CPU cores/hyper-threads under light load conditions (1 = enabled, 0 = disabled). Depends on kernel and processor model.
-
-                SCHED_POWERSAVE_ON_AC=0
-                SCHED_POWERSAVE_ON_BAT=1
+        SCHED_POWERSAVE_ON_AC=0
+        SCHED_POWERSAVE_ON_BAT=1
 
         # Set Intel CPU energy/performance policy EPB. Possible values are (in order of increasing power saving):
-        #    performance
-        #    balance-performance
-        #    default (deprecated: normal)
-        #    balance-power
-        #    power (deprecated: powersave)
+        #   performance
+        #   balance-performance
+        #   default (deprecated: normal)
+        #   balance-power
+        #   power (deprecated: powersave)
         # Version 1.2.2 and lower For version 1.3 and higher this parameter is replaced by CPU_ENERGY_PERF_POLICY_ON_AC/BAT
-
-                ENERGY_PERF_POLICY_ON_AC=balance-performance
-                ENERGY_PERF_POLICY_ON_BAT=power
+        ENERGY_PERF_POLICY_ON_AC=balance-performance
+        ENERGY_PERF_POLICY_ON_BAT=power
 
         # Timeout (in seconds) for the audio power saving mode (supports Intel HDA, AC97). A value of 0 disables power save.
-
-                SOUND_POWER_SAVE_ON_AC=0
-                SOUND_POWER_SAVE_ON_BAT=1
+        SOUND_POWER_SAVE_ON_AC=0
+        SOUND_POWER_SAVE_ON_BAT=1
 
         # Controls runtime power management for PCIe devices.
-
-                RUNTIME_PM_ON_AC=on
-                RUNTIME_PM_ON_BAT=auto
+        RUNTIME_PM_ON_AC=on
+        RUNTIME_PM_ON_BAT=auto
 
         # Exclude PCIe devices assigned to listed drivers from runtime power management. Use tlp-stat -e to lookup the drivers (in parentheses at the end of each output line).
-
-        #        RUNTIME_PM_DRIVER_BLACKLIST="mei_me nouveau nvidia pcieport radeon"
+        # RUNTIME_PM_DRIVER_BLACKLIST="mei_me nouveau nvidia pcieport radeon"
 
         # Sets PCIe ASPM power saving mode. Possible values:
         #    default – recommended
         #    performance
         #    powersave
         #    powersupersave
-
-                PCIE_ASPM_ON_AC=default
-                PCIE_ASPM_ON_BAT=default
+        PCIE_ASPM_ON_AC=default
+        PCIE_ASPM_ON_BAT=default
       '';
     };
 
@@ -529,8 +526,8 @@ in
 
     xserver = {
       enable = true;
-      #      autorun = false;
-      #      videoDrivers = [ "intel" ];
+      # autorun = false;
+      # videoDrivers = [ "intel" ];
       videoDrivers = [ "nvidia" ];
       layout = "us";
       xkbOptions = "eurosign:e";
@@ -549,10 +546,12 @@ in
       };
 
       displayManager = {
-        #        setupCommands = ''
-        #          ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0 
-        #          ${pkgs.xorg.xrandr}/bin/xrandr --auto
-        #          '';
+        /*
+        setupCommands = ''
+          ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0 
+          ${pkgs.xorg.xrandr}/bin/xrandr --auto
+        '';
+        */
         defaultSession = "none+i3";
 
         lightdm = {
@@ -569,16 +568,16 @@ in
         i3.extraPackages = with pkgs; [
           dmenu #application launcher most people use
           i3lock #default i3 screen locker
-          #          i3status # gives you the default i3 status bar
-          #          i3blocks #if you are planning on using i3blocks over i3status
+          # i3status # gives you the default i3 status bar
+          # i3blocks #if you are planning on using i3blocks over i3status
           i3status-rust
           i3-gaps
           i3lock-fancy
           xautolock
           rofi
           numlockx
-          #          conky
-          #          rxvt_unicode
+          # conky
+          # rxvt_unicode
           rxvt_unicode-with-plugins
           (lowPrio urxvt_perls)
           (lowPrio urxvt_font_size)
@@ -602,7 +601,7 @@ in
   };
 
   console = {
-    #font = "Powerline";
+    # font = "Powerline";
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
@@ -632,7 +631,7 @@ in
       mplus-outline-fonts
       dina-font
       proggyfonts
-      #      emojione
+      # emojione
       twemoji-color-font
       mononoki
     ];
@@ -662,12 +661,12 @@ in
 
     # YubiKey SSH and GPG support    
     /*    
-        shellInit = ''
-          export GPG_TTY="$(tty)"
-          gpg-connect-agent /bye
-          export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-    #      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        '';
+      shellInit = ''
+        export GPG_TTY="$(tty)"
+        gpg-connect-agent /bye
+        export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+    #   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      '';
     */
     variables = {
       # Preferred applications
@@ -695,7 +694,7 @@ in
       nixFlakes
       unstable.virt-manager
       unstable.virt-viewer
-      #      undervolt
+      # undervolt
       acpica-tools
       patchelf
       binutils
@@ -705,7 +704,7 @@ in
       parted
       mc
       nnn
-      #      vifm
+      # vifm
       lf
       trash-cli
       traceroute
@@ -714,11 +713,11 @@ in
       nmap
       wget
       neovim
-      #      micro
+      # micro
       commonsCompress
       libarchive
       archiver
-      #      p7zip
+      # p7zip
       unzip
       unrar
       unstable.cpu-x
@@ -750,7 +749,7 @@ in
       s-tui
       stress-ng
       tpacpi-bat
-      #    tlp
+      # tlp
       cpufrequtils
       msr-tools
       nvtop
@@ -766,9 +765,9 @@ in
       linuxPackages.perf
       networkmanager
       wirelesstools
-      #    blueman
-      #    (lowPrio bluez)
-      #    bluez-tools
+      # blueman
+      # (lowPrio bluez)
+      # bluez-tools
       mtr
       nftables
       psmisc
@@ -817,10 +816,10 @@ in
       kns = "kubens";
       ktx = "kubectx";
       la = "exa -alg --group-directories-first -s=type --icons";
-      #      la="ls -lha --color=auto --group-directories-first";
+      # la="ls -lha --color=auto --group-directories-first";
       lless = "set -gx LESSOPEN '|pygmentize -f terminal256 -g -P style=monokai %s' && set -gx LESS '-R' && less -m -g -i -J -u -Q";
-      #      ll="ls -lah";
-      #      ls="ls --color=auto";
+      # ll="ls -lah";
+      # ls="ls --color=auto";
       ll = "exa -la";
       ls = "exa";
       mv = "mv -i";
@@ -849,8 +848,8 @@ in
     };
   */
 
-  #  programs.fish.shellInit = "screenfetch";
-  #  programs.fish.shellInit = "neofetch";
+  # programs.fish.shellInit = "screenfetch";
+  # programs.fish.shellInit = "neofetch";
 
   users = {
     mutableUsers = false;
@@ -879,7 +878,7 @@ in
         mupdf
         tmux
         screen
-        #        keychain
+        # keychain
         unstable.minio-client
         unstable.google-cloud-sdk-gce
         unstable.awscli
@@ -901,27 +900,28 @@ in
         signal-desktop
         kubectx
         dep
-        /*        (unstable.terraform.withPlugins(p: with p; [
-                  archive
-                  aws
-                  external
-                  google
-                  helm
-                  kubernetes
-                  local
-                  null
-                  random
-                  template
-                ]))
+        /*
+        (unstable.terraform.withPlugins(p: with p; [
+          archive
+          aws
+          external
+          google
+          helm
+          kubernetes
+          local
+          null
+          random
+          template
+        ]))
         */
-        #        (lowPrio unstable.python38Full)
+        # (lowPrio unstable.python38Full)
         python38Full
         python37Full
         (
           python3.withPackages (
             ps: with ps; [
+              # poetry
               pip
-              #          poetry
               powerline
               pygments
               pygments-markdown-lexer
@@ -935,11 +935,11 @@ in
             ]
           )
         )
-        #        python37Packages.pip
-        #        unstable.python37Packages.virtualenv
-        #        python37Packages.powerline
-        #        python37Packages.pygments
-        #        python37Packages.pycuda
+        # python37Packages.pip
+        # unstable.python37Packages.virtualenv
+        # python37Packages.powerline
+        # python37Packages.pygments
+        # python37Packages.pycuda
         asciinema
         highlight
         jq
@@ -984,10 +984,12 @@ in
         imagemagick
         spotify
         bookworm
-        /*(unstable.tor-browser-bundle-bin.override {
+        /*
+        (unstable.tor-browser-bundle-bin.override {
           mediaSupport = true;
           pulseaudioSupport = true;
-        })*/
+        })
+        */
         unstable.keepassxc
         openconnect_openssl
         networkmanager-openconnect
@@ -1010,7 +1012,7 @@ in
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d --max-freed $((64 * 1024**3))";
-      #dates = "Mon *-*-* 06:00:00";      
+      # dates = "Mon *-*-* 06:00:00";      
     };
 
     optimise = {
@@ -1035,7 +1037,7 @@ in
       enable = true;
       dates = "weekly";
       allowReboot = false;
-      #dates = "Sun *-*-* 04:00:00";
+      # dates = "Sun *-*-* 04:00:00";
     };
   };
 

@@ -63,6 +63,7 @@ in
       };
     };
 
+    supportedFilesystems = [ "ntfs" ];
     kernelPackages = pkgs.linuxPackages_latest;
     blacklistedKernelModules = [ "nouveau" ];
     # extraModulePackages = with config.boot.kernelPackages; [ wireguard ];
@@ -146,6 +147,14 @@ in
       cpuFreqGovernor =  "ondemand"; # "powersave", "performance" 
       cpuFreqGovernor =  "powersave"; # "ondemand", "performance" 
     };
+  */
+
+  /*
+  fileSystems."/home/mudrii/mnt/usb" = { 
+    device = "/dev/sda1";
+    fsType = "ntfs"; 
+    options = [ "rw" "uid=1000"];
+  };
   */
 
   programs = {
@@ -781,6 +790,7 @@ in
       (lowPrio inetutils)
       socat
       iptables
+      iperf
       nload
       nvme-cli
       ncurses
@@ -1000,6 +1010,8 @@ in
         unstable.pcmanfm
         unstable.mucommander
         unstable.hexchat
+        unstable.grsync
+        unstable.luckybackup
       ];
     };
   };

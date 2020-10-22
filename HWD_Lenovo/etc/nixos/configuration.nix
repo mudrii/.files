@@ -134,10 +134,19 @@ in
   # TPM has hardware RNG
   security = {
     rngd.enable = true;
+
     sudo = {
       enable = true;
       wheelNeedsPassword = false;
     };
+
+    # Finger Print Auth //Not working 100% yet with fprint
+    /*
+    pam.services = {
+      login.fprintAuth = true;
+      xautolock.fprintAuth = true;
+    };
+    */
   };
 
   /*  
@@ -240,6 +249,11 @@ in
     gnome3.gnome-keyring.enable = true;
     fail2ban.enable = true;
     emacs.enable = true;
+   
+    fprintd = {
+      enable = true;
+      package = unstable.pkgs.fprintd;
+    };
 
     clamav = {
       daemon.enable = true;

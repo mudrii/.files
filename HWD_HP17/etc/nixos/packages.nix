@@ -82,7 +82,7 @@ in
     vdpauinfo
     dmidecode
     fwupd
-    fwupdate
+#    fwupdate
     ncdu
     pass encfs 
     linuxPackages.perf

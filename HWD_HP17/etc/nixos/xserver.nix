@@ -35,11 +35,12 @@ in
 
       displayManager = {
         defaultSession = "none+i3";        
+        autoLogin.enable = false;
 
         lightdm = {
           enable = true;
           greeter.enable = true;
-          autoLogin.enable = false;
+#          autoLogin.enable = false;
 #          greeter.enable = false;
 #          autoLogin.enable = true;
 #          autoLogin.user = "irutsu";

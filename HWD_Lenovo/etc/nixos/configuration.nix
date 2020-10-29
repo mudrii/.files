@@ -91,8 +91,8 @@ in
 
     nvidia = {
       modesetting.enable = true;
-      optimus_prime = {
-        enable = true;
+      prime = {
+        sync.enable = true;
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
       };
@@ -280,8 +280,8 @@ in
     undervolt = {
       enable = true;
       package = pkgs.undervolt;
-      temp = "97";
-      coreOffset = "-125";
+      temp = 97;
+      coreOffset = -125;
     };
 
     /*  
@@ -296,6 +296,13 @@ in
       extraConfig = "HandlePowerKey=suspend";
       lidSwitch = "suspend";
     };
+
+    # Generate thermal-conf.xml
+    # git clone https://github.com/intel/dptfxtract.git
+    # cd dptfxtract
+    # sudo acpidump > acpi.out
+    # acpixtract -a acpi.out
+    # sudo ./dptfxtract-static *.dat
 
     thermald = {
       enable = true;
@@ -384,7 +391,8 @@ in
 
     tlp = {
       enable = true;
-      extraConfig = ''
+      # extraConfig = ''
+      settings = {
         # Detailked info can be found https://linrunner.de/tlp/settings/index.html
 
         # Disables builtin radio devices on boot:
@@ -407,16 +415,16 @@ in
         # DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
 
         # Set battery charge thresholds for main battery (BAT0) and auxiliary/Ultrabay battery (BAT1). Values are given as a percentage of the full capacity. A value of 0 is translated to the hardware defaults 96/100%.        
-        START_CHARGE_THRESH_BAT0=60
-        STOP_CHARGE_THRESH_BAT0=80
+        START_CHARGE_THRESH_BAT0=60;
+        STOP_CHARGE_THRESH_BAT0=80;
 
         # Control battery feature drivers:
-        NATACPI_ENABLE=1
-        TPACPI_ENABLE=1
-        TPSMAPI_ENABLE=1
+        NATACPI_ENABLE=1;
+        TPACPI_ENABLE=1;
+        TPSMAPI_ENABLE=1;
 
         # Defines the disk devices the following parameters are effective for. Multiple devices are separated with blanks.
-        DISK_DEVICES="nvme0n1 nvme1n1"
+        DISK_DEVICES="nvme0n1 nvme1n1";
 
         # Set the “Advanced Power Management Level”. Possible values range between 1 and 255.
         #  1 – max power saving / minimum performance – Important: this setting may lead to increased disk drive wear and tear because of excessive read-write head unloading (recognizable from the clicking noises)
@@ -425,8 +433,8 @@ in
         #  254 – minimum power saving / max performance (TLP standard setting on AC)
         #  255 – disable APM (not supported by some disk models)
         #  keep – special value to skip this setting for the particular disk (synonym: _)
-        DISK_APM_LEVEL_ON_AC="254 254"
-        DISK_APM_LEVEL_ON_BAT="128 128"
+        DISK_APM_LEVEL_ON_AC="254 254";
+        DISK_APM_LEVEL_ON_BAT="128 128";
 
         # Set the min/max/turbo frequency for the Intel GPU. Possible values depend on your hardware. See the output of tlp-stat -g for available frequencies.
         # INTEL_GPU_MIN_FREQ_ON_AC=0
@@ -440,8 +448,8 @@ in
         # For Intel Core i 2nd gen. (“Sandy Bridge”) or newer Intel CPUs. Supported governors are:
         #  powersave – recommended (kernel default)
         #  performance
-        CPU_SCALING_GOVERNOR_ON_AC=powersave
-        CPU_SCALING_GOVERNOR_ON_BAT=powersave
+        # CPU_SCALING_GOVERNOR_ON_AC=powersave;
+        # CPU_SCALING_GOVERNOR_ON_BAT=powersave;
 
         # Set Intel CPU energy/performance policy HWP.EPP. Possible values are
         #  performance
@@ -450,8 +458,8 @@ in
         #  balance_power
         #  power
         # for tlp-stat Version 1.3 and higher 'tlp-stat -p'
-        # CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
-        # CPU_ENERGY_PERF_POLICY_ON_BAT=power
+        # CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance;
+        # CPU_ENERGY_PERF_POLICY_ON_BAT=power;
 
         # Set Intel CPU energy/performance policy HWP.EPP. Possible values are
         #   performance
@@ -460,22 +468,22 @@ in
         #   balance_power
         #   power
         # Version 1.2.2 and lower For version 1.3 and higher this parameter is replaced by CPU_ENERGY_PERF_POLICY_ON_AC/BAT
-        CPU_HWP_ON_AC=balance_performance
-        CPU_HWP_ON_BAT=power
+        # CPU_HWP_ON_AC=balance_performance;
+        # CPU_HWP_ON_BAT=power;
 
         # Define the min/max P-state for Intel Core i processors. Values are stated as a percentage (0..100%) of the total available processor performance.
-        CPU_MIN_PERF_ON_AC=0
-        CPU_MAX_PERF_ON_AC=100
-        CPU_MIN_PERF_ON_BAT=0
-        CPU_MAX_PERF_ON_BAT=30
+        CPU_MIN_PERF_ON_AC=0;
+        CPU_MAX_PERF_ON_AC=100;
+        CPU_MIN_PERF_ON_BAT=0;
+        CPU_MAX_PERF_ON_BAT=30;
 
         # Disable CPU “turbo boost” (Intel) or “turbo core” (AMD) feature (0 = disable / 1 = allow).
-        CPU_BOOST_ON_AC=1
-        CPU_BOOST_ON_BAT=0
+        CPU_BOOST_ON_AC=1;
+        CPU_BOOST_ON_BAT=0;
 
         # Minimize number of used CPU cores/hyper-threads under light load conditions (1 = enabled, 0 = disabled). Depends on kernel and processor model.
-        SCHED_POWERSAVE_ON_AC=0
-        SCHED_POWERSAVE_ON_BAT=1
+        SCHED_POWERSAVE_ON_AC=0;
+        SCHED_POWERSAVE_ON_BAT=1;
 
         # Set Intel CPU energy/performance policy EPB. Possible values are (in order of increasing power saving):
         #   performance
@@ -484,16 +492,16 @@ in
         #   balance-power
         #   power (deprecated: powersave)
         # Version 1.2.2 and lower For version 1.3 and higher this parameter is replaced by CPU_ENERGY_PERF_POLICY_ON_AC/BAT
-        ENERGY_PERF_POLICY_ON_AC=balance-performance
-        ENERGY_PERF_POLICY_ON_BAT=power
+        # ENERGY_PERF_POLICY_ON_AC=balance-performance;
+        # ENERGY_PERF_POLICY_ON_BAT=power;
 
         # Timeout (in seconds) for the audio power saving mode (supports Intel HDA, AC97). A value of 0 disables power save.
-        SOUND_POWER_SAVE_ON_AC=0
-        SOUND_POWER_SAVE_ON_BAT=1
+        SOUND_POWER_SAVE_ON_AC=0;
+        SOUND_POWER_SAVE_ON_BAT=1;
 
         # Controls runtime power management for PCIe devices.
-        RUNTIME_PM_ON_AC=on
-        RUNTIME_PM_ON_BAT=auto
+        # RUNTIME_PM_ON_AC=on;
+        # RUNTIME_PM_ON_BAT=auto;
 
         # Exclude PCIe devices assigned to listed drivers from runtime power management. Use tlp-stat -e to lookup the drivers (in parentheses at the end of each output line).
         # RUNTIME_PM_DRIVER_BLACKLIST="mei_me nouveau nvidia pcieport radeon"
@@ -503,9 +511,10 @@ in
         #    performance
         #    powersave
         #    powersupersave
-        PCIE_ASPM_ON_AC=default
-        PCIE_ASPM_ON_BAT=default
-      '';
+        # PCIE_ASPM_ON_AC=default;
+        # PCIE_ASPM_ON_BAT=default;
+      #'';
+      };
     };
 
     udev = {
@@ -576,12 +585,12 @@ in
         '';
         */
         defaultSession = "none+i3";
+        autoLogin.enable = true;
+        autoLogin.user = "mudrii";
 
         lightdm = {
           enable = true;
           greeter.enable = false;
-          autoLogin.enable = true;
-          autoLogin.user = "mudrii";
         };
       };
 
@@ -780,7 +789,7 @@ in
       vdpauinfo
       dmidecode
       fwupd
-      fwupdate
+      # fwupdate
       ncdu
       smartmontools
       pass
@@ -808,7 +817,8 @@ in
       nload
       nvme-cli
       ncurses
-      protonvpn-cli-ng
+      protonvpn-cli
+      protonvpn-gui
       openvpn
       wireguard
       unstable.gopass
@@ -940,7 +950,7 @@ in
         */
         # (lowPrio unstable.python38Full)
         python38Full
-        python37Full
+        # python37Full
         (
           python3.withPackages (
             ps: with ps; [

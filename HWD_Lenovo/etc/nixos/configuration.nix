@@ -249,24 +249,29 @@ in
     gnome3.gnome-keyring.enable = true;
     fail2ban.enable = true;
     emacs.enable = true;
-   
+    
+    /*
+    # Finger Print unlock login
     fprintd = {
       enable = true;
       package = unstable.pkgs.fprintd;
     };
+    */
 
     clamav = {
       daemon.enable = true;
       updater.enable = true;
     };
 
+    /*
     # YubiKey support
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
+    */
 
     thinkfan = {
       enable = true;
-      levels = ''
+      /* levels = ''
         (0,     0,      65)
         (1,     58,     70)
         (2,     60,     71)
@@ -274,7 +279,7 @@ in
         (6,     66,     75)
         (7,     70,     95)
         (127,   90,     32767)
-      '';
+      ''; */
     };
 
     undervolt = {
@@ -283,13 +288,6 @@ in
       temp = 97;
       coreOffset = -125;
     };
-
-    /*  
-    # As a root
-      acpidump > acpi.out
-      acpixtract -a acpi.out
-      dptfxtract *.dat 
-    */
 
     # Power button invokes suspend, not shutdown.
     logind = {
@@ -415,8 +413,8 @@ in
         # DEVICES_TO_ENABLE_ON_WWAN_DISCONNECT=""
 
         # Set battery charge thresholds for main battery (BAT0) and auxiliary/Ultrabay battery (BAT1). Values are given as a percentage of the full capacity. A value of 0 is translated to the hardware defaults 96/100%.        
-        START_CHARGE_THRESH_BAT0=60;
-        STOP_CHARGE_THRESH_BAT0=80;
+        START_CHARGE_THRESH_BAT0=45;
+        STOP_CHARGE_THRESH_BAT0=75;
 
         # Control battery feature drivers:
         NATACPI_ENABLE=1;
@@ -882,9 +880,6 @@ in
     };
   */
 
-  # programs.fish.shellInit = "screenfetch";
-  # programs.fish.shellInit = "neofetch";
-
   users = {
     mutableUsers = false;
 
@@ -921,8 +916,9 @@ in
         unstable.gitAndTools.git-hub
         unstable.gitAndTools.gh
         unstable.git-lfs
-        unstable.terraform
-        unstable.terraform-lsp
+        unstable.terraform_0_13
+        unstable.terraform-ls
+        #unstable.terraform-lsp
         unstable.tflint
         unstable.kubernetes
         kubernetes-helm
@@ -1018,6 +1014,7 @@ in
         imagemagick
         spotify
         bookworm
+        ltrace
         /*
         (unstable.tor-browser-bundle-bin.override {
           mediaSupport = true;

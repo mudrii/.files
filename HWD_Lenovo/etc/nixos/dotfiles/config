@@ -293,6 +293,7 @@ for_window [class=zoom|Slack|Riot|arandr|psensor|pavucontrol|nvidia-settings] fl
 # exec --no-startup-id i3-msg 'workspace 3; exec slack; exec zoom; exec i3-sensible-terminal'
 
 #exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 000000'
+#exec_always --no-startup-id xautolock -time 15 -locker 'i3lock -d -c 000000' -detectsleep
 exec_always --no-startup-id xautolock -time 15 -locker 'i3lock-fancy -gpf Comic-Sans-MS' -detectsleep
 
 bindsym $mod+p exec --no-startup-id $Locker, mode "default"

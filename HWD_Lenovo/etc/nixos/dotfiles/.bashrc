@@ -76,6 +76,9 @@ ext () {
  fi
 }
 
+# Direnv setup
+eval "$(direnv hook bash)"
+
 # Powerline for bash 
 
 #powerline-daemon -q

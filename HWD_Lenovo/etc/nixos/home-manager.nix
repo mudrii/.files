@@ -12,8 +12,24 @@
 
     users.mudrii = {
       programs = {
+        /*
+        starship = {
+          enable = true;
+          enableFishIntegration = true;
+        };
+        */
+        fzf = {
+          enable = true;
+          enableFishIntegration = true;
+        };
+        
+        direnv = {
+          enable = true;
+          enableFishIntegration = true;
+          enableNixDirenvIntegration = true;
+        };
 
-        direnv.enable = true;
+        command-not-found = { enable = true; };
 
         home-manager = {
           enable = true;
@@ -220,6 +236,7 @@
         ".config/fish/config.fish".source = dotfiles/fish/config.fish;
         ".config/fish/functions/fish_user_key_bindings.fish".source = dotfiles/fish/fish_user_key_bindings.fish;
         ".config/fish/functions/fish_greeting.fish".source = dotfiles/fish/fish_greeting.fish;
+        # ".config/fish/functions/fish_prompt.fish".source = dotfiles/fish/fish_prompt.fish;
       };
     };
   };

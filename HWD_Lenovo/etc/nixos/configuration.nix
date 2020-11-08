@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, options, pkgs, lib, callPackage, ... }:
+{ inputs, config, options, pkgs, lib, callPackage, ... }:
 
 let
   unstable = import <unstable> {
@@ -76,6 +76,11 @@ in
     enableRedistributableFirmware = true;
     # enableAllFirmware = true;
 
+    sane = {
+      enable = true;
+      extraBackends = with pkgs; [ hplipWithPlugin ];
+    };
+
     bluetooth = {
       enable = true;
       package = pkgs.bluezFull;
@@ -87,10 +92,14 @@ in
       package = pkgs.pulseaudioFull;
     };
 
-    opengl.driSupport32Bit = true;
+    opengl = {
+      driSupport = true;
+      driSupport32Bit = true;
+    };
 
     nvidia = {
       modesetting.enable = true;
+      # nvidiaPersistenced = false;
       prime = {
         sync.enable = true;
         intelBusId = "PCI:0:2:0";
@@ -196,6 +205,12 @@ in
         config.enable = true;
       };
       # shellInit = "neofetch";
+      # functions = { fish_greeting = ""; };
+      /*
+      promptInit = ''
+        any-nix-shell fish --info-right | source
+      '';
+      */
     };
 
     nano.nanorc = ''
@@ -215,15 +230,20 @@ in
       enableNvidia = true;
     };
 
-    libvirtd.enable = true;
-
+    libvirtd = {
+      enable = true;
+    };
+    /*
+    lxd = {
+      enable = true;
+    };
+    */
     /*
     virtualbox = {
       host.enable = true;
       host.enableExtensionPack = true;
     };
     */
-
   };
 
   # Example how to use pam
@@ -379,12 +399,19 @@ in
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ unstable.pkgs.epson-escpr ];
+      # drivers = [ unstable.pkgs.epson-escpr ];
+      drivers = with pkgs; [ unstable.epson-escpr ];
     };
 
     avahi = {
       enable = true;
+      hostName = config.networking.hostName;
+      ipv4 = true;
       nssmdns = true;
+      publish = {
+        enable = true;
+        userServices = true;
+      };
     };
 
     tlp = {
@@ -600,7 +627,7 @@ in
           i3lock #default i3 screen locker
           # i3status # gives you the default i3 status bar
           # i3blocks #if you are planning on using i3blocks over i3status
-          i3status-rust
+          unstable.i3status-rust
           i3-gaps
           i3lock-fancy
           xautolock
@@ -649,6 +676,7 @@ in
       nerdfonts
       freefont_ttf
       powerline-fonts
+      font-awesome
       font-awesome_4
       dejavu_fonts
       google-fonts
@@ -721,7 +749,6 @@ in
       graphviz
       (lowPrio nix-prefetch-git)
       nix-prefetch-scripts
-      nixFlakes
       unstable.virt-manager
       unstable.virt-viewer
       # undervolt
@@ -970,11 +997,13 @@ in
         # python37Packages.powerline
         # python37Packages.pygments
         # python37Packages.pycuda
+        aspell
+        aspellDicts.en
         asciinema
         highlight
         jq
         lorri
-        direnv
+        unstable.direnv
         psensor
         firefox
         chromium
@@ -1038,9 +1067,20 @@ in
   };
 
   nix = {
+    #package = pkgs.nixUnstable;
     useSandbox = true;
     autoOptimiseStore = true;
-    allowedUsers = [ "*" ];
+    readOnlyStore = false;
+    allowedUsers = [ "@wheel" "root" "mudrii" ];
+    trustedUsers = [ "@wheel" "root" "mudrii" ];
+
+    extraOptions = ''
+      keep-outputs = true
+      keep-derivations = true
+      # preallocate-contents = false
+      # experimental-features = nix-command flakes
+      '';
+
     gc = {
       automatic = true;
       dates = "weekly";
@@ -1052,6 +1092,7 @@ in
       automatic = true;
       dates = [ "weekly" ];
     };
+    
   };
 
   nixpkgs.config = {

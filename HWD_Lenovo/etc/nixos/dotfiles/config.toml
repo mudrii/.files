@@ -1,83 +1,76 @@
-theme = "solarized-dark"
 icons = "awesome"
+theme = "solarized-dark"
 
 [[block]]
-block = "disk_space"
-path = "/"
-alias = "/"
-info_type = "available"
-unit = "GB"
-interval = 20
-warning = 20.0
 alert = 10.0
-show_percentage = true
-
-#[[block]]
-#block = "memory"
-#display_type = "memory"
-#format_mem = "{Mup}%"
+alias = "/"
+block = "disk_space"
+info_type = "available"
+interval = 20
+path = "/"
+unit = "GB"
+warning = 20.0
+format = "{icon}{available}/{used} {unit}"
 
 [[block]]
 block = "memory"
-format_mem = "{Mug}GB/{MTg}GB"
-display_type = "memory"
 clickable = true
+critical_mem = 95
+display_type = "memory"
+format_mem = "{MTg}/{MUg} GB"
+icons = true
 interval = 5
+warning_mem = 70
 
 [[block]]
 block = "cpu"
-interval = 1
+critical = 95
 format = "{utilization}% {frequency}GHz"
 info = 30
+interval = 1
 warning = 60
-critical = 95
 
 [[block]]
 block = "load"
-interval = 1
 format = "{1m} {5m} {15m}"
+interval = 2
 
 [[block]]
 block = "temperature"
-collapsed = false
-interval = 10
-good = 30
-idle = 50
-info = 70
-warning = 90
-format = "{max}° cpu"
 chip = "coretemp-isa-0000"
+collapsed = false
+format = "{max}° cpu"
+good = 40
+idle = 60
+info = 80
+interval = 10
+warning = 90
 
 [[block]]
 block = "nvidia_gpu"
-#label = "RTX"
-show_clocks = true 
-show_temperature = true
+interval = 1
+label = ""
+show_clocks = true
 show_fan_speed = false
 show_memory = false
+show_temperature = true
 show_utilization = true
-interval = 1
 
 [[block]]
 block = "net"
 device = "wlp82s0"
-ssid = true
-interval = 5
-speed_up = false
-speed_down = false
-hide_missing = true
 hide_inactive = true
+hide_missing = true
+interval = 5
+format = "{ssid}"
 
 [[block]]
 block = "net"
 device = "enp0s31f6"
-ssid = true
-interval = 5
-speed_up = false
-speed_down = false
-ip = true
-hide_missing = true
 hide_inactive = true
+hide_missing = true
+interval = 5
+format = "{ip}"
 
 [[block]]
 block = "sound"
@@ -92,17 +85,16 @@ device = "intel_backlight"
 
 [[block]]
 block = "battery"
-interval = 10
 format = "{percentage}% {time}"
-#collapsed = true
+interval = 10
 
 [[block]]
 block = "time"
-interval = 60
 format = "%a %d/%m %R"
+interval = 60
 
 [[block]]
 block = "custom"
-interval = 999999
 command = "echo '\uF011'"
+interval = 999999
 on_click = "i3-nagbar -t warning -m 'What do you want to do?' -b 'Shutdown' 'shutdown now' -b 'Hibernate' 'systemctl hibernate' -b 'Reboot' 'reboot'"

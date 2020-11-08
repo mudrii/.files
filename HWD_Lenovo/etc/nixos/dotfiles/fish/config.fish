@@ -1,3 +1,12 @@
+if type -q direnv
+  function __direnv_export_eval --on-variable PWD
+    status --is-command-substitution; and return
+    eval (direnv export fish)
+  end
+else
+  echo "Install direnv first! Check http://direnv.net" 2>&1
+end
+
 set -g theme_display_git yes
 set -g theme_display_git_dirty yes
 set -g theme_display_git_untracked yes
@@ -36,8 +45,8 @@ set -g theme_project_dir_length 1
 set --universal fish_greeting
 #set fish_greeting
 
-set -gx GOPATH $HOME/go
-set -gx PATH $PATH $GOPATH/bin
+#set -gx GOPATH $HOME/go
+#set -gx PATH $PATH $GOPATH/bin
 
 set -x NNN_USE_EDITOR 1
 #set -x NNN_COLORS '1267'

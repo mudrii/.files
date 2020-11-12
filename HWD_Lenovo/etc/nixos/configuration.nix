@@ -850,7 +850,6 @@ in
     ];
 
     shellAliases = {
-      a = "aws";
       ans = "ansible";
       ansp = "ansible-paybook";
       ansv = "ansible-vault";
@@ -860,7 +859,7 @@ in
       dmesg = "dmesg --color=always | lless";
       egrep = "egrep --color=auto";
       fgrep = "fgrep --color=auto";
-      g = "gcloud";
+      gcl = "gcloud";
       grep = "grep --color=auto";
       gadcm = "git add -A; and git commit";
       gad = "git add .";
@@ -871,7 +870,7 @@ in
       gpl = "git pull";
       gps = "git push";
       gst = "git status";
-      k = "kubectl";
+      kcl = "kubectl";
       kns = "kubens";
       ktx = "kubectx";
       la = "exa -alg --group-directories-first -s=type --icons";
@@ -884,7 +883,7 @@ in
       mv = "mv -i";
       nixcl = "sudo nix-store --optimise -v && sudo nix-collect-garbage -d";
       nixup = "sudo nix-channel --update && sudo nixos-rebuild switch";
-      p = "python";
+      py = "python";
       ping = "ping -c3";
       ps = "ps -ef";
       pvpn = "sudo protonvpn";
@@ -892,7 +891,7 @@ in
       rmf = "rm -rf";
       sudo = "sudo -i";
       suf = "su --shell=/usr/bin/fish";
-      t = "terraform";
+      ter = "terraform";
       vdir = "vdir --color=auto";
     };
   };
@@ -948,8 +947,12 @@ in
         #unstable.terraform-lsp
         unstable.tflint
         unstable.kubernetes
-        kubernetes-helm
+        unstable.kubernetes-helm
+        unstable.helmfile
+        unstable.helmsman
         unstable.kind
+        unstable.docker-machine-kvm2
+        unstable.minikube
         unstable.go
         unstable.xmind
         unstable.zoom-us

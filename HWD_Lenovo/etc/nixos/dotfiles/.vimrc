@@ -158,10 +158,11 @@ endif
  set nolazyredraw " don't redraw while executing macros
  
 " Fast saving
-nmap <leader>w :w!<cr>
+"nmap <leader>w :w!<cr>
 
 " :W sudo saves the file
 command W w !sudo tee % > /dev/null
+noremap <Leader>W :w !sudo tee % > /dev/null
 " cmap w!! w !sudo tee > /dev/null %
 
 " Coc-prettier setup
@@ -188,11 +189,13 @@ map <leader>tm :tabmove<CR>
 map <leader>t :tabnext<CR>
 
 " Close buffer
-noremap <leader>c :bd<CR>
+"noremap <leader>c :bd<CR>
+noremap <leader>z :bd<CR>
 
 " Fix indentation in file
 map <leader>i mmgg=G`m<CR>
 
+noremap <leader>c :bd<CR>
 " Toggle highlighting of search results
 nnoremap <leader><space> :nohlsearch<cr>
 
@@ -206,6 +209,9 @@ nmap <silent> <leader>p :set spell!<CR>
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
+
+" comments the line
+"vnoremap <C-b> :norm
 
 set timeoutlen=300
 

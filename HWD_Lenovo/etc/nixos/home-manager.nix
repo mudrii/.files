@@ -1,6 +1,14 @@
 { config, lib, pkgs, ... }:
 
-{
+/* 
+# Not working yet
+let
+  unstable = import <unstable> {
+    config.allowUnfree = true;
+  };
+in
+*/  
+  {
 
   imports = [
     ./dotfiles/.tmux.conf.nix
@@ -104,6 +112,9 @@
             vim-airline
             vim-airline-themes
             nerdtree
+            nerdcommenter
+            nerdtree-git-plugin
+            #unstable.vim-nerdtree-syntax-highlight
             ctrlp-vim
             vim-fugitive
             fzf-vim

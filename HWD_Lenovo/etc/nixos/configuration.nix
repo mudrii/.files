@@ -283,11 +283,11 @@ in
       updater.enable = true;
     };
 
-    /*
+    
     # YubiKey support
     pcscd.enable = true;
     udev.packages = [ pkgs.yubikey-personalization ];
-    */
+    
 
     thinkfan = {
       enable = true;
@@ -581,6 +581,12 @@ in
       ];
     };
 
+    # Monitor plug n play
+    # https://github.com/phillipberndt/autorandr/blob/v1.0/README.md#how-to-use
+    autorandr = {
+      enable = true;
+    };
+
     xserver = {
       enable = true;
       # autorun = false;
@@ -603,6 +609,13 @@ in
       };
 
       displayManager = {
+        /*
+        sessionCommands = ''
+          ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+          Xft.dpi: 192
+          EOF
+        '';
+        */
         /*
         setupCommands = ''
           ${pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource modesetting NVIDIA-0 
@@ -769,6 +782,7 @@ in
       which
       nmap
       wget
+      speedtest-cli
       neovim
       # micro
       commonsCompress
@@ -799,6 +813,7 @@ in
       bind
       mkpasswd
       openssl
+      unstable.cfssl
       file
       lshw
       lm_sensors
@@ -839,6 +854,7 @@ in
       socat
       iptables
       iperf
+      gping
       nload
       nvme-cli
       ncurses
@@ -930,13 +946,16 @@ in
         w3m
         ffmpeg-full
         ffmpegthumbnailer
+        exif
+        exiftool
         mupdf
         tmux
         screen
         # keychain
         unstable.minio-client
         unstable.google-cloud-sdk-gce
-        unstable.awscli
+        #unstable.awscli
+        awscli
         unstable.pulumi-bin
         unstable.gitAndTools.gitFull
         unstable.gitAndTools.git-hub
@@ -953,6 +972,12 @@ in
         unstable.kind
         unstable.docker-machine-kvm2
         unstable.minikube
+        unstable.fluxctl
+        unstable.argo
+        unstable.argocd
+        unstable.kustomize
+        unstable.k9s
+        unstable.velero
         unstable.go
         unstable.xmind
         unstable.zoom-us

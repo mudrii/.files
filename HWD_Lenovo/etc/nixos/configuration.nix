@@ -12,12 +12,20 @@ in
 
 {
 
-  /*
-    nixpkgs.config.packageOverrides = pkgs: {
-      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-        inherit pkgs;
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };  
+  
+  /*  
+    nixpkgs.config = {
+      packageOverrides = pkgs: {
+        unstable = import unstableTarball {
+          config = config.nixpkgs.config;
+        };
       };
-    };  
+    };
   */
 
   imports =
@@ -269,6 +277,7 @@ in
     gnome3.gnome-keyring.enable = true;
     fail2ban.enable = true;
     emacs.enable = true;
+    pcscd.enable = true;  # needed for YubiKey
     
     /*
     # Finger Print unlock login
@@ -283,11 +292,19 @@ in
       updater.enable = true;
     };
 
-    
-    # YubiKey support
-    pcscd.enable = true;
-    udev.packages = [ pkgs.yubikey-personalization ];
-    
+    udev ={
+      packages = [ 
+        pkgs.yubikey-personalization  # needed for YubiKey
+        pkgs.libu2f-host              # needed for Yubikey
+      ];
+      path = [ 
+        pkgs.coreutils 
+      ];
+      extraRules = ''
+          ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video %S%p/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
+        '';
+      };
+
 
     thinkfan = {
       enable = true;
@@ -542,13 +559,6 @@ in
       };
     };
 
-    udev = {
-      path = [ pkgs.coreutils ];
-      extraRules = ''
-        ACTION=="add", SUBSYSTEM=="backlight", RUN+="${pkgs.coreutils}/bin/chgrp video %S%p/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w %S%p/brightness"
-      '';
-    };
-
     dbus = {
       enable = true;
       packages = [ pkgs.fwupd ];
@@ -580,13 +590,13 @@ in
         "/usr/tmp"
       ];
     };
-
+    /*
     # Monitor plug n play
     # https://github.com/phillipberndt/autorandr/blob/v1.0/README.md#how-to-use
     autorandr = {
       enable = true;
     };
-
+    */
     xserver = {
       enable = true;
       # autorun = false;
@@ -745,6 +755,8 @@ in
       BROWSER = "qutebrowser";
     };
 
+    enableDebugInfo = true;
+
     systemPackages = with pkgs; [
       chkrootkit
       lynis
@@ -757,6 +769,8 @@ in
       nix-linter
       nixpkgs-review
       nixpkgs-pytools
+      nix-update
+      rnix-lsp
       unstable.nix-simple-deploy
       niv
       graphviz
@@ -863,6 +877,12 @@ in
       openvpn
       wireguard
       unstable.gopass
+      yubikey-manager
+      yubico-piv-tool
+      yubikey-manager-qt
+      yubikey-personalization
+      yubikey-personalization-gui
+      yubioath-desktop
     ];
 
     shellAliases = {
@@ -912,16 +932,6 @@ in
     };
   };
 
-  /*  
-    nixpkgs.config = {
-      packageOverrides = pkgs: {
-        unstable = import unstableTarball {
-          config = config.nixpkgs.config;
-        };
-      };
-    };
-  */
-
   users = {
     mutableUsers = false;
 
@@ -956,7 +966,7 @@ in
         unstable.google-cloud-sdk-gce
         #unstable.awscli
         awscli
-        unstable.pulumi-bin
+        #unstable.pulumi-bin
         unstable.gitAndTools.gitFull
         unstable.gitAndTools.git-hub
         unstable.gitAndTools.gh
@@ -1061,12 +1071,6 @@ in
         pam_u2f
         libu2f-host
         libu2f-server
-        yubikey-manager
-        yubico-piv-tool
-        yubikey-manager-qt
-        yubikey-personalization
-        yubikey-personalization-gui
-        yubioath-desktop
         gpa
         imagemagick
         spotify
@@ -1090,6 +1094,8 @@ in
         unstable.hexchat
         unstable.grsync
         unstable.luckybackup
+        unstable.drawio
+        youtube-dl
       ];
     };
   };
@@ -1122,6 +1128,29 @@ in
     };
     
   };
+
+  nixpkgs.overlays = [
+    (self: super: {
+      element-desktop = super.element-desktop.overrideAttrs (old: rec {
+        version = "1.7.14";
+        src = pkgs.fetchFromGitHub {
+          owner = "vector-im";
+          repo = "riot-desktop";
+          rev = "v${version}";
+          sha256 = "04zqvj7n803dwp4jkhiihhynp82birb14vamm6ys39a0zgs91cnv";
+        };
+      });
+      youtube-dl = super.youtube-dl.overrideAttrs (old: rec {
+        pname = "youtube-dl";
+        version = "2020.11.11-3";
+        postInstall = "";
+        src = pkgs.fetchurl {
+          url = "https://github.com/blackjack4494/yt-dlc/archive/${version}.tar.gz";
+          sha256 = "116azzzj0df3bv99zwn0rsarirw56knbq7xqn1fs8v4ilslqp7v4";
+        };
+      });
+    })
+  ];
 
   nixpkgs.config = {
     pulseaudio = true;

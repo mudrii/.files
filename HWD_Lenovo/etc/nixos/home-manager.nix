@@ -19,6 +19,9 @@ in
     useUserPackages = true;
 
     users.mudrii = {
+      
+      services.lorri.enable = true;
+
       programs = {
         /*
         starship = {
@@ -167,6 +170,7 @@ in
             stash = { showPatch = true; };
             status = { showUntrackedFiles = "all"; };
             transfer = { fsckobjects = false; };
+            #commit = { gpgsign = true; };
 
             merge = {
               conflictstyle = "diff3";
@@ -205,49 +209,57 @@ in
           };
         };
       };
-
-      #    home.sessionVariables.LESS = "-R";
-
-      home.file = {
-        ".config/nixpkgs/home.nix".source = dotfiles/home.nix;
-        ".bashrc".source = dotfiles/.bashrc;
-        ".inputrc".source = dotfiles/.inputrc;
-        ".dircolors".source = dotfiles/.dircolors;
-        ".git-completion.bash".source = dotfiles/.git-completion.bash;
-        ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
-        ".config/neofetch/config.conf".source = dotfiles/config.conf;
-        ".Xresources".source = dotfiles/.Xresources;
-        #".config/alacritty/alacritty.yml".source = dotfiles/alacritty.yml;
-        ".config/fontconfig/fonts.conf".source = dotfiles/fonts.conf;
-        ".config/lf/lfrc".source = dotfiles/lfrc;
-        ".config/i3/config".source = dotfiles/config;
-        ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;
-        ".config/i3/start_w2.sh".source = dotfiles/start_w2.sh;
-        ".config/i3/start_w3.sh".source = dotfiles/start_w3.sh;
-        ".config/i3/start_w4.sh".source = dotfiles/start_w4.sh;
-        ".config/i3/start_w5.sh".source = dotfiles/start_w5.sh;
-        ".config/i3/start_w6.sh".source = dotfiles/start_w6.sh;
-        ".config/i3/workspace_1.json".source = dotfiles/workspace_1.json;
-        ".config/i3/workspace_2.json".source = dotfiles/workspace_2.json;
-        ".config/i3/workspace_3.json".source = dotfiles/workspace_3.json;
-        ".config/i3/workspace_4.json".source = dotfiles/workspace_4.json;
-        ".config/i3/workspace_5.json".source = dotfiles/workspace_5.json;
-        ".config/i3/workspace_6.json".source = dotfiles/workspace_6.json;
-        ".config/i3status-rs/config.toml".source = dotfiles/config.toml;
-        ".config/networkmanager-dmenu/config.ini".source = dotfiles/config.ini;
-        ".config/conky/conky.conf".source = dotfiles/conky.conf;
-        ".config/nixpkgs/config.nix".source = dotfiles/config.nix;
-        ".config/ranger/commands_full.py".source = dotfiles/ranger/commands_full.py;
-        ".config/ranger/commands.py".source = dotfiles/ranger/commands.py;
-        ".config/ranger/rc.conf".source = dotfiles/ranger/rc.conf;
-        ".config/ranger/rifle.conf".source = dotfiles/ranger/rifle.conf;
-        ".config/ranger/scope.sh".source = dotfiles/ranger/scope.sh;
-        ".config/ranger/plugins/ranger_devicons/__init__.py".source = dotfiles/ranger/plugins/ranger_devicons/__init__.py;
-        ".config/ranger/plugins/ranger_devicons/devicons.py".source = dotfiles/ranger/plugins/ranger_devicons/devicons.py;
-        ".config/fish/config.fish".source = dotfiles/fish/config.fish;
-        ".config/fish/functions/fish_user_key_bindings.fish".source = dotfiles/fish/fish_user_key_bindings.fish;
-        ".config/fish/functions/fish_greeting.fish".source = dotfiles/fish/fish_greeting.fish;
-        # ".config/fish/functions/fish_prompt.fish".source = dotfiles/fish/fish_prompt.fish;
+      
+      home = { 
+        stateVersion = "20.09";
+        sessionVariables = {
+          EDITOR = "nvim";
+          SHELL = "fish";
+          BROWSER = "firefox";
+          MANPAGER = "nvim -c 'set ft=man' -";
+          #KUBECTL_EXTERNAL_DIFF = "meld";
+          #DOCKER_BUILDKIT = "1";
+          #LESS = "-R";
+        };
+        file = {
+          ".config/nixpkgs/home.nix".source = dotfiles/home.nix;
+          ".bashrc".source = dotfiles/.bashrc;
+          ".inputrc".source = dotfiles/.inputrc;
+          ".dircolors".source = dotfiles/.dircolors;
+          ".git-completion.bash".source = dotfiles/.git-completion.bash;
+          ".git-prompt.sh".source = dotfiles/.git-prompt.sh;
+          ".config/neofetch/config.conf".source = dotfiles/config.conf;
+          ".Xresources".source = dotfiles/.Xresources;
+          ".config/fontconfig/fonts.conf".source = dotfiles/fonts.conf;
+          ".config/lf/lfrc".source = dotfiles/lfrc;
+          ".config/i3/config".source = dotfiles/config;
+          ".config/i3/start_w1.sh".source = dotfiles/start_w1.sh;
+          ".config/i3/start_w2.sh".source = dotfiles/start_w2.sh;
+          ".config/i3/start_w3.sh".source = dotfiles/start_w3.sh;
+          ".config/i3/start_w4.sh".source = dotfiles/start_w4.sh;
+          ".config/i3/start_w5.sh".source = dotfiles/start_w5.sh;
+          ".config/i3/start_w6.sh".source = dotfiles/start_w6.sh;
+          ".config/i3/workspace_1.json".source = dotfiles/workspace_1.json;
+          ".config/i3/workspace_2.json".source = dotfiles/workspace_2.json;
+          ".config/i3/workspace_3.json".source = dotfiles/workspace_3.json;
+          ".config/i3/workspace_4.json".source = dotfiles/workspace_4.json;
+          ".config/i3/workspace_5.json".source = dotfiles/workspace_5.json;
+          ".config/i3/workspace_6.json".source = dotfiles/workspace_6.json;
+          ".config/i3status-rs/config.toml".source = dotfiles/config.toml;
+          ".config/networkmanager-dmenu/config.ini".source = dotfiles/config.ini;
+          ".config/conky/conky.conf".source = dotfiles/conky.conf;
+          ".config/nixpkgs/config.nix".source = dotfiles/config.nix;
+          ".config/ranger/commands_full.py".source = dotfiles/ranger/commands_full.py;
+          ".config/ranger/commands.py".source = dotfiles/ranger/commands.py;
+          ".config/ranger/rc.conf".source = dotfiles/ranger/rc.conf;
+          ".config/ranger/rifle.conf".source = dotfiles/ranger/rifle.conf;
+          ".config/ranger/scope.sh".source = dotfiles/ranger/scope.sh;
+          ".config/ranger/plugins/ranger_devicons/__init__.py".source = dotfiles/ranger/plugins/ranger_devicons/__init__.py;
+          ".config/ranger/plugins/ranger_devicons/devicons.py".source = dotfiles/ranger/plugins/ranger_devicons/devicons.py;
+          ".config/fish/config.fish".source = dotfiles/fish/config.fish;
+          ".config/fish/functions/fish_user_key_bindings.fish".source = dotfiles/fish/fish_user_key_bindings.fish;
+          ".config/fish/functions/fish_greeting.fish".source = dotfiles/fish/fish_greeting.fish;
+        };
       };
     };
   };

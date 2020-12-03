@@ -264,6 +264,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 
 bindsym $mod+x [urgent=latest] focus
 
+# exec network manager
+#exec --no-startup-id nm-applet --indicator
+exec_always --no-startup-id nm-applet --indicator
+
 # num lock activated
 exec_always --no-startup-id numlockx on
 #exec_always --no-startup-id conky

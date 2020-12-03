@@ -1,5 +1,5 @@
 # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
+# your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { inputs, config, options, pkgs, lib, callPackage, ... }:
@@ -118,11 +118,20 @@ in
 
   networking = {
     hostName = "p53-nixos";
-    networkmanager.enable = true;
     enableIPv6 = false;
     useDHCP = false;
-    interfaces.enp0s31f6.useDHCP = true;
-    nameservers = [ "8.8.8.8" "8.8.4.4" ];
+    #interfaces.enp0s31f6.useDHCP = true;
+    #nameservers = [ "8.8.8.8" "8.8.4.4" ];
+    defaultGateway = "192.168.1.1";
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    interfaces.enp0s31f6.ipv4.addresses = [{
+        address = "192.168.1.11";
+        prefixLength = 24;
+      }];
+    networkmanager = { 
+      enable = true;
+      unmanaged = [ "enp0s31f6" ];
+    };
     # Enables wireless support via wpa_supplicant.
     # wireless.enable = true;  
     # Configure network proxy if necessary
@@ -157,12 +166,37 @@ in
       wheelNeedsPassword = false;
     };
 
+    # Yubikey for Login
+    # nix-shell -p yubico-pam -p yubikey-personalization
+    # ykpersonalize -2 -ochal-resp -ochal-hmac -ohmac-lt64 -oserial-api-visible
+    # ykpamcfg -2 -v
+    /*
+    pam.yubico = {
+      enable = true;
+      debug = true;
+      mode = "challenge-response";
+      control = "required"; # for sudo
+    };
+    */
     # Finger Print Auth //Not working 100% yet with fprint
     /*
     pam.services = {
       login.fprintAuth = true;
       xautolock.fprintAuth = true;
     };
+    */  
+
+    # Example how to use pam
+    /*
+    pam.services = [
+      { name = "gnome_keyring"
+      text = ''
+        auth     optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
+        session  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so auto_start
+        password  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
+      '';
+      }
+    ];
     */
   };
 
@@ -188,16 +222,16 @@ in
     vim.defaultEditor = true;
     mtr.enable = true;
     ssh.startAgent = false;
-
-    chromium = {
-      enable = true;
-    };
+    nm-applet.enable = true;
 
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
 
+    chromium = {
+      enable = true;
+    };
     bash = {
       enableCompletion = true;
       # shellInit = "neofetch";
@@ -253,19 +287,6 @@ in
     };
     */
   };
-
-  # Example how to use pam
-  /*
-  pam.services = [
-    { name = "gnome_keyring"
-      text = ''
-        auth     optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
-        session  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so auto_start
-        password  optional    ${gnome3.gnome_keyring}/lib/security/pam_gnome_keyring.so
-      '';
-    }
-  ];
-  */
 
   services = {
     # localtime.enable = true;
@@ -669,6 +690,7 @@ in
           escrotum
           obs-studio
           libva-utils
+          gnome3.networkmanagerapplet
         ];
       };
     };
@@ -741,17 +763,17 @@ in
     '';
 
     # YubiKey SSH and GPG support    
-    /*    
-      shellInit = ''
-        export GPG_TTY="$(tty)"
-        gpg-connect-agent /bye
-        export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-    #   export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      '';
-    */
+        
+    shellInit = ''
+      export GPG_TTY="$(tty)"
+      gpg-connect-agent /bye
+      export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+    #  export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+     '';
+    
     variables = {
       # Preferred applications
-      EDITOR = "vim";
+      EDITOR = "nvim";
       BROWSER = "qutebrowser";
     };
 
@@ -805,6 +827,7 @@ in
       # p7zip
       unzip
       unrar
+      zstd
       unstable.cpu-x
       lsof
       acpi
@@ -883,6 +906,7 @@ in
       yubikey-personalization
       yubikey-personalization-gui
       yubioath-desktop
+      yubico-pam
     ];
 
     shellAliases = {

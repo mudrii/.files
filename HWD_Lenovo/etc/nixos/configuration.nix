@@ -122,15 +122,15 @@ in
     useDHCP = false;
     #interfaces.enp0s31f6.useDHCP = true;
     #nameservers = [ "8.8.8.8" "8.8.4.4" ];
-    defaultGateway = "192.168.1.1";
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
-    interfaces.enp0s31f6.ipv4.addresses = [{
-        address = "192.168.1.11";
-        prefixLength = 24;
-      }];
+    #defaultGateway = "192.168.1.1";
+    #nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    #interfaces.enp0s31f6.ipv4.addresses = [{
+    #    address = "192.168.1.11";
+    #    prefixLength = 24;
+    #  }];
     networkmanager = { 
       enable = true;
-      unmanaged = [ "enp0s31f6" ];
+    #  unmanaged = [ "enp0s31f6" ];
     };
     # Enables wireless support via wpa_supplicant.
     # wireless.enable = true;  
@@ -884,6 +884,7 @@ in
       ripgrep
       du-dust
       exa
+      srm
       tcpdump
       ethtool
       bmon
@@ -900,13 +901,6 @@ in
       openvpn
       wireguard
       unstable.gopass
-      yubikey-manager
-      yubico-piv-tool
-      yubikey-manager-qt
-      yubikey-personalization
-      yubikey-personalization-gui
-      yubioath-desktop
-      yubico-pam
     ];
 
     shellAliases = {
@@ -1089,6 +1083,7 @@ in
         gcc
         gnumake
         gnupg
+        keychain
         pinentry-curses
         pinentry-qt
         paperkey
@@ -1120,6 +1115,13 @@ in
         unstable.luckybackup
         unstable.drawio
         youtube-dl
+        yubikey-manager
+        yubico-piv-tool
+        yubikey-manager-qt
+        yubikey-personalization
+        yubikey-personalization-gui
+        yubioath-desktop
+        yubico-pam
       ];
     };
   };

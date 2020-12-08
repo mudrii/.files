@@ -131,7 +131,7 @@ in
           userEmail = "mudreac@gmail.com";
           ignores = [ "*~" "*.swp" ];
           signing = {
-            key = "CBF0AF1C6FF0D4A72F4D785E9C6F71507347D063";
+            key = "C37CEF50333B225E2FCA7D2003B8C6E70C3ED787";
             signByDefault = true;
           };
 

@@ -47,13 +47,32 @@ disable_overscan=1
 #arm_freq=1750
 
 # Moderate Overclocking
-over_voltage=6
-arm_freq=2000
+#over_voltage=6
+#arm_freq=2000
 
 # Max overclocking
-#over_voltage=6
-#arm_freq=2147
+over_voltage=6
+arm_freq=2147
+gpu_freq=750
+
+# Extreem Overclock
+#arm_freq=2275
 #gpu_freq=750
+#over_voltage=8
+
+# Super Extreem Overclock
+#arm_freq=2300
+#gpu_freq=500
+#over_voltage=14
+#force_turbo=1
+
+# Max Super Extreem Overclock
+#arm_freq=2350
+#gpu_freq=500
+#over_voltage=15
+#force_turbo=1
+
+
 
 # Uncomment some or all of these to enable the optional hardware interfaces
 #dtparam=i2c_arm=on
